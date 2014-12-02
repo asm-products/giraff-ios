@@ -1,6 +1,6 @@
 //
-//  ExtintorTests.m
-//  ExtintorTests
+//  GiraffTests.m
+//  GiraffTests
 //
 //  Created by Jeroen Leenarts on 23-11-14.
 //  Copyright (c) 2014 Assembly. All rights reserved.
@@ -9,11 +9,11 @@
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 
-@interface ExtintorTests : XCTestCase
+@interface GiraffTests : XCTestCase
 
 @end
 
-@implementation ExtintorTests
+@implementation GiraffTests
 
 - (void)setUp {
     [super setUp];
