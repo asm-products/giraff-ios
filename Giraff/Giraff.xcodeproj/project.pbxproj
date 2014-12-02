@@ -23,7 +23,7 @@
 			containerPortal = 4AFCA4DC1A22222500F98D06 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 4AFCA4E31A22222500F98D06;
-			remoteInfo = Extintor;
+			remoteInfo = Giraff;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -145,7 +145,7 @@
 			dependencies = (
 			);
 			name = Giraff;
-			productName = Extintor;
+			productName = Giraff;
 			productReference = 4AFCA4E41A22222500F98D06 /* Giraff.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -163,7 +163,7 @@
 				4AFCA4FF1A22222500F98D06 /* PBXTargetDependency */,
 			);
 			name = GiraffTests;
-			productName = ExtintorTests;
+			productName = GiraffTests;
 			productReference = 4AFCA4FD1A22222500F98D06 /* GiraffTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
