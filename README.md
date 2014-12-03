@@ -23,7 +23,7 @@ gem install cocoapods
 After installing CocoaPods, clone the source repository.
 On the commandline CD into the directory containing the Podfile.
 ```
-cd extintor
+cd Giraff
 ```
 
 Then run:
@@ -35,7 +35,7 @@ You should see a message indicating the fact that things were isntalled successf
 
 Open the workspace file from the commandline with or open using the Finder.
 ```
-open Extintor.xcworkspace
+open Giraff.xcworkspace
 ```
 
 ### How Assembly Works
