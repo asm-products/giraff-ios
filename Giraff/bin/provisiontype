@@ -1,0 +1,82 @@
+#!/bin/sh
+#
+# Script that determines the type for a provisioning file.
+#
+# Output is one of:
+#  - Sandbox:Developer
+#  - Production:AdHoc
+#  - Production:Enterprise
+#  - Production:AppStore
+#  - Unknown
+#
+
+# Debug
+set -x
+
+PROGNAME="${0##*/}"
+PROGDIR="${0%/*}"
+
+if [ -z "$1" ]
+then
+	echo "Usage: ${PROGNAME} PROVISIONING_PROFILE_ID|PATH" 1>&2
+	exit 1
+fi
+
+# Check that the profile can be found. First try global registry, then path.
+PROFILE_ID="$1"
+PROFILE_PATH="${HOME}/Library/MobileDevice/Provisioning Profiles/${PROFILE_ID}.mobileprovision"
+if [ ! -r "${PROFILE_PATH}" ]
+then
+	PROFILE_PATH="$1"
+	if [ ! -r "${PROFILE_PATH}" ]
+	then
+		echo "${PROGNAME}: Cannot locate provisioning profile: ${PROFILE_ID}" 1>&2
+		exit 2
+	fi
+fi
+
+# Set up a temporary directory for work files.
+_tmpfile="$(mktemp -d -t "${PROGNAME}")"
+trap "rm -fr '${_tmpfile}'" EXIT
+
+# Extract the provision properties to a file so that we can use PlistBuddy.
+PROFILE_PROP="${_tmpfile}/profile.plist"
+echo "openssl smime:"
+openssl smime -in "${PROFILE_PATH}" -inform der -verify -CAfile ${PROGDIR}/Certificates.pem 2> /dev/null > "${PROFILE_PROP}"
+if [ "$?" -ne 0 ]
+then
+	echo "${PROGNAME}: Unable to process provisioning profile: ${PROFILE_ID}" 1>&2
+	exit 3
+fi
+
+xsltproc --nonet - "${PROFILE_PROP}" 2>/dev/null << 'EOF'
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+
+  <xsl:output method="text" encoding="utf-8"/>
+  <xsl:strip-space elements="*"/>
+
+  <xsl:template match="/plist/dict">
+    <xsl:variable name="device-all" select="key[.='ProvisionsAllDevices']/following-sibling::*[1]"/>
+    <xsl:variable name="device-list" select="key[.='ProvisionedDevices']/following-sibling::*[1]/string"/>
+    <xsl:variable name="entitlements" select="key[.='Entitlements']/following-sibling::*[1]"/>
+    <xsl:variable name="debug" select="$entitlements/key[.='get-task-allow']/following-sibling::*[1]"/>
+    <xsl:choose>
+      <xsl:when test="$debug/self::true">
+        <xsl:text>Sandbox:Developer</xsl:text>
+      </xsl:when>
+      <xsl:when test="$device-all/self::true">
+        <xsl:text>Production:Enterprise</xsl:text>
+      </xsl:when>
+      <xsl:when test="$device-list">
+        <xsl:text>Production:AdHoc</xsl:text>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:text>Production:AppStore</xsl:text>
+      </xsl:otherwise>
+    </xsl:choose>
+    <xsl:text>&#10;</xsl:text>
+  </xsl:template>
+</xsl:stylesheet>
+EOF
+
+# End.

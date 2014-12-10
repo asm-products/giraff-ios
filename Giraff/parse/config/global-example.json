@@ -1,0 +1,15 @@
+{
+    "applications": {
+        "production": {
+            "applicationId": "your_app_id", 
+            "masterKey": "your_master_key"
+        }, 
+        "_default": {
+            "link": "development"
+        }, 
+        "development": {
+            "applicationId": "your_dev_app_id", 
+            "masterKey": "your_dev_master_key"
+        }
+    }
+}
