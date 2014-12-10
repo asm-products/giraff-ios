@@ -1,0 +1,144 @@
+#!/bin/sh
+#
+# Generate a file containing constants, based on the provisioning profile
+# being used.
+#
+
+# Debug
+#set -x
+
+# Abort on implicit errors.
+set -e
+
+if [ ! -f "${PROJECT_DIR}/bin/setEnv.sh" ]; then
+    echo "File not found!" 1>&2
+    cp "${PROJECT_DIR}/bin/setEnv-Example.sh" "${PROJECT_DIR}/bin/setEnv.sh"
+fi
+
+source "${PROJECT_DIR}/bin/setEnv.sh"
+
+PROGNAME="${0##*/}"
+PROGDIR="${0%/*}"
+
+if [ $# -lt 3 ]
+then
+	echo "Usage: ${PROGNAME} CODE_SIGN_IDENTITY PROVISIONING_PROFILE_REQUIRED PROVISIONING_PROFILE" 1>&2
+	exit 1
+fi
+
+# CODE_SIGN_IDENTITY: value from build (including Automatic profiles)
+# PROVISIONING_PROFILE_REQUIRED: YES for device build, empty for simulator.
+# PROVISIONING_PROFILE: set if explicit, empty for auto-selection. 
+
+PROFILE_ID="$3"
+if [ -n "${PROFILE_ID}" ]
+then
+	PROFILE_TYPE="$("${PROGDIR}/provisiontype" "${PROFILE_ID}")"
+elif [ "${PROVISIONING_PROFILE_REQUIRED}" != 'YES' ]
+then
+	# Simulater build. Always developer build.
+	PROFILE_TYPE='None:Developer'
+elif [ "${CODE_SIGN_IDENTITY}" = 'iPhone Developer' ]
+then
+	PROFILE_TYPE='Sandbox:Developer'
+else
+	echo "${PROGNAME}: Auto-selected profiles not allowed for releases. An explicit code-signing profile must be selected." 1>&2
+	exit 2
+fi
+
+case "${PROFILE_TYPE}" in
+	*:Developer)
+        BUILD_LABEL='DEVELOPER'
+        echo "${PROGNAME}: Detected ${BUILD_LABEL} build." 1>&2
+		DEBUG_LOGGING='YES'
+		DEBUG_PAYLOAD_ALLOWED='YES'
+        DEV_SANDBOX='YES'
+		;;
+    *:AdHoc)
+        BUILD_LABEL='AD-HOC-DIST'
+        echo "${PROGNAME}: Detected AD-HOC release: ${BUILD_LABEL}" 1>&2
+        DEBUG_LOGGING='YES'
+        DEBUG_PAYLOAD_ALLOWED='YES'
+        ;;
+	*:AppStore)
+        BUILD_LABEL='AppStore'
+        echo "${PROGNAME}: Detected App store release: ${BUILD_LABEL}" 1>&2
+		DEBUG_LOGGING='NO'
+		DEBUG_PAYLOAD_ALLOWED='NO'
+		;;
+esac
+
+if [ -z "${DEV_PARSE_APPLICATION_ID}" ]
+then
+    echo "${PROGNAME}: Parse DEV_PARSE_APPLICATION_ID not set in environment" 1>&2
+    exit 3
+fi
+
+if [ -z "${DEV_PARSE_CLIENT_KEY}" ]
+then
+    echo "${PROGNAME}: Parse DEV_PARSE_CLIENT_KEY not set in environment" 1>&2
+    exit 4
+fi
+
+if [ -z "${PARSE_APPLICATION_ID}" ]
+then
+    echo "${PROGNAME}: Parse PARSE_APPLICATION_ID not set in environment" 1>&2
+    exit 5
+fi
+
+if [ -z "${PARSE_CLIENT_KEY}" ]
+then
+    echo "${PROGNAME}: Parse PARSE_CLIENT_KEY not set in environment" 1>&2
+    exit 6
+fi
+
+
+cat << EOF
+/**********
+ *
+ * WARNING!
+ *
+ * This is a generated file. Do not modify it; changes will be overwritten.
+ *
+ * Generated: $(date)
+ * Profile type: ${PROFILE_TYPE}
+ */
+
+#import <CoreFoundation/CoreFoundation.h>
+#import <Foundation/Foundation.h>
+
+const BOOL DEBUG_LOGGING = ${DEBUG_LOGGING};
+const BOOL DEBUG_PAYLOAD_ALLOWED = ${DEBUG_PAYLOAD_ALLOWED};
+EOF
+if [ "$DEV_SANDBOX" = 'YES' ];
+then
+
+echo "NSString * const PARSE_APPLICATION_ID = @\"${DEV_PARSE_APPLICATION_ID}\";"
+echo "NSString * const PARSE_CLIENT_KEY = @\"${DEV_PARSE_CLIENT_KEY}\";"
+
+else
+
+echo "NSString * const PARSE_APPLICATION_ID = @\"${PARSE_APPLICATION_ID}\";"
+echo "NSString * const PARSE_CLIENT_KEY = @\"${PARSE_CLIENT_KEY}\";"
+
+fi
+
+
+
+if [ "${DEBUG_LOGGING}" = 'YES' ];
+then
+cat << EOF
+
+static NSString * const BUILD_LABEL = @"${BUILD_LABEL}";
+
+// This code is only present when logging is enabled.
+static void onStartup(void) __attribute__((constructor));
+static void onStartup(void) {
+    NSLog(@"**** This is a %@ build. ****", BUILD_LABEL);
+    @autoreleasepool {
+        NSLog(@"Parse configuration. App ID: %@, Client key: %@", PARSE_APPLICATION_ID, PARSE_CLIENT_KEY);
+    }
+}
+EOF
+fi
+

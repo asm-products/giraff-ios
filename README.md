@@ -31,12 +31,23 @@ Then run:
 pod install
 ```
 
-You should see a message indicating the fact that things were isntalled successfully and that you should use the workspace file.
+You should see a message indicating the fact that things were installed successfully and that you should use the workspace file.
+
+Next up is setting up Parse. There are four things you need to do.
+
+- Setup your own parse.com account.
+- Create a new application.
+- Copy the file ./bin/setEnv-example.sh to setEnv.sh and paste your Parse.com keys in there.
+- Now CD to ./Giraff/parse/config and run ```./genGlobalJson.sh```
+
+You should now have your parse.com configured.
 
 Open the workspace file from the commandline with or open using the Finder.
 ```
 open Giraff.xcworkspace
 ```
+
+Build and run... Happy coding.
 
 ### How Assembly Works
 

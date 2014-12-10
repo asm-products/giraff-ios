@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A216BD41A3807C40055300E /* generate-constants in Resources */ = {isa = PBXBuildFile; fileRef = 4A216BD01A3807C40055300E /* generate-constants */; };
+		4A216BD51A3807C40055300E /* provisiontype in Resources */ = {isa = PBXBuildFile; fileRef = 4A216BD11A3807C40055300E /* provisiontype */; };
+		4A216BD61A3807C40055300E /* setEnv-Example.sh in Resources */ = {isa = PBXBuildFile; fileRef = 4A216BD21A3807C40055300E /* setEnv-Example.sh */; };
+		4A216BD71A3807C40055300E /* setEnv.sh in Resources */ = {isa = PBXBuildFile; fileRef = 4A216BD31A3807C40055300E /* setEnv.sh */; };
+		4A216BDB1A3808970055300E /* GeneratedConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A216BDA1A3808970055300E /* GeneratedConstants.m */; };
 		4A3435811A2E593D0060C15E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3435771A2E593D0060C15E /* AppDelegate.m */; };
 		4A3435841A2E593D0060C15E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A34357C1A2E593D0060C15E /* Images.xcassets */; };
 		4A3435861A2E593D0060C15E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A34357E1A2E593D0060C15E /* main.m */; };
@@ -29,6 +34,12 @@
 
 /* Begin PBXFileReference section */
 		0BB53468B56A59C844580B35 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		4A216BD01A3807C40055300E /* generate-constants */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "generate-constants"; sourceTree = "<group>"; };
+		4A216BD11A3807C40055300E /* provisiontype */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = provisiontype; sourceTree = "<group>"; };
+		4A216BD21A3807C40055300E /* setEnv-Example.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "setEnv-Example.sh"; sourceTree = "<group>"; };
+		4A216BD31A3807C40055300E /* setEnv.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = setEnv.sh; sourceTree = "<group>"; };
+		4A216BD81A3807FC0055300E /* GeneratedConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GeneratedConstants.h; sourceTree = "<group>"; };
+		4A216BDA1A3808970055300E /* GeneratedConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GeneratedConstants.m; path = "derived-sources/GeneratedConstants.m"; sourceTree = SOURCE_ROOT; };
 		4A3435761A2E593D0060C15E /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4A3435771A2E593D0060C15E /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		4A3435791A2E593D0060C15E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -73,9 +84,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		4A216BCF1A3807C40055300E /* bin */ = {
+			isa = PBXGroup;
+			children = (
+				4A216BD01A3807C40055300E /* generate-constants */,
+				4A216BD11A3807C40055300E /* provisiontype */,
+				4A216BD21A3807C40055300E /* setEnv-Example.sh */,
+				4A216BD31A3807C40055300E /* setEnv.sh */,
+			);
+			path = bin;
+			sourceTree = "<group>";
+		};
 		4A3435751A2E593D0060C15E /* Giraff */ = {
 			isa = PBXGroup;
 			children = (
+				4A216BD81A3807FC0055300E /* GeneratedConstants.h */,
+				4A216BDA1A3808970055300E /* GeneratedConstants.m */,
 				4A3435761A2E593D0060C15E /* AppDelegate.h */,
 				4A3435771A2E593D0060C15E /* AppDelegate.m */,
 				4A3435781A2E593D0060C15E /* LaunchScreen.xib */,
@@ -101,6 +125,7 @@
 		4AFCA4DB1A22222500F98D06 = {
 			isa = PBXGroup;
 			children = (
+				4A216BCF1A3807C40055300E /* bin */,
 				4A3435751A2E593D0060C15E /* Giraff */,
 				4A34358A1A2E59930060C15E /* GiraffTests */,
 				4AFCA4E51A22222500F98D06 /* Products */,
@@ -135,10 +160,12 @@
 			buildConfigurationList = 4AFCA5071A22222500F98D06 /* Build configuration list for PBXNativeTarget "Giraff" */;
 			buildPhases = (
 				76CE0A8C95474B0F6D55CD51 /* Check Pods Manifest.lock */,
+				4A216BD91A38083D0055300E /* Generete Sources */,
 				4AFCA4E01A22222500F98D06 /* Sources */,
 				4AFCA4E11A22222500F98D06 /* Frameworks */,
 				4AFCA4E21A22222500F98D06 /* Resources */,
 				5EE90DD7A40C05767A4CEF83 /* Copy Pods Resources */,
+				4A216BDC1A38270B0055300E /* Upload Symbol files to Parse */,
 			);
 			buildRules = (
 			);
@@ -211,7 +238,11 @@
 			files = (
 				4A3435901A2E5ADF0060C15E /* LaunchScreen.xib in Resources */,
 				4A3435911A2E5ADF0060C15E /* Main.storyboard in Resources */,
+				4A216BD51A3807C40055300E /* provisiontype in Resources */,
+				4A216BD71A3807C40055300E /* setEnv.sh in Resources */,
 				4A3435841A2E593D0060C15E /* Images.xcassets in Resources */,
+				4A216BD61A3807C40055300E /* setEnv-Example.sh in Resources */,
+				4A216BD41A3807C40055300E /* generate-constants in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,6 +256,34 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		4A216BD91A38083D0055300E /* Generete Sources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Generete Sources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\n\nif [ ! -L \"${PROJECT_DIR}/derived-sources\" ]\nthen\naction=\"Create\"\nelif [ \"$(readlink \"${PROJECT_DIR}/derived-sources\")\" != \"${DERIVED_SOURCES_DIR}\" ]\nthen\naction=\"Replace\"\nfi\nif [ -n \"${action}\" ]\nthen\nrm -f \"${PROJECT_DIR}/derived-sources\"\nprintf \"%s link: \" \"${action}\" && ln -sv \"${DERIVED_SOURCES_DIR}\" \"${PROJECT_DIR}/derived-sources\"\nfi\n\necho \"Generating constants based on build configuration.\"\nmkdir -p \"${DERIVED_SOURCES_DIR}\"\n\"${PROJECT_DIR}/bin/generate-constants\" \\\n\"${CODESIGN_IDENTITY}\" \\\n\"${PROVISIONING_PROFILE_REQUIRED}\" \\\n\"${PROVISIONING_PROFILE}\" > \"${DERIVED_SOURCES_DIR}/GeneratedConstants.m\"\n";
+		};
+		4A216BDC1A38270B0055300E /* Upload Symbol files to Parse */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Upload Symbol files to Parse";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export PATH=/usr/local/bin:$PATH\ncd parse\n\nparse symbols \"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}\"";
+		};
 		5EE90DD7A40C05767A4CEF83 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -265,6 +324,7 @@
 				4A3435871A2E593D0060C15E /* ViewController.m in Sources */,
 				4A3435861A2E593D0060C15E /* main.m in Sources */,
 				4A3435811A2E593D0060C15E /* AppDelegate.m in Sources */,
+				4A216BDB1A3808970055300E /* GeneratedConstants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
