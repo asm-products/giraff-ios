@@ -49,6 +49,14 @@ open Giraff.xcworkspace
 
 Build and run... Happy coding.
 
+If you encounter a build error, try cleaning your project.
+
+```
+Xcode -> Window -> Organizer -> Projects, select your project, and press the "Delete..." button next to "Derived data".
+
+If this doesn't work, try Product->Clean (Cmd+Shift+k).
+```
+
 ### How Assembly Works
 
 Assembly products are like open-source and made with contributions from the community. Assembly handles the boring stuff like hosting, support, financing, legal, etc. Once the product launches we collect the revenue and split the profits amongst the contributors.
