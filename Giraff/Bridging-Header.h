@@ -9,6 +9,7 @@
 #ifndef Giraff_Bridging_Header_h
 #define Giraff_Bridging_Header_h
 
+#import "Mantle.h"
 #import "FLAnimatedImage.h"
 #import "ZLSwipeableView.h"
 #import <FacebookSDK/FacebookSDK.h>

@@ -14,10 +14,8 @@ class GifView: UIView {
         super.init(coder: coder)
     }
     
-    
-    
     func setSpinner() {
-        NSLog("init")
+        NSLog("Setting spinner")
         let path:String = NSBundle.mainBundle().pathForResource("spinner", ofType:"gif")! as NSString
         let data = NSData.dataWithContentsOfMappedFile(path) as NSData
         let spinnerImage = FLAnimatedImage(animatedGIFData: data)
