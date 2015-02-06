@@ -54,5 +54,23 @@
             </objects>
             <point key="canvasLocation" x="905" y="441"/>
         </scene>
+        <!--Login View Controller-->
+        <scene sceneID="AFQ-2T-KaS">
+            <objects>
+                <viewController id="Ahk-pN-sHi" customClass="LoginViewController" customModule="Giraff" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="CNi-aL-Wmp"/>
+                        <viewControllerLayoutGuide type="bottom" id="L1U-EH-nFG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4aC-nx-tfq">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CzB-Pb-bUt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="905" y="1135"/>
+        </scene>
     </scenes>
 </document>
