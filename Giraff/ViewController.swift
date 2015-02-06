@@ -12,12 +12,14 @@ class ViewController: UIViewController, ZLSwipeableViewDataSource, ZLSwipeableVi
     @IBOutlet weak var swipeableView: ZLSwipeableView!
 
     var gifUrls = [
-        "http://i.imgur.com/3Xc2B4f.gif",
-        "http://i.imgur.com/icXkt37.gif",
-        "http://i.imgur.com/1SSVsBH.gif",
-        "http://i.imgur.com/J8MZcVv.gif",
-        "http://i.imgur.com/7CZby9V.gif"
+        "http://i.imgur.com/3Xc2B4f.mp4",
+        "http://i.imgur.com/icXkt37.mp4",
     ]
+    /*
+"http://i.imgur.com/1SSVsBH.mp4",
+"http://i.imgur.com/J8MZcVv.mp4",
+"http://i.imgur.com/7CZby9V.mp4"
+*/
     var gifs:NSMutableArray = []
     var gifIndex = 0
     
@@ -59,14 +61,13 @@ class ViewController: UIViewController, ZLSwipeableViewDataSource, ZLSwipeableVi
     }
     
     func swipeableView(swipeableView: ZLSwipeableView!, swipingView view: UIView!, atLocation location: CGPoint, translation: CGPoint) {
-        NSLog("swiping at location: x %f, y %f, translation: x %f, y %f", location.x, location.y, translation.x, translation.y)
     }
     
     // ZLSwipeableViewDataSource
     func nextViewForSwipeableView(swipeableView: ZLSwipeableView!) -> UIView! {
         if (self.gifIndex < self.gifUrls.count) {
             var view = GifView(frame: swipeableView.bounds)
-            view.gifUrl = self.gifUrls[self.gifIndex]
+            view.mp4Url = self.gifUrls[self.gifIndex]
 
             self.gifIndex++
 

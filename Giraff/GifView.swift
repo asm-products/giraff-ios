@@ -3,6 +3,7 @@ import MediaPlayer
 
 class GifView: UIView {
     var animatedView:FLAnimatedImageView!
+    var mpc:MPMoviePlayerController!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -13,7 +14,10 @@ class GifView: UIView {
         super.init(coder: coder)
     }
     
+    
+    
     func setSpinner() {
+        NSLog("init")
         let path:String = NSBundle.mainBundle().pathForResource("spinner", ofType:"gif")! as NSString
         let data = NSData.dataWithContentsOfMappedFile(path) as NSData
         let spinnerImage = FLAnimatedImage(animatedGIFData: data)
@@ -24,6 +28,29 @@ class GifView: UIView {
         self.animatedView.animatedImage = spinnerImage
         
         self.addSubview(animatedView)
+    }
+    
+    
+    // Doesn't quite work, only 1 video shows, all others are black
+    var mp4Url: NSString? = nil {
+        didSet {
+            self.animatedView.removeFromSuperview()
+
+            mpc = MPMoviePlayerController()
+            if let player = mpc {
+                player.view.frame = self.bounds
+                player.backgroundView.backgroundColor = UIColor.whiteColor()
+                
+                player.movieSourceType = MPMovieSourceType.Streaming
+                player.contentURL = NSURL(string: mp4Url!)
+                player.shouldAutoplay = false
+                player.controlStyle = MPMovieControlStyle.None
+                player.repeatMode = MPMovieRepeatMode.One
+                player.prepareToPlay()
+                
+                addSubview(player.view)
+            }
+        }
     }
     
     var gifUrl: NSString = "" {
