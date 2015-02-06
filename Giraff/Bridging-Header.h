@@ -11,5 +11,6 @@
 
 #import "FLAnimatedImage.h"
 #import "ZLSwipeableView.h"
+#import <FacebookSDK/FacebookSDK.h>
 
 #endif
