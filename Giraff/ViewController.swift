@@ -10,6 +10,16 @@ import UIKit
 
 class ViewController: UIViewController, ZLSwipeableViewDataSource, ZLSwipeableViewDelegate {
     @IBOutlet weak var swipeableView: ZLSwipeableView!
+
+    var gifUrls = [
+        "http://i.imgur.com/3Xc2B4f.gif",
+        "http://i.imgur.com/icXkt37.gif",
+        "http://i.imgur.com/1SSVsBH.gif",
+        "http://i.imgur.com/J8MZcVv.gif",
+        "http://i.imgur.com/7CZby9V.gif"
+    ]
+    var gifs:NSMutableArray = []
+    var gifIndex = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,25 +64,25 @@ class ViewController: UIViewController, ZLSwipeableViewDataSource, ZLSwipeableVi
     
     // ZLSwipeableViewDataSource
     func nextViewForSwipeableView(swipeableView: ZLSwipeableView!) -> UIView! {
-        let path:String = NSBundle.mainBundle().pathForResource("goog", ofType:"gif")! as NSString
-        let data = NSData.dataWithContentsOfMappedFile(path) as NSData
-        let animatedImage = FLAnimatedImage(animatedGIFData: data)
-        
-        let view = FLAnimatedImageView(frame: swipeableView.bounds)
-        
-        view.animatedImage = animatedImage
-        view.contentMode = UIViewContentMode.ScaleAspectFit
-        
-        view.layer.shadowColor = UIColor.blackColor().CGColor
-        view.layer.shadowOpacity = 0.33
-        view.layer.shadowOffset = CGSizeMake(0, 1.5)
-        view.layer.shadowRadius = 4.0
-        view.layer.shouldRasterize = true
-        
-        // Corner Radius
-        view.layer.cornerRadius = 10.0;
-        
-        return view
+        if (self.gifIndex < self.gifUrls.count) {
+            var view = GifView(frame: swipeableView.bounds)
+            view.gifUrl = self.gifUrls[self.gifIndex]
+
+            self.gifIndex++
+
+            view.layer.backgroundColor = UIColor.whiteColor().CGColor
+            view.layer.shadowColor = UIColor.blackColor().CGColor
+            view.layer.shadowOpacity = 0.33
+            view.layer.shadowOffset = CGSizeMake(0, 1.5)
+            view.layer.shadowRadius = 4.0
+            view.layer.shouldRasterize = true
+            
+            // Corner Radius
+            view.layer.cornerRadius = 10.0;
+            
+            return view
+        }
+        return nil
     }
 }
 

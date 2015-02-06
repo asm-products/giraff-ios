@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		55ADA6AC1A8419B100A588BD /* spinner.gif in Resources */ = {isa = PBXBuildFile; fileRef = 55ADA6AB1A8419B100A588BD /* spinner.gif */; };
+		55ADA6AE1A841A3700A588BD /* GifView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55ADA6AD1A841A3700A588BD /* GifView.swift */; };
+		55ADA6B01A843C6400A588BD /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55ADA6AF1A843C6400A588BD /* MediaPlayer.framework */; };
 		55E8E7C01A82E5540087F086 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E8E7BF1A82E5540087F086 /* AppDelegate.swift */; };
 		55E8E7C21A82E5540087F086 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E8E7C11A82E5540087F086 /* ViewController.swift */; };
 		55E8E7C51A82E5540087F086 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55E8E7C31A82E5540087F086 /* Main.storyboard */; };
@@ -28,6 +31,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		55ADA6AB1A8419B100A588BD /* spinner.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = spinner.gif; sourceTree = "<group>"; };
+		55ADA6AD1A841A3700A588BD /* GifView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GifView.swift; sourceTree = "<group>"; };
+		55ADA6AF1A843C6400A588BD /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		55E8E7BA1A82E5540087F086 /* Giraff.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Giraff.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55E8E7BE1A82E5540087F086 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		55E8E7BF1A82E5540087F086 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -50,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55ADA6B01A843C6400A588BD /* MediaPlayer.framework in Frameworks */,
 				D48D6C0E3A66A0FBCB2A5D86 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -87,6 +94,7 @@
 		55E8E7BC1A82E5540087F086 /* Giraff */ = {
 			isa = PBXGroup;
 			children = (
+				55ADA6AB1A8419B100A588BD /* spinner.gif */,
 				55E8E7E51A82FB450087F086 /* test_gifs */,
 				55E8E7BF1A82E5540087F086 /* AppDelegate.swift */,
 				55E8E7C11A82E5540087F086 /* ViewController.swift */,
@@ -95,6 +103,7 @@
 				55E8E7C81A82E5540087F086 /* LaunchScreen.xib */,
 				55E8E7BD1A82E5540087F086 /* Supporting Files */,
 				55E8E7E61A82FFFE0087F086 /* Bridging-Header.h */,
+				55ADA6AD1A841A3700A588BD /* GifView.swift */,
 			);
 			path = Giraff;
 			sourceTree = "<group>";
@@ -144,6 +153,7 @@
 		C22EA1241867548343ED9419 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				55ADA6AF1A843C6400A588BD /* MediaPlayer.framework */,
 				6700CA7FD39135D61A9D87A2 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -234,6 +244,7 @@
 			files = (
 				55E8E7E41A82FB400087F086 /* goog.gif in Resources */,
 				55E8E7C51A82E5540087F086 /* Main.storyboard in Resources */,
+				55ADA6AC1A8419B100A588BD /* spinner.gif in Resources */,
 				55E8E7CA1A82E5540087F086 /* LaunchScreen.xib in Resources */,
 				55E8E7C71A82E5540087F086 /* Images.xcassets in Resources */,
 			);
@@ -287,6 +298,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				55E8E7C21A82E5540087F086 /* ViewController.swift in Sources */,
+				55ADA6AE1A841A3700A588BD /* GifView.swift in Sources */,
 				55E8E7C01A82E5540087F086 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
