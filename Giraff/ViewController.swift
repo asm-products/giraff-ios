@@ -39,6 +39,7 @@ class ViewController: UIViewController, ZLSwipeableViewDataSource, ZLSwipeableVi
         self.swipeableView.loadNextSwipeableViewsIfNeeded()
         
     }
+    
     // ZLSwipeableViewDelegate
     func swipeableView(swipeableView: ZLSwipeableView!, didStartSwipingView view: UIView!, atLocation location: CGPoint) {
 //        NSLog("swipe start")
@@ -65,6 +66,7 @@ class ViewController: UIViewController, ZLSwipeableViewDataSource, ZLSwipeableVi
             var view = GifView(frame: swipeableView.bounds)
         
             view.gifUrl = card.url!
+            view.caption.text = card.caption!
 
             view.layer.backgroundColor = UIColor.whiteColor().CGColor
             view.layer.cornerRadius = 10.0;

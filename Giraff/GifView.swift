@@ -3,19 +3,28 @@ import MediaPlayer
 
 class GifView: UIView {
     var animatedView:FLAnimatedImageView!
+    var caption:UILabel!
     var mpc:MPMoviePlayerController!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setSpinner()
+        addCaption()
+        addAnimatedImageWithSpinner()
     }
     
     required init(coder: NSCoder) {
         super.init(coder: coder)
     }
     
-    func setSpinner() {
-        NSLog("Setting spinner")
+    func addCaption() {
+        self.caption = UILabel(frame: CGRectMake(0, 0, self.bounds.width, 50))
+        caption.textAlignment = NSTextAlignment.Center
+        caption.numberOfLines = 0
+        caption.lineBreakMode = NSLineBreakMode.ByWordWrapping
+        addSubview(caption)
+    }
+    
+    func addAnimatedImageWithSpinner() {
         let path:String = NSBundle.mainBundle().pathForResource("spinner", ofType:"gif")! as NSString
         let data = NSData.dataWithContentsOfMappedFile(path) as NSData
         let spinnerImage = FLAnimatedImage(animatedGIFData: data)

@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -18,23 +19,26 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8SP-4t-N6Q" customClass="ZLSwipeableView">
-                                <rect key="frame" x="16" y="63" width="568" height="361"/>
+                                <rect key="frame" x="7" y="63" width="586" height="361"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Swipe Right to Like" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tMe-4Z-XWe">
-                                <rect key="frame" x="435" y="559" width="149" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Swipe Left to Skip" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LiA-X4-55W">
+                                <rect key="frame" x="16" y="528" width="63" height="52"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Swipe Left to Skip" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LiA-X4-55W">
-                                <rect key="frame" x="16" y="559" width="141" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Swipe Right to Fave" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ypS-Sj-mKF">
+                                <rect key="frame" x="516" y="528" width="68" height="52"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="Wcr-pW-jmf"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RW7-vA-Jfq">
-                                <rect key="frame" x="277" y="555" width="53" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RW7-vA-Jfq">
+                                <rect key="frame" x="274" y="462" width="53" height="30"/>
                                 <state key="normal" title="Refresh">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -47,11 +51,14 @@
                         <constraints>
                             <constraint firstItem="LiA-X4-55W" firstAttribute="leading" secondItem="8SP-4t-N6Q" secondAttribute="leading" id="65B-Wq-crd"/>
                             <constraint firstItem="8SP-4t-N6Q" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="GiS-E0-Mha"/>
+                            <constraint firstItem="RW7-vA-Jfq" firstAttribute="centerX" secondItem="8SP-4t-N6Q" secondAttribute="centerX" id="NFW-va-tqO"/>
                             <constraint firstAttribute="bottom" secondItem="8SP-4t-N6Q" secondAttribute="bottom" constant="176" id="Tfv-rB-jxo"/>
-                            <constraint firstItem="LiA-X4-55W" firstAttribute="baseline" secondItem="tMe-4Z-XWe" secondAttribute="baseline" id="bCg-RU-N7T"/>
                             <constraint firstItem="LiA-X4-55W" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="coJ-vt-PMq"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="RW7-vA-Jfq" secondAttribute="bottom" constant="15" id="fXn-qQ-xOx"/>
                             <constraint firstAttribute="bottom" secondItem="LiA-X4-55W" secondAttribute="bottom" constant="20" symbolic="YES" id="hlx-B0-mSu"/>
-                            <constraint firstItem="8SP-4t-N6Q" firstAttribute="trailing" secondItem="tMe-4Z-XWe" secondAttribute="trailing" id="o6s-AR-MbI"/>
+                            <constraint firstItem="ypS-Sj-mKF" firstAttribute="baseline" secondItem="LiA-X4-55W" secondAttribute="baseline" id="ofv-B0-cih"/>
+                            <constraint firstItem="ypS-Sj-mKF" firstAttribute="firstBaseline" secondItem="LiA-X4-55W" secondAttribute="firstBaseline" id="rRg-u5-DUG"/>
+                            <constraint firstItem="ypS-Sj-mKF" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="uEt-JA-t5v"/>
                             <constraint firstItem="8SP-4t-N6Q" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="zHM-S1-XvW"/>
                         </constraints>
                     </view>
