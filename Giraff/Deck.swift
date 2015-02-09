@@ -18,27 +18,13 @@ class Deck : NSObject {
     }
     
     func fetch(callback: () -> Void) {
-        var plist = NSBundle.mainBundle().pathForResource("configuration", ofType: "plist")
-        var config = NSDictionary(contentsOfFile: plist!)!
-        var apiUrl = config["FUN_API_URL"] as NSString
-        var imagesPath = apiUrl + "/images"
-        
-        var session = NSURLSession.sharedSession()
-        var task = session.dataTaskWithURL(NSURL(string:imagesPath)!) {(data, response, error) in
-            if error != nil {
-                println("can't connect to server :(")
-            } else {
-                let json = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as NSDictionary
-                let images = json["images"] as NSArray
-                var cards = MTLJSONAdapter.modelsOfClass(Card.self, fromJSONArray: images, error: nil)
-                for card in cards {
-                    self.cards.append(card as Card)
-                }
-                callback()
+        FunSession.sharedSession.fetchImages() {(images) -> Void in
+            var cards = MTLJSONAdapter.modelsOfClass(Card.self, fromJSONArray: images, error: nil)
+            for card in cards {
+                self.cards.append(card as Card)
             }
+            callback()
         }
-        task.resume()
-
     }
     
 }
