@@ -26,5 +26,4 @@ class Deck : NSObject {
             callback()
         }
     }
-    
 }
