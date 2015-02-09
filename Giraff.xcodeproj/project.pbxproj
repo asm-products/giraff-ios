@@ -12,6 +12,7 @@
 		0179C25A1A854A9400A36023 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0179C2591A854A9400A36023 /* LoginViewController.swift */; };
 		557FF6B91A85432C00895DC0 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557FF6B81A85432C00895DC0 /* Card.swift */; };
 		557FF6BB1A85478400895DC0 /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557FF6BA1A85478400895DC0 /* Deck.swift */; };
+		55A957171A88569D002A5F66 /* configuration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 55A957161A88569D002A5F66 /* configuration.plist */; };
 		55ADA6AC1A8419B100A588BD /* spinner.gif in Resources */ = {isa = PBXBuildFile; fileRef = 55ADA6AB1A8419B100A588BD /* spinner.gif */; };
 		55ADA6AE1A841A3700A588BD /* GifView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55ADA6AD1A841A3700A588BD /* GifView.swift */; };
 		55ADA6B01A843C6400A588BD /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55ADA6AF1A843C6400A588BD /* MediaPlayer.framework */; };
@@ -41,6 +42,7 @@
 		0179C2591A854A9400A36023 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		557FF6B81A85432C00895DC0 /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		557FF6BA1A85478400895DC0 /* Deck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
+		55A957161A88569D002A5F66 /* configuration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = configuration.plist; sourceTree = SOURCE_ROOT; };
 		55ADA6AB1A8419B100A588BD /* spinner.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = spinner.gif; sourceTree = "<group>"; };
 		55ADA6AD1A841A3700A588BD /* GifView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GifView.swift; sourceTree = "<group>"; };
 		55ADA6AF1A843C6400A588BD /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
@@ -106,6 +108,7 @@
 		55E8E7BC1A82E5540087F086 /* Giraff */ = {
 			isa = PBXGroup;
 			children = (
+				55A957161A88569D002A5F66 /* configuration.plist */,
 				55ADA6AB1A8419B100A588BD /* spinner.gif */,
 				55E8E7E51A82FB450087F086 /* test_gifs */,
 				55E8E7BF1A82E5540087F086 /* AppDelegate.swift */,
@@ -261,6 +264,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				55E8E7E41A82FB400087F086 /* goog.gif in Resources */,
+				55A957171A88569D002A5F66 /* configuration.plist in Resources */,
 				55E8E7C51A82E5540087F086 /* Main.storyboard in Resources */,
 				55ADA6AC1A8419B100A588BD /* spinner.gif in Resources */,
 				55E8E7CA1A82E5540087F086 /* LaunchScreen.xib in Resources */,

@@ -4,10 +4,9 @@
 
 This is a product being built by the Assembly community. You can help push this idea forward by visiting [https://assembly.com/giraff](https://assembly.com/giraff).
 
+**Quick Start**: Install Xcode, cocoapods, `pod install`, `cp configuration.plist.example configuration.plist`
 
 ### Getting started
-
-Requires the current Xcode version.
 
 To get started download Xcode from from [here](https://developer.apple.com/xcode/downloads/).
 
@@ -22,9 +21,6 @@ gem install cocoapods
 
 After installing CocoaPods, clone the source repository.
 On the commandline CD into the directory containing the Podfile.
-```
-cd Giraff
-```
 
 Then run:
 ```
@@ -33,14 +29,9 @@ pod install
 
 You should see a message indicating the fact that things were installed successfully and that you should use the workspace file.
 
-Next up is setting up Parse. There are four things you need to do.
+Now you want to create a configuration.plist file. You can copy the example provided:
 
-- Setup your own parse.com account.
-- Create a new application.
-- Copy the file ./bin/setEnv-example.sh to setEnv.sh and paste your Parse.com keys in there.
-- Now CD to ./Giraff/parse/config and run ```./genGlobalJson.sh```
-
-You should now have your parse.com configured.
+`cp configuration.plist.example configuration.plist`
 
 Open the workspace file from the commandline with or open using the Finder.
 ```

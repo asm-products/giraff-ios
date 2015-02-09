@@ -18,8 +18,13 @@ class Deck : NSObject {
     }
     
     func fetch(callback: () -> Void) {
+        var plist = NSBundle.mainBundle().pathForResource("configuration", ofType: "plist")
+        var config = NSDictionary(contentsOfFile: plist!)!
+        var apiUrl = config["FUN_API_URL"] as NSString
+        var imagesPath = apiUrl + "/images"
+        
         var session = NSURLSession.sharedSession()
-        var task = session.dataTaskWithURL(NSURL(string:"http://55db6557.ngrok.com/images")!) {(data, response, error) in
+        var task = session.dataTaskWithURL(NSURL(string:imagesPath)!) {(data, response, error) in
             if error != nil {
                 println("can't connect to server :(")
             } else {
