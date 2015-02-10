@@ -6,9 +6,10 @@ class ViewController: UIViewController, ZLSwipeableViewDataSource, ZLSwipeableVi
     
     var deck = Deck()
     
+    var deckSourceMode = "new"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-      
       
         let titleImage = UIImage(named: "fun-logo.png")
         let titleImageView = UIImageView(frame: CGRectMake(0, 0, 30, 30))
@@ -22,13 +23,8 @@ class ViewController: UIViewController, ZLSwipeableViewDataSource, ZLSwipeableVi
         swipeableView.dataSource = self
         swipeableView.delegate = self
         swipeableView.backgroundColor = UIColor.clearColor()
-        
-        deck.fetch() {
-            dispatch_async(dispatch_get_main_queue()) {
-                self.swipeableView.discardAllSwipeableViews()
-                self.swipeableView.loadNextSwipeableViewsIfNeeded()
-            }
-        }
+    
+        fetchCardsAndUpdateView()
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,10 +37,10 @@ class ViewController: UIViewController, ZLSwipeableViewDataSource, ZLSwipeableVi
         swipeableView.layoutIfNeeded()
     }
     
-    @IBAction func refreshButtonWasPressed(sender: AnyObject) {
+    @IBAction func switchToFavesButtonWasPressed(sender: AnyObject) {
+        deck.deckSourceMode = DeckSourceMode.Faves
         deck.reset()
-        self.swipeableView.discardAllSwipeableViews()
-        self.swipeableView.loadNextSwipeableViewsIfNeeded()
+        fetchCardsAndUpdateView()
     }
 
     @IBAction func faveButtonWasPressed(sender: AnyObject) {
@@ -53,6 +49,15 @@ class ViewController: UIViewController, ZLSwipeableViewDataSource, ZLSwipeableVi
     
     @IBAction func passButtonWasPressed(sender: AnyObject) {
         swipeableView.swipeTopViewToLeft()
+    }
+    
+    func fetchCardsAndUpdateView() {
+        deck.fetch() {
+            dispatch_async(dispatch_get_main_queue()) {
+                self.swipeableView.discardAllSwipeableViews()
+                self.swipeableView.loadNextSwipeableViewsIfNeeded()
+            }
+        }
     }
     
     // ZLSwipeableViewDelegate

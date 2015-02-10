@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="pLW-Dg-URW">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
-        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -18,39 +17,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8SP-4t-N6Q" customClass="ZLSwipeableView">
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8SP-4t-N6Q" customClass="ZLSwipeableView">
                                 <rect key="frame" x="7" y="0.0" width="586" height="340"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Swipe Left to Skip" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LiA-X4-55W">
-                                <rect key="frame" x="16" y="464" width="63" height="52"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Swipe Right to Fave" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ypS-Sj-mKF">
-                                <rect key="frame" x="516" y="464" width="68" height="52"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="52" id="Wcr-pW-jmf"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RW7-vA-Jfq">
-                                <rect key="frame" x="274" y="407" width="53" height="30"/>
-                                <state key="normal" title="Refresh">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                        <integer key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
-                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZTC-Ke-wh3">
                                 <rect key="frame" x="248" y="369" width="105" height="50"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -81,24 +51,15 @@
                         <color key="backgroundColor" red="0.20784313725490197" green="0.18823529411764706" blue="0.1803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="ZTC-Ke-wh3" secondAttribute="centerX" id="23G-JK-tgl"/>
-                            <constraint firstItem="LiA-X4-55W" firstAttribute="leading" secondItem="8SP-4t-N6Q" secondAttribute="leading" constant="9" id="65B-Wq-crd"/>
                             <constraint firstItem="cOQ-zP-RWY" firstAttribute="top" relation="greaterThanOrEqual" secondItem="8SP-4t-N6Q" secondAttribute="bottom" constant="20" id="7Vi-Oe-V01"/>
                             <constraint firstItem="ZTC-Ke-wh3" firstAttribute="leading" secondItem="cOQ-zP-RWY" secondAttribute="trailing" constant="20" id="93x-gz-W6h"/>
                             <constraint firstItem="eiS-Fl-AtC" firstAttribute="centerY" secondItem="ZTC-Ke-wh3" secondAttribute="centerY" id="Bcp-q8-itW"/>
                             <constraint firstItem="8SP-4t-N6Q" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" constant="9" id="GiS-E0-Mha"/>
                             <constraint firstItem="ZTC-Ke-wh3" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="cOQ-zP-RWY" secondAttribute="trailing" constant="20" id="IK1-hc-yn9"/>
-                            <constraint firstItem="RW7-vA-Jfq" firstAttribute="centerX" secondItem="8SP-4t-N6Q" secondAttribute="centerX" id="NFW-va-tqO"/>
-                            <constraint firstItem="RW7-vA-Jfq" firstAttribute="top" secondItem="ZTC-Ke-wh3" secondAttribute="bottom" constant="20" id="Rot-Z0-D99"/>
                             <constraint firstAttribute="bottom" secondItem="8SP-4t-N6Q" secondAttribute="bottom" constant="176" id="Tfv-rB-jxo"/>
                             <constraint firstItem="ZTC-Ke-wh3" firstAttribute="centerY" secondItem="cOQ-zP-RWY" secondAttribute="centerY" id="WZO-kg-Sj1"/>
                             <constraint firstItem="8SP-4t-N6Q" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="20" id="YNV-n9-P80"/>
                             <constraint firstItem="ZTC-Ke-wh3" firstAttribute="top" secondItem="8SP-4t-N6Q" secondAttribute="bottom" constant="40" id="cJ6-eh-fcy"/>
-                            <constraint firstItem="LiA-X4-55W" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="coJ-vt-PMq"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" relation="lessThanOrEqual" secondItem="RW7-vA-Jfq" secondAttribute="bottom" constant="108" id="fXn-qQ-xOx"/>
-                            <constraint firstAttribute="bottom" secondItem="LiA-X4-55W" secondAttribute="bottom" constant="20" symbolic="YES" id="hlx-B0-mSu"/>
-                            <constraint firstItem="ypS-Sj-mKF" firstAttribute="baseline" secondItem="LiA-X4-55W" secondAttribute="baseline" id="ofv-B0-cih"/>
-                            <constraint firstItem="ypS-Sj-mKF" firstAttribute="firstBaseline" secondItem="LiA-X4-55W" secondAttribute="firstBaseline" id="rRg-u5-DUG"/>
-                            <constraint firstItem="ypS-Sj-mKF" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="uEt-JA-t5v"/>
                             <constraint firstItem="eiS-Fl-AtC" firstAttribute="leading" secondItem="ZTC-Ke-wh3" secondAttribute="trailing" constant="20" id="wte-nM-ims"/>
                         </constraints>
                     </view>
@@ -108,6 +69,9 @@
                     <navigationItem key="navigationItem" id="W7u-J1-sXY">
                         <barButtonItem key="leftBarButtonItem" image="star-64" id="zAZ-Ka-YpV">
                             <color key="tintColor" red="0.99215686270000003" green="0.80784313730000001" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="switchToFavesButtonWasPressed:" destination="vXZ-lx-hvc" id="XtC-iV-Xsd"/>
+                            </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="settings-64" id="Bnz-zo-adS">
                             <color key="tintColor" red="0.99215686270000003" green="0.80784313730000001" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
