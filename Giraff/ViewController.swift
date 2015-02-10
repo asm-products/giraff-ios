@@ -50,11 +50,15 @@ class ViewController: UIViewController, ZLSwipeableViewDataSource, ZLSwipeableVi
     }
     
     func swipeableView(swipeableView: ZLSwipeableView!, didSwipeLeft view: UIView!) {
-//        NSLog("did swipe left")
+        let gifView = view as GifView
+        NSLog("\(gifView.imageId) passed")
+        FunSession.sharedSession.imagePassed(gifView.imageId!)
     }
     
     func swipeableView(swipeableView: ZLSwipeableView!, didSwipeRight view: UIView!) {
-//        NSLog("did swipe right")
+        let gifView = view as GifView
+        NSLog("\(gifView.imageId) passed")
+        FunSession.sharedSession.imageFaved(gifView.imageId!)
     }
     
     func swipeableView(swipeableView: ZLSwipeableView!, swipingView view: UIView!, atLocation location: CGPoint, translation: CGPoint) {
@@ -66,6 +70,7 @@ class ViewController: UIViewController, ZLSwipeableViewDataSource, ZLSwipeableVi
             var view = GifView(frame: swipeableView.bounds)
         
             view.gifUrl = card.url!
+            view.imageId = card.id!
             view.caption.text = card.caption!
 
             view.layer.backgroundColor = UIColor.whiteColor().CGColor

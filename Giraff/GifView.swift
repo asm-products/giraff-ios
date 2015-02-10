@@ -5,6 +5,7 @@ class GifView: UIView {
     var animatedView:FLAnimatedImageView!
     var caption:UILabel!
     var mpc:MPMoviePlayerController!
+    var imageId:NSString? // Not sure if this belongs here, but helps us know which Image is associated with this view
     
     override init(frame: CGRect) {
         super.init(frame: frame)

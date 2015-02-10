@@ -18,29 +18,54 @@ class FunSession {
     }
     
     func fetchImages(callback: (NSArray) -> Void) {
-        let imagesPath = apiUrl + "/images"
-        
-        get(imagesPath) {(json:NSDictionary) -> Void in
+        get("/images") {(json:NSDictionary) -> Void in
             let images = json["images"] as NSArray
             callback(images)
         }
     }
     
-    func get(url:NSString, callback: (json:NSDictionary) -> Void) {
+    func imagePassed(imageId:NSString) {
+        post("/images/\(imageId)/passes")
+    }
+
+    func imageFaved(imageId:NSString) {
+        post("/images/\(imageId)/favorites")
+    }
+
+    
+    func get(url:NSString, callback: (NSDictionary) -> Void) {
+        request("GET", url: url) {(data:NSData) -> Void in
+            let json = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as NSDictionary
+            callback(json)
+        }
+    }
+    
+    func post(url:NSString) {
+        request("POST", url: url) {(NSData) -> Void in
+            
+        }
+    }
+    
+    func request(httpMethod:String, url:String, callback: (NSData) -> Void) {
         let session = NSURLSession.sharedSession()
+        let url = "".join([apiUrl, url])
         let request = NSMutableURLRequest(URL: NSURL(string:url)!)
-        request.HTTPMethod = "GET"
+        request.HTTPMethod = httpMethod
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         request.addValue(distinctId, forHTTPHeaderField: "X-User-Token")
         let task = session.dataTaskWithRequest(request) {(data, response, error) in
+            var httpResponse = response as NSHTTPURLResponse
             if error != nil {
-                println("can't connect to server :(")
+                NSLog("Failed to connect to server: %@", error)
+            } else if httpResponse.statusCode != 200 {
+                let message = NSHTTPURLResponse.localizedStringForStatusCode(httpResponse.statusCode)
+                NSLog("Server error: %d – %@", httpResponse.statusCode, message)
             } else {
-                let json = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as NSDictionary
-                callback(json: json)
+                callback(data)
             }
         }
         task.resume()
+
     }
 }
