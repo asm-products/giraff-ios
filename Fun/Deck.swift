@@ -24,7 +24,7 @@ class Deck : NSObject {
     }
     
     func fetch(callback: () -> Void) {
-        let imageHandler:(NSArray) -> Void = {(images) in
+        let imageHandler:(NSArray) -> Void = {[unowned self](images) in
             var cards = MTLJSONAdapter.modelsOfClass(Card.self, fromJSONArray: images, error: nil)
             for card in cards {
                 self.cards.append(card as Card)

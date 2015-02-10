@@ -65,7 +65,7 @@ class GifView: UIView {
         didSet {
             NSLog("downloading %@", gifUrl)
             
-            downloadData(NSURL(string: gifUrl)) {(data, error) in
+            downloadData(NSURL(string: gifUrl)) {[unowned self](data, error) in
                 if error != nil {
                     println("download error", error)
                 } else {
