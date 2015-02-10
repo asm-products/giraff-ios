@@ -52,10 +52,13 @@ class ViewController: UIViewController, ZLSwipeableViewDataSource, ZLSwipeableVi
     }
     
     func fetchCardsAndUpdateView() {
+        weak var mySwipeableView : ZLSwipeableView?  = self.swipeableView
         deck.fetch() {
             dispatch_async(dispatch_get_main_queue()) {
-                self.swipeableView.discardAllSwipeableViews()
-                self.swipeableView.loadNextSwipeableViewsIfNeeded()
+                if let myConcreteSwipeableView = mySwipeableView {
+                    myConcreteSwipeableView.discardAllSwipeableViews()
+                    myConcreteSwipeableView.loadNextSwipeableViewsIfNeeded()
+                }
             }
         }
     }
