@@ -1,4 +1,4 @@
-# Giraff
+# Fun
 
 ## One Tap Curated Gifs
 
