@@ -24,6 +24,14 @@ class FunSession {
         }
     }
     
+    func fetchFaves(callback: (NSArray) -> Void) {
+        get("/images/favorites") {(json:NSDictionary) -> Void in
+            let images = json["images"] as NSArray
+            callback(images)
+        }
+    }
+
+    
     func imagePassed(imageId:NSString) {
         post("/images/\(imageId)/passes")
     }

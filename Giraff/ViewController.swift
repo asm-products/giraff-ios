@@ -21,6 +21,7 @@ class ViewController: UIViewController, ZLSwipeableViewDataSource, ZLSwipeableVi
         
         swipeableView.dataSource = self
         swipeableView.delegate = self
+        swipeableView.backgroundColor = UIColor.clearColor()
         
         deck.fetch() {
             dispatch_async(dispatch_get_main_queue()) {
@@ -44,7 +45,14 @@ class ViewController: UIViewController, ZLSwipeableViewDataSource, ZLSwipeableVi
         deck.reset()
         self.swipeableView.discardAllSwipeableViews()
         self.swipeableView.loadNextSwipeableViewsIfNeeded()
-        
+    }
+
+    @IBAction func faveButtonWasPressed(sender: AnyObject) {
+        swipeableView.swipeTopViewToRight()
+    }
+    
+    @IBAction func passButtonWasPressed(sender: AnyObject) {
+        swipeableView.swipeTopViewToLeft()
     }
     
     // ZLSwipeableViewDelegate
@@ -64,7 +72,7 @@ class ViewController: UIViewController, ZLSwipeableViewDataSource, ZLSwipeableVi
     
     func swipeableView(swipeableView: ZLSwipeableView!, didSwipeRight view: UIView!) {
         let gifView = view as GifView
-        NSLog("\(gifView.imageId) passed")
+        NSLog("\(gifView.imageId) faved")
         FunSession.sharedSession.imageFaved(gifView.imageId!)
     }
     

@@ -18,7 +18,7 @@ class Deck : NSObject {
     }
     
     func fetch(callback: () -> Void) {
-        FunSession.sharedSession.fetchImages() {(images) -> Void in
+        FunSession.sharedSession.fetchFaves() {(images) -> Void in
             var cards = MTLJSONAdapter.modelsOfClass(Card.self, fromJSONArray: images, error: nil)
             for card in cards {
                 self.cards.append(card as Card)
