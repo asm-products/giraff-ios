@@ -8,7 +8,14 @@ class ViewController: UIViewController, ZLSwipeableViewDataSource, ZLSwipeableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+      
+      
+        let titleImage = UIImage(named: "fun-logo.png")
+        let titleImageView = UIImageView(frame: CGRectMake(0, 0, 30, 30))
+        titleImageView.contentMode = .ScaleAspectFit
+        titleImageView.image = titleImage
+        self.navigationItem.titleView = titleImageView
+
         view.setNeedsLayout()
         view.layoutIfNeeded()
         
