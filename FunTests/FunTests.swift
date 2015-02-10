@@ -1,6 +1,6 @@
 //
-//  GiraffTests.swift
-//  GiraffTests
+//  FunTests.swift
+//  FunTests
 //
 //  Created by David Newman on 2/4/15.
 //  Copyright (c) 2015 Assembly. All rights reserved.
@@ -9,7 +9,7 @@
 import UIKit
 import XCTest
 
-class GiraffTests: XCTestCase {
+class FunTests: XCTestCase {
     
     override func setUp() {
         super.setUp()

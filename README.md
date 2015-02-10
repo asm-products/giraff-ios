@@ -2,7 +2,7 @@
 
 ## One Tap Curated Gifs
 
-This is a product being built by the Assembly community. You can help push this idea forward by visiting [https://assembly.com/giraff](https://assembly.com/giraff).
+This is a product being built by the Assembly community. You can help push this idea forward by visiting [https://assembly.com/fun](https://assembly.com/fun).
 
 **Quick Start**: Install Xcode, cocoapods, `pod install`, `cp configuration.plist.example configuration.plist`
 
@@ -35,7 +35,7 @@ Now you want to create a configuration.plist file. You can copy the example prov
 
 Open the workspace file from the commandline with or open using the Finder.
 ```
-open Giraff.xcworkspace
+open Fun.xcworkspace
 ```
 
 Build and run... Happy coding.

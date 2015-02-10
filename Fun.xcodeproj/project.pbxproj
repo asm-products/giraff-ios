@@ -21,7 +21,7 @@
 		55E8E7C21A82E5540087F086 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E8E7C11A82E5540087F086 /* ViewController.swift */; };
 		55E8E7C51A82E5540087F086 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55E8E7C31A82E5540087F086 /* Main.storyboard */; };
 		55E8E7C71A82E5540087F086 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55E8E7C61A82E5540087F086 /* Images.xcassets */; };
-		55E8E7D61A82E5540087F086 /* GiraffTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E8E7D51A82E5540087F086 /* GiraffTests.swift */; };
+		55E8E7D61A82E5540087F086 /* FunTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E8E7D51A82E5540087F086 /* FunTests.swift */; };
 		55E8E7E41A82FB400087F086 /* goog.gif in Resources */ = {isa = PBXBuildFile; fileRef = 55E8E7E31A82FB400087F086 /* goog.gif */; };
 		D48D6C0E3A66A0FBCB2A5D86 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6700CA7FD39135D61A9D87A2 /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -32,7 +32,7 @@
 			containerPortal = 55E8E7B21A82E5540087F086 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 55E8E7B91A82E5540087F086;
-			remoteInfo = Giraff;
+			remoteInfo = Fun;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -47,15 +47,15 @@
 		55ADA6AB1A8419B100A588BD /* spinner.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = spinner.gif; sourceTree = "<group>"; };
 		55ADA6AD1A841A3700A588BD /* GifView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GifView.swift; sourceTree = "<group>"; };
 		55ADA6AF1A843C6400A588BD /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
-		55E8E7BA1A82E5540087F086 /* Giraff.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Giraff.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		55E8E7BA1A82E5540087F086 /* Fun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55E8E7BE1A82E5540087F086 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		55E8E7BF1A82E5540087F086 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		55E8E7C11A82E5540087F086 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		55E8E7C41A82E5540087F086 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		55E8E7C61A82E5540087F086 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		55E8E7CF1A82E5540087F086 /* GiraffTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GiraffTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		55E8E7CF1A82E5540087F086 /* FunTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FunTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		55E8E7D41A82E5540087F086 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		55E8E7D51A82E5540087F086 /* GiraffTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiraffTests.swift; sourceTree = "<group>"; };
+		55E8E7D51A82E5540087F086 /* FunTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunTests.swift; sourceTree = "<group>"; };
 		55E8E7E31A82FB400087F086 /* goog.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = goog.gif; path = test_gifs/goog.gif; sourceTree = "<group>"; };
 		55E8E7E61A82FFFE0087F086 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		6700CA7FD39135D61A9D87A2 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -88,8 +88,8 @@
 		55E8E7B11A82E5540087F086 = {
 			isa = PBXGroup;
 			children = (
-				55E8E7BC1A82E5540087F086 /* Giraff */,
-				55E8E7D21A82E5540087F086 /* GiraffTests */,
+				55E8E7BC1A82E5540087F086 /* Fun */,
+				55E8E7D21A82E5540087F086 /* FunTests */,
 				55E8E7BB1A82E5540087F086 /* Products */,
 				72ACC241F9C1715B942659FF /* Pods */,
 				C22EA1241867548343ED9419 /* Frameworks */,
@@ -99,13 +99,13 @@
 		55E8E7BB1A82E5540087F086 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				55E8E7BA1A82E5540087F086 /* Giraff.app */,
-				55E8E7CF1A82E5540087F086 /* GiraffTests.xctest */,
+				55E8E7BA1A82E5540087F086 /* Fun.app */,
+				55E8E7CF1A82E5540087F086 /* FunTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		55E8E7BC1A82E5540087F086 /* Giraff */ = {
+		55E8E7BC1A82E5540087F086 /* Fun */ = {
 			isa = PBXGroup;
 			children = (
 				55A957161A88569D002A5F66 /* configuration.plist */,
@@ -123,7 +123,7 @@
 				557FF6BA1A85478400895DC0 /* Deck.swift */,
 				55431B6E1A8945ED00F28569 /* FunSession.swift */,
 			);
-			path = Giraff;
+			path = Fun;
 			sourceTree = "<group>";
 		};
 		55E8E7BD1A82E5540087F086 /* Supporting Files */ = {
@@ -134,13 +134,13 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		55E8E7D21A82E5540087F086 /* GiraffTests */ = {
+		55E8E7D21A82E5540087F086 /* FunTests */ = {
 			isa = PBXGroup;
 			children = (
-				55E8E7D51A82E5540087F086 /* GiraffTests.swift */,
+				55E8E7D51A82E5540087F086 /* FunTests.swift */,
 				55E8E7D31A82E5540087F086 /* Supporting Files */,
 			);
-			path = GiraffTests;
+			path = FunTests;
 			sourceTree = "<group>";
 		};
 		55E8E7D31A82E5540087F086 /* Supporting Files */ = {
@@ -182,9 +182,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		55E8E7B91A82E5540087F086 /* Giraff */ = {
+		55E8E7B91A82E5540087F086 /* Fun */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 55E8E7D91A82E5540087F086 /* Build configuration list for PBXNativeTarget "Giraff" */;
+			buildConfigurationList = 55E8E7D91A82E5540087F086 /* Build configuration list for PBXNativeTarget "Fun" */;
 			buildPhases = (
 				FCCB32077F18129C1264EB7F /* Check Pods Manifest.lock */,
 				55E8E7B61A82E5540087F086 /* Sources */,
@@ -196,14 +196,14 @@
 			);
 			dependencies = (
 			);
-			name = Giraff;
-			productName = Giraff;
-			productReference = 55E8E7BA1A82E5540087F086 /* Giraff.app */;
+			name = Fun;
+			productName = Fun;
+			productReference = 55E8E7BA1A82E5540087F086 /* Fun.app */;
 			productType = "com.apple.product-type.application";
 		};
-		55E8E7CE1A82E5540087F086 /* GiraffTests */ = {
+		55E8E7CE1A82E5540087F086 /* FunTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 55E8E7DC1A82E5540087F086 /* Build configuration list for PBXNativeTarget "GiraffTests" */;
+			buildConfigurationList = 55E8E7DC1A82E5540087F086 /* Build configuration list for PBXNativeTarget "FunTests" */;
 			buildPhases = (
 				55E8E7CB1A82E5540087F086 /* Sources */,
 				55E8E7CC1A82E5540087F086 /* Frameworks */,
@@ -214,9 +214,9 @@
 			dependencies = (
 				55E8E7D11A82E5540087F086 /* PBXTargetDependency */,
 			);
-			name = GiraffTests;
-			productName = GiraffTests;
-			productReference = 55E8E7CF1A82E5540087F086 /* GiraffTests.xctest */;
+			name = FunTests;
+			productName = FunTests;
+			productReference = 55E8E7CF1A82E5540087F086 /* FunTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -238,7 +238,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 55E8E7B51A82E5540087F086 /* Build configuration list for PBXProject "Giraff" */;
+			buildConfigurationList = 55E8E7B51A82E5540087F086 /* Build configuration list for PBXProject "Fun" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -252,8 +252,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				55E8E7B91A82E5540087F086 /* Giraff */,
-				55E8E7CE1A82E5540087F086 /* GiraffTests */,
+				55E8E7B91A82E5540087F086 /* Fun */,
+				55E8E7CE1A82E5540087F086 /* FunTests */,
 			);
 		};
 /* End PBXProject section */
@@ -332,7 +332,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55E8E7D61A82E5540087F086 /* GiraffTests.swift in Sources */,
+				55E8E7D61A82E5540087F086 /* FunTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,7 +341,7 @@
 /* Begin PBXTargetDependency section */
 		55E8E7D11A82E5540087F086 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 55E8E7B91A82E5540087F086 /* Giraff */;
+			target = 55E8E7B91A82E5540087F086 /* Fun */;
 			targetProxy = 55E8E7D01A82E5540087F086 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -447,10 +447,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				INFOPLIST_FILE = Giraff/Info.plist;
+				INFOPLIST_FILE = Fun/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Giraff/Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Fun/Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -464,10 +464,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				INFOPLIST_FILE = Giraff/Info.plist;
+				INFOPLIST_FILE = Fun/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Giraff/Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Fun/Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -483,10 +483,10 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = GiraffTests/Info.plist;
+				INFOPLIST_FILE = FunTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Giraff.app/Giraff";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Fun.app/Fun";
 			};
 			name = Debug;
 		};
@@ -498,17 +498,17 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = GiraffTests/Info.plist;
+				INFOPLIST_FILE = FunTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Giraff.app/Giraff";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Fun.app/Fun";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		55E8E7B51A82E5540087F086 /* Build configuration list for PBXProject "Giraff" */ = {
+		55E8E7B51A82E5540087F086 /* Build configuration list for PBXProject "Fun" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				55E8E7D71A82E5540087F086 /* Debug */,
@@ -517,7 +517,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		55E8E7D91A82E5540087F086 /* Build configuration list for PBXNativeTarget "Giraff" */ = {
+		55E8E7D91A82E5540087F086 /* Build configuration list for PBXNativeTarget "Fun" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				55E8E7DA1A82E5540087F086 /* Debug */,
@@ -526,7 +526,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		55E8E7DC1A82E5540087F086 /* Build configuration list for PBXNativeTarget "GiraffTests" */ = {
+		55E8E7DC1A82E5540087F086 /* Build configuration list for PBXNativeTarget "FunTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				55E8E7DD1A82E5540087F086 /* Debug */,

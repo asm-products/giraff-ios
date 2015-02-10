@@ -8,7 +8,7 @@
         <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="Giraff" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="Fun" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -89,7 +89,7 @@
         <!--Login View Controller-->
         <scene sceneID="AFQ-2T-KaS">
             <objects>
-                <viewController id="Ahk-pN-sHi" customClass="LoginViewController" customModule="Giraff" sceneMemberID="viewController">
+                <viewController id="Ahk-pN-sHi" customClass="LoginViewController" customModule="Fun" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="CNi-aL-Wmp"/>
                         <viewControllerLayoutGuide type="bottom" id="L1U-EH-nFG"/>

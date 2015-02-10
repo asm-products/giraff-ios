@@ -1,13 +1,13 @@
 //
 //  Bridging-Header.h
-//  Giraff
+//  Fun
 //
 //  Created by David Newman on 2/4/15.
 //  Copyright (c) 2015 Assembly. All rights reserved.
 //
 
-#ifndef Giraff_Bridging_Header_h
-#define Giraff_Bridging_Header_h
+#ifndef Fun_Bridging_Header_h
+#define Fun_Bridging_Header_h
 
 #import "Mantle.h"
 #import "FLAnimatedImage.h"
