@@ -21,7 +21,6 @@
 		55E8E7C21A82E5540087F086 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E8E7C11A82E5540087F086 /* ViewController.swift */; };
 		55E8E7C51A82E5540087F086 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55E8E7C31A82E5540087F086 /* Main.storyboard */; };
 		55E8E7C71A82E5540087F086 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55E8E7C61A82E5540087F086 /* Images.xcassets */; };
-		55E8E7CA1A82E5540087F086 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55E8E7C81A82E5540087F086 /* LaunchScreen.xib */; };
 		55E8E7D61A82E5540087F086 /* GiraffTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E8E7D51A82E5540087F086 /* GiraffTests.swift */; };
 		55E8E7E41A82FB400087F086 /* goog.gif in Resources */ = {isa = PBXBuildFile; fileRef = 55E8E7E31A82FB400087F086 /* goog.gif */; };
 		D48D6C0E3A66A0FBCB2A5D86 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6700CA7FD39135D61A9D87A2 /* libPods.a */; };
@@ -54,7 +53,6 @@
 		55E8E7C11A82E5540087F086 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		55E8E7C41A82E5540087F086 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		55E8E7C61A82E5540087F086 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		55E8E7C91A82E5540087F086 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		55E8E7CF1A82E5540087F086 /* GiraffTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GiraffTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		55E8E7D41A82E5540087F086 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		55E8E7D51A82E5540087F086 /* GiraffTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiraffTests.swift; sourceTree = "<group>"; };
@@ -117,7 +115,6 @@
 				55E8E7C11A82E5540087F086 /* ViewController.swift */,
 				55E8E7C31A82E5540087F086 /* Main.storyboard */,
 				55E8E7C61A82E5540087F086 /* Images.xcassets */,
-				55E8E7C81A82E5540087F086 /* LaunchScreen.xib */,
 				55E8E7BD1A82E5540087F086 /* Supporting Files */,
 				55E8E7E61A82FFFE0087F086 /* Bridging-Header.h */,
 				55ADA6AD1A841A3700A588BD /* GifView.swift */,
@@ -270,7 +267,6 @@
 				55A957171A88569D002A5F66 /* configuration.plist in Resources */,
 				55E8E7C51A82E5540087F086 /* Main.storyboard in Resources */,
 				55ADA6AC1A8419B100A588BD /* spinner.gif in Resources */,
-				55E8E7CA1A82E5540087F086 /* LaunchScreen.xib in Resources */,
 				55E8E7C71A82E5540087F086 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -357,14 +353,6 @@
 				55E8E7C41A82E5540087F086 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		55E8E7C81A82E5540087F086 /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				55E8E7C91A82E5540087F086 /* Base */,
-			);
-			name = LaunchScreen.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -454,6 +442,7 @@
 			baseConfigurationReference = EDC99AFFA61A5C9BE9BFF0C6 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -470,6 +459,7 @@
 			baseConfigurationReference = E5C330177C5833B47905205C /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
