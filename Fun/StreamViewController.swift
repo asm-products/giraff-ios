@@ -5,6 +5,7 @@ class StreamViewController: UIViewController, ZLSwipeableViewDataSource, ZLSwipe
     @IBOutlet weak var revealButtonItem: UIBarButtonItem!
     
     var deck = Deck()
+    var swipeStart: CGPoint!
     
     var deckSourceMode = "new"
     
@@ -70,11 +71,16 @@ class StreamViewController: UIViewController, ZLSwipeableViewDataSource, ZLSwipe
     
     // ZLSwipeableViewDelegate
     func swipeableView(swipeableView: ZLSwipeableView!, didStartSwipingView view: UIView!, atLocation location: CGPoint) {
+        swipeStart = location
 //        NSLog("swipe start")
     }
     
     func swipeableView(swipeableView: ZLSwipeableView!, didEndSwipingView view: UIView!, atLocation location: CGPoint) {
-//        NSLog("swipe end")
+        swipeStart = nil
+
+        let gifView = view as GifView
+        gifView.passLabel.alpha = 0.0
+        gifView.faveLabel.alpha = 0.0
     }
     
     func swipeableView(swipeableView: ZLSwipeableView!, didSwipeLeft view: UIView!) {
@@ -90,6 +96,31 @@ class StreamViewController: UIViewController, ZLSwipeableViewDataSource, ZLSwipe
     }
     
     func swipeableView(swipeableView: ZLSwipeableView!, swipingView view: UIView!, atLocation location: CGPoint, translation: CGPoint) {
+        let minimalDrag = CGFloat(10.0)
+        let maximumDrag = CGFloat(40.0)
+        let gifView = view as GifView
+        if let concreteSwipeStart = swipeStart {
+            let swipeDiff = location.x - concreteSwipeStart.x
+            let absSwipeDiff = abs(swipeDiff)
+
+            var alphaValue = CGFloat(0.0)
+            if (absSwipeDiff > maximumDrag) {
+                alphaValue = 1.0
+            } else if (absSwipeDiff > minimalDrag) {
+                alphaValue = (absSwipeDiff - minimalDrag) / (maximumDrag - minimalDrag)
+            }
+
+            if swipeDiff > 0 {
+                gifView.faveLabel.alpha = alphaValue
+                gifView.passLabel.alpha = 0.0
+            } else if swipeDiff < 0 {
+                gifView.faveLabel.alpha = 0.0
+                gifView.passLabel.alpha = alphaValue
+            } else {
+                gifView.faveLabel.alpha = 0.0
+                gifView.passLabel.alpha = 0.0
+            }
+        }
     }
     
     // ZLSwipeableViewDataSource

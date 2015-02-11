@@ -8,10 +8,15 @@ class GifView: UIView {
     var imageId:NSString? // Not sure if this belongs here, but helps us know which Image is associated with this view
     var task:NSURLSessionDataTask?
     
+    var passLabel:UILabel!
+    var faveLabel:UILabel!
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         addCaption()
         addAnimatedImageWithSpinner()
+        addPassLabel()
+        addFaveLabel()
     }
     
     required init(coder: NSCoder) {
@@ -51,6 +56,44 @@ class GifView: UIView {
         self.addSubview(animatedView)
     }
     
+    func addPassLabel() {
+        let label = createBaseLabel()
+        label.frame = CGRectMake(self.bounds.width / 6, self.bounds.height / 4, 60, 30)
+        label.text = NSLocalizedString("Pass", comment: "")
+        label.textColor = UIColor.redColor()
+        label.alpha = 0.0
+        label.layer.borderColor = UIColor.redColor().CGColor
+        self.addSubview(label)
+
+        label.transform=CGAffineTransformMakeRotation(CGFloat( ( -25.0 * M_PI ) / 180.0 ))
+
+        passLabel = label
+    }
+
+    func addFaveLabel() {
+        let label = createBaseLabel()
+        label.frame = CGRectMake(self.bounds.width - (self.bounds.width / 6) - 60, self.bounds.height / 4, 60, 30)
+        label.text = NSLocalizedString("Fave", comment: "")
+        label.textColor = UIColor.greenColor()
+        label.alpha = 0.0
+        label.layer.borderColor = UIColor.greenColor().CGColor
+        self.addSubview(label)
+
+        label.transform=CGAffineTransformMakeRotation(CGFloat( ( 25.0 * M_PI ) / 180.0 ))
+
+
+        faveLabel = label
+    }
+
+    func createBaseLabel() -> UILabel {
+        let label = UILabel(frame: CGRectZero)
+        label.textAlignment = NSTextAlignment.Center
+        label.layer.borderWidth = 2.0
+        label.layer.cornerRadius = 5.0
+
+        return label
+    }
+
     
     // Doesn't quite work, only 1 video shows, all others are black
     var mp4Url: NSString? = nil {
