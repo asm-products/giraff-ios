@@ -5,31 +5,39 @@ enum DeckSourceMode {
 }
 
 class Deck : NSObject {
-    var cards = [Card]()
+    let FETCH_BUFFER = 10
+    
+    var cards = M13MutableOrderedDictionary()
     var deckSourceMode = DeckSourceMode.NewGifs
-    var currentIndex = 0
+    var currentIndex:UInt = 0
     
     func nextCard() -> Card? {
-        if currentIndex >= self.cards.count {
+        if currentIndex >= self.cards.count() {
             return nil
         }
-        let card = self.cards[currentIndex]
+        let card = self.cards.objectAtIndex(currentIndex) as Card
         currentIndex++
+        
+        if (cards.count() - currentIndex < FETCH_BUFFER) {
+            fetch(nil)
+        }
         return card
     }
     
     func reset() {
         currentIndex = 0
-        cards.removeAll(keepCapacity: true)
+        cards.removeAllObjects()
     }
     
-    func fetch(callback: () -> Void) {
+    func fetch(callback: (() -> Void)!) {
         let imageHandler:(NSArray) -> Void = {[unowned self](images) in
             var cards = MTLJSONAdapter.modelsOfClass(Card.self, fromJSONArray: images, error: nil)
             for card in cards {
-                self.cards.append(card as Card)
+                self.cards.addObject(card, pairedWithKey: (card as Card).id)
             }
-            callback()
+            if callback != nil {
+                callback()
+            }
         }
         
         switch(deckSourceMode) {
