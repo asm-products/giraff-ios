@@ -64,14 +64,14 @@ class FunSession {
         request.addValue(distinctId, forHTTPHeaderField: "X-User-Token")
         NSLog("%@ %@", httpMethod, url)
         let task = session.dataTaskWithRequest(request) {(data, response, error) in
-            let httpResponse = response as NSHTTPURLResponse
+            var httpResponse = response as NSHTTPURLResponse?
             if error != nil {
                 NSLog("Failed to connect to server: %@", error)
-            } else if httpResponse.statusCode != 200 {
-                let message = NSHTTPURLResponse.localizedStringForStatusCode(httpResponse.statusCode)
-                NSLog("Server error: %d – %@", httpResponse.statusCode, message)
+            } else if httpResponse!.statusCode != 200 {
+                let message = NSHTTPURLResponse.localizedStringForStatusCode(httpResponse!.statusCode)
+                NSLog("Server error: %d – %@", httpResponse!.statusCode, message)
             } else {
-                NSLog("%@ %@ – %d", httpMethod, url, httpResponse.statusCode)
+                NSLog("%@ %@ – %d", httpMethod, url, httpResponse!.statusCode)
                 callback(data)
             }
         }
