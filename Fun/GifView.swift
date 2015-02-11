@@ -80,9 +80,8 @@ class GifView: UIView {
             
             downloadData(NSURL(string: gifUrl)) {(data, error) in
                 if error != nil {
-                    println("download error", error)
+                    NSLog("download error: %@", error!)
                 } else {
-                    println("got gif!")
                     self.animatedView.animatedImage = FLAnimatedImage(animatedGIFData: data)
                 }
             }
