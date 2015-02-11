@@ -17,8 +17,9 @@
 		55ADA6AC1A8419B100A588BD /* spinner.gif in Resources */ = {isa = PBXBuildFile; fileRef = 55ADA6AB1A8419B100A588BD /* spinner.gif */; };
 		55ADA6AE1A841A3700A588BD /* GifView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55ADA6AD1A841A3700A588BD /* GifView.swift */; };
 		55ADA6B01A843C6400A588BD /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55ADA6AF1A843C6400A588BD /* MediaPlayer.framework */; };
+		55CFA5DA1A8B3EBA00E1CDE2 /* FaveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55CFA5D91A8B3EBA00E1CDE2 /* FaveViewController.swift */; };
 		55E8E7C01A82E5540087F086 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E8E7BF1A82E5540087F086 /* AppDelegate.swift */; };
-		55E8E7C21A82E5540087F086 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E8E7C11A82E5540087F086 /* ViewController.swift */; };
+		55E8E7C21A82E5540087F086 /* StreamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E8E7C11A82E5540087F086 /* StreamViewController.swift */; };
 		55E8E7C51A82E5540087F086 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55E8E7C31A82E5540087F086 /* Main.storyboard */; };
 		55E8E7C71A82E5540087F086 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55E8E7C61A82E5540087F086 /* Images.xcassets */; };
 		55E8E7D61A82E5540087F086 /* FunTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E8E7D51A82E5540087F086 /* FunTests.swift */; };
@@ -46,10 +47,11 @@
 		55ADA6AB1A8419B100A588BD /* spinner.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = spinner.gif; sourceTree = "<group>"; };
 		55ADA6AD1A841A3700A588BD /* GifView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GifView.swift; sourceTree = "<group>"; };
 		55ADA6AF1A843C6400A588BD /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		55CFA5D91A8B3EBA00E1CDE2 /* FaveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaveViewController.swift; sourceTree = "<group>"; };
 		55E8E7BA1A82E5540087F086 /* Fun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55E8E7BE1A82E5540087F086 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		55E8E7BF1A82E5540087F086 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		55E8E7C11A82E5540087F086 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		55E8E7C11A82E5540087F086 /* StreamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamViewController.swift; sourceTree = "<group>"; };
 		55E8E7C41A82E5540087F086 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		55E8E7C61A82E5540087F086 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		55E8E7CF1A82E5540087F086 /* FunTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FunTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -109,7 +111,7 @@
 				55A957161A88569D002A5F66 /* configuration.plist */,
 				55ADA6AB1A8419B100A588BD /* spinner.gif */,
 				55E8E7BF1A82E5540087F086 /* AppDelegate.swift */,
-				55E8E7C11A82E5540087F086 /* ViewController.swift */,
+				55E8E7C11A82E5540087F086 /* StreamViewController.swift */,
 				55E8E7C31A82E5540087F086 /* Main.storyboard */,
 				55E8E7C61A82E5540087F086 /* Images.xcassets */,
 				55E8E7BD1A82E5540087F086 /* Supporting Files */,
@@ -119,6 +121,7 @@
 				557FF6B81A85432C00895DC0 /* Card.swift */,
 				557FF6BA1A85478400895DC0 /* Deck.swift */,
 				55431B6E1A8945ED00F28569 /* FunSession.swift */,
+				55CFA5D91A8B3EBA00E1CDE2 /* FaveViewController.swift */,
 			);
 			path = Fun;
 			sourceTree = "<group>";
@@ -308,9 +311,10 @@
 			files = (
 				55431B6F1A8945ED00F28569 /* FunSession.swift in Sources */,
 				0179C25A1A854A9400A36023 /* LoginViewController.swift in Sources */,
-				55E8E7C21A82E5540087F086 /* ViewController.swift in Sources */,
+				55E8E7C21A82E5540087F086 /* StreamViewController.swift in Sources */,
 				55ADA6AE1A841A3700A588BD /* GifView.swift in Sources */,
 				557FF6BB1A85478400895DC0 /* Deck.swift in Sources */,
+				55CFA5DA1A8B3EBA00E1CDE2 /* FaveViewController.swift in Sources */,
 				55E8E7C01A82E5540087F086 /* AppDelegate.swift in Sources */,
 				557FF6B91A85432C00895DC0 /* Card.swift in Sources */,
 			);

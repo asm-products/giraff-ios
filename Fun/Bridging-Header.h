@@ -13,6 +13,7 @@
 #import "M13OrderedDictionary.h"
 #import "Mantle.h"
 #import "FLAnimatedImage.h"
+#import "SWRevealViewController.h"
 #import "ZLSwipeableView.h"
 #import <FacebookSDK/FacebookSDK.h>
 

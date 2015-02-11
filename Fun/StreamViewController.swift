@@ -1,8 +1,8 @@
 import UIKit
 
-class ViewController: UIViewController, ZLSwipeableViewDataSource, ZLSwipeableViewDelegate {
+class StreamViewController: UIViewController, ZLSwipeableViewDataSource, ZLSwipeableViewDelegate {
     @IBOutlet weak var swipeableView: ZLSwipeableView!
-    @IBOutlet weak var refreshButton: UIButton!
+    @IBOutlet weak var revealButtonItem: UIBarButtonItem!
     
     var deck = Deck()
     
@@ -16,6 +16,11 @@ class ViewController: UIViewController, ZLSwipeableViewDataSource, ZLSwipeableVi
         titleImageView.contentMode = .ScaleAspectFit
         titleImageView.image = titleImage
         self.navigationItem.titleView = titleImageView
+
+        let rvc = self.revealViewController()
+        revealButtonItem.target = rvc
+        revealButtonItem.action = "revealToggle:"
+        navigationController!.navigationBar.addGestureRecognizer(rvc.panGestureRecognizer())
 
         view.setNeedsLayout()
         view.layoutIfNeeded()
@@ -37,11 +42,11 @@ class ViewController: UIViewController, ZLSwipeableViewDataSource, ZLSwipeableVi
         swipeableView.layoutIfNeeded()
     }
     
-    @IBAction func switchToFavesButtonWasPressed(sender: AnyObject) {
-        deck.deckSourceMode = DeckSourceMode.Faves
-        deck.reset()
-        fetchCardsAndUpdateView()
-    }
+//    @IBAction func switchToFavesButtonWasPressed(sender: AnyObject) {
+//        deck.deckSourceMode = DeckSourceMode.Faves
+//        deck.reset()
+//        fetchCardsAndUpdateView()
+//    }
 
     @IBAction func faveButtonWasPressed(sender: AnyObject) {
         swipeableView.swipeTopViewToRight()
