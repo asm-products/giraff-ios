@@ -6,6 +6,7 @@ class GifView: UIView {
     var caption:UILabel!
     var mpc:MPMoviePlayerController!
     var imageId:NSString? // Not sure if this belongs here, but helps us know which Image is associated with this view
+    var task:NSURLSessionDataTask?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -16,6 +17,18 @@ class GifView: UIView {
     required init(coder: NSCoder) {
         super.init(coder: coder)
     }
+
+    override func removeFromSuperview() {
+        super.removeFromSuperview()
+        if let t = self.task {
+            if t.state == NSURLSessionTaskState.Running {
+                t.cancel()
+            }
+        }
+    }
+    
+    
+    
     
     func addCaption() {
         self.caption = UILabel(frame: CGRectMake(0, 0, self.bounds.width, 50))
@@ -78,13 +91,13 @@ class GifView: UIView {
     
     func downloadData(url: NSURL!, callback: (NSData, String?) -> Void) {
         var session = NSURLSession.sharedSession()
-        var task = session.dataTaskWithURL(url) {(data, response, error) in
+        task = session.dataTaskWithURL(url) {(data, response, error) in
             if error != nil {
                 callback(NSData(), error.localizedDescription)
             } else {
                 callback(data, nil)
             }
         }
-        task.resume()
+        task!.resume()
     }
 }
