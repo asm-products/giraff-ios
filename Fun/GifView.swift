@@ -57,7 +57,7 @@ class GifView: UIView, NSURLSessionDataDelegate, NSURLSessionTaskDelegate{
 
     func addPassLabel() {
         let label = createBaseLabel()
-        label.frame = CGRectMake(self.bounds.width / 6, self.bounds.height / 4, 60, 30)
+        label.frame = CGRectMake(self.bounds.width - (self.bounds.width / 6) - 60, self.bounds.height / 4, 80, 50)
         label.text = NSLocalizedString("Pass", comment: "")
         label.textColor = UIColor.redColor()
         label.alpha = 0.0
@@ -71,7 +71,7 @@ class GifView: UIView, NSURLSessionDataDelegate, NSURLSessionTaskDelegate{
 
     func addFaveLabel() {
         let label = createBaseLabel()
-        label.frame = CGRectMake(self.bounds.width - (self.bounds.width / 6) - 60, self.bounds.height / 4, 60, 30)
+        label.frame = CGRectMake(self.bounds.width / 6, self.bounds.height / 4, 80, 50)
         label.text = NSLocalizedString("Fave", comment: "")
         label.textColor = UIColor.greenColor()
         label.alpha = 0.0
