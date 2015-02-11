@@ -77,12 +77,14 @@ class GifView: UIView {
     var gifUrl: NSString = "" {
         didSet {
             NSLog("downloading %@", gifUrl)
-            
+            weak var myAnimatedView : FLAnimatedImageView? = self.animatedView
             downloadData(NSURL(string: gifUrl)) {(data, error) in
                 if error != nil {
                     NSLog("download error: %@", error!)
                 } else {
-                    self.animatedView.animatedImage = FLAnimatedImage(animatedGIFData: data)
+                    if let myConcreteAnimatedView = myAnimatedView {
+                        myConcreteAnimatedView.animatedImage = FLAnimatedImage(animatedGIFData: data)
+                    }
                 }
             }
         }
