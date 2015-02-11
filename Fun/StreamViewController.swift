@@ -93,16 +93,22 @@ class StreamViewController: UIViewController, ZLSwipeableViewDataSource, ZLSwipe
         gifView.faveLabel.alpha = 0.0
     }
     
-    func swipeableView(swipeableView: ZLSwipeableView!, didSwipeLeft view: UIView!) {
+    func swipeableView(swipeableView: ZLSwipeableView!, didSwipeView view: UIView!, inDirection direction: ZLSwipeableViewDirection) {
         let gifView = view as GifView
-        NSLog("\(gifView.imageId) passed")
-        FunSession.sharedSession.imagePassed(gifView.imageId!)
+        switch(direction) {
+        case .Left:
+            NSLog("\(gifView.imageId) passed")
+            FunSession.sharedSession.imagePassed(gifView.imageId!)
+        case .Right:
+            NSLog("\(gifView.imageId) faved")
+            FunSession.sharedSession.imageFaved(gifView.imageId!)
+        default:
+            NSLog("ignore swipe")
+        }
     }
     
     func swipeableView(swipeableView: ZLSwipeableView!, didSwipeRight view: UIView!) {
         let gifView = view as GifView
-        NSLog("\(gifView.imageId) faved")
-        FunSession.sharedSession.imageFaved(gifView.imageId!)
     }
     
     func swipeableView(swipeableView: ZLSwipeableView!, swipingView view: UIView!, atLocation location: CGPoint, translation: CGPoint) {
