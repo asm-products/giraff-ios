@@ -1,13 +1,15 @@
 import UIKit
 import MediaPlayer
 
-class GifView: UIView {
+class GifView: UIView, NSURLSessionDataDelegate, NSURLSessionTaskDelegate{
     var animatedView:FLAnimatedImageView!
     var caption:UILabel!
     var mpc:MPMoviePlayerController!
     var imageId:NSString? // Not sure if this belongs here, but helps us know which Image is associated with this view
     var task:NSURLSessionDataTask?
-    
+    var imageBytes:NSMutableData?
+    var totalBytesLength:Float64?
+  
     var passLabel:UILabel!
     var faveLabel:UILabel!
 
@@ -31,12 +33,9 @@ class GifView: UIView {
             }
         }
     }
-    
-    
-    
-    
+
     func addCaption() {
-        self.caption = UILabel(frame: CGRectMake(0, 0, self.bounds.width, 50))
+        self.caption = UILabel(frame: CGRectMake(0, self.bounds.height-50, self.bounds.width, 50))
         caption.textAlignment = NSTextAlignment.Center
         caption.numberOfLines = 0
         caption.lineBreakMode = NSLineBreakMode.ByWordWrapping
@@ -119,29 +118,37 @@ class GifView: UIView {
     
     var gifUrl: NSString = "" {
         didSet {
-            NSLog("downloading %@", gifUrl)
-            weak var myAnimatedView : FLAnimatedImageView? = self.animatedView
-            downloadData(NSURL(string: gifUrl)) {(data, error) in
-                if error != nil {
-                    NSLog("download error: %@", error!)
-                } else {
-                    if let myConcreteAnimatedView = myAnimatedView {
-                        myConcreteAnimatedView.animatedImage = FLAnimatedImage(animatedGIFData: data)
-                    }
-                }
-            }
+          NSLog("downloading %@", gifUrl)
+          downloadData(NSURL(string: gifUrl))
         }
     }
     
-    func downloadData(url: NSURL!, callback: (NSData, String?) -> Void) {
-        var session = NSURLSession.sharedSession()
-        task = session.dataTaskWithURL(url) {(data, response, error) in
-            if error != nil {
-                callback(NSData(), error.localizedDescription)
-            } else {
-                callback(data, nil)
-            }
-        }
+    func downloadData(url: NSURL!){
+        var session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration(), delegate: self, delegateQueue: nil)
+        task = session.dataTaskWithURL(url)
         task!.resume()
     }
+  
+  func URLSession(session: NSURLSession, dataTask: NSURLSessionDataTask, didReceiveResponse response: NSURLResponse, completionHandler: (NSURLSessionResponseDisposition) -> Void) {
+    completionHandler(NSURLSessionResponseDisposition.Allow)
+    NSLog("response received: \(response.expectedContentLength) bytes")
+    self.imageBytes = NSMutableData()
+    self.totalBytesLength = Float64(response.expectedContentLength)
+  }
+  
+  func URLSession(session: NSURLSession, task: NSURLSessionTask, didCompleteWithError error: NSError?) {
+    weak var myAnimatedView : FLAnimatedImageView? = self.animatedView
+    if error != nil {
+      NSLog("download error: %@", error!)
+    } else {
+      if let myConcreteAnimatedView = myAnimatedView {
+        myConcreteAnimatedView.animatedImage = FLAnimatedImage(animatedGIFData: self.imageBytes!)
+      }
+    }
+  }
+  
+  func URLSession(session: NSURLSession, dataTask: NSURLSessionDataTask, didReceiveData data: NSData) {
+    self.imageBytes!.appendData(data)
+    var progress = floor((Float64(self.imageBytes!.length) / totalBytesLength!) * 100)
+  }
 }
