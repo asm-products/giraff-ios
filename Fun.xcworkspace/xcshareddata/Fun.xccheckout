@@ -12,6 +12,8 @@
 	<dict>
 		<key>6261C8B4EBAF2340FC37B8DEBEFC44FD3E521A94</key>
 		<string>github.com:asm-products/giraff-ios.git</string>
+		<key>F4F0FEFC6FBB36BAFC9D1A1EDF060934014A28F9</key>
+		<string>github.com:whatupdave/ZLSwipeableView.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Fun.xcworkspace</string>
@@ -19,6 +21,8 @@
 	<dict>
 		<key>6261C8B4EBAF2340FC37B8DEBEFC44FD3E521A94</key>
 		<string>..</string>
+		<key>F4F0FEFC6FBB36BAFC9D1A1EDF060934014A28F9</key>
+		<string>../../../oss/ZLSwipeableView</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>github.com:asm-products/giraff-ios.git</string>
@@ -35,6 +39,14 @@
 			<string>6261C8B4EBAF2340FC37B8DEBEFC44FD3E521A94</string>
 			<key>IDESourceControlWCCName</key>
 			<string>giraff-ios</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>F4F0FEFC6FBB36BAFC9D1A1EDF060934014A28F9</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ZLSwipeableView</string>
 		</dict>
 	</array>
 </dict>

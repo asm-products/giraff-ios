@@ -56,6 +56,16 @@ class StreamViewController: UIViewController, ZLSwipeableViewDataSource, ZLSwipe
     @IBAction func passButtonWasPressed(sender: AnyObject) {
         swipeableView.swipeTopViewToLeft()
     }
+
+    @IBAction func shareButtonWasPressed(sender: AnyObject) {
+        let view = swipeableView.topSwipeableView() as GifView
+        let card = deck.cardForId(view.imageId!)!
+        let avc = UIActivityViewController(activityItems: [card.caption!, card.url!], applicationActivities: nil)
+        navigationController?.presentViewController(avc, animated: true, completion: { () -> Void in
+            NSLog("shared")
+        })
+    }
+
     
     func fetchCardsAndUpdateView() {
         weak var mySwipeableView : ZLSwipeableView?  = self.swipeableView

@@ -12,13 +12,22 @@ DEPENDENCIES:
   - M13OrderedDictionary (~> 1.0)
   - Mantle (~> 1.5)
   - SWRevealViewController
-  - ZLSwipeableView
+  - ZLSwipeableView (from `https://github.com/whatupdave/ZLSwipeableView`)
+
+EXTERNAL SOURCES:
+  ZLSwipeableView:
+    :git: https://github.com/whatupdave/ZLSwipeableView
+
+CHECKOUT OPTIONS:
+  ZLSwipeableView:
+    :commit: 2fb1251a2103e9a60ce90ab209b0368613600cb6
+    :git: https://github.com/whatupdave/ZLSwipeableView
 
 SPEC CHECKSUMS:
   FLAnimatedImage: 8669ace2a531fc0bb7344a6326f48c3a4c3de84b
   M13OrderedDictionary: 8f721284b4960aabaf567b7894911a45cb9c71b0
   Mantle: d5fbaf30fbc58031223af13812c060e15934a1fe
   SWRevealViewController: f6d80638b8e12323e87ac79562345403a799cb77
-  ZLSwipeableView: 9e956c587f9aecd16596544a7d079fb86b9c8c3d
+  ZLSwipeableView: affdfc8d15e041bf788c3cf6b2bced573f0809e2
 
 COCOAPODS: 0.35.0

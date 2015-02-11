@@ -17,55 +17,89 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8SP-4t-N6Q" customClass="ZLSwipeableView">
-                                <rect key="frame" x="7" y="0.0" width="586" height="340"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZTC-Ke-wh3">
-                                <rect key="frame" x="248" y="369" width="105" height="50"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" image="share_filled-50">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cOQ-zP-RWY">
-                                <rect key="frame" x="152" y="379" width="50" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cOQ-zP-RWY">
+                                <rect key="frame" x="57" y="387" width="50" height="50"/>
                                 <state key="normal" backgroundImage="pass-icon">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="10" y="602" width="50" height="50"/>
+                                </variation>
                                 <connections>
                                     <action selector="passButtonWasPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="vS2-Fq-kCe"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleAspectFit" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eiS-Fl-AtC">
+                            <button opaque="NO" contentMode="scaleAspectFit" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eiS-Fl-AtC">
                                 <rect key="frame" x="389" y="379" width="50" height="50"/>
                                 <state key="normal" backgroundImage="star-button">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="329" y="609" width="50" height="50"/>
+                                </variation>
                                 <connections>
                                     <action selector="faveButtonWasPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="75J-iV-FMw"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZTC-Ke-wh3">
+                                <rect key="frame" x="248" y="412" width="105" height="50"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" backgroundImage="share_filled-50">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="175" y="602" width="50" height="50"/>
+                                </variation>
+                                <connections>
+                                    <action selector="shareButtonWasPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="3N9-cj-bLU"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8SP-4t-N6Q" customClass="ZLSwipeableView">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="352"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="0.0" width="400" height="569"/>
+                                </variation>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.20784313725490197" green="0.18823529411764706" blue="0.1803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="ZTC-Ke-wh3" secondAttribute="centerX" id="23G-JK-tgl"/>
-                            <constraint firstItem="cOQ-zP-RWY" firstAttribute="top" relation="greaterThanOrEqual" secondItem="8SP-4t-N6Q" secondAttribute="bottom" constant="20" id="7Vi-Oe-V01"/>
-                            <constraint firstItem="ZTC-Ke-wh3" firstAttribute="leading" secondItem="cOQ-zP-RWY" secondAttribute="trailing" constant="20" id="93x-gz-W6h"/>
-                            <constraint firstItem="eiS-Fl-AtC" firstAttribute="centerY" secondItem="ZTC-Ke-wh3" secondAttribute="centerY" id="Bcp-q8-itW"/>
-                            <constraint firstItem="8SP-4t-N6Q" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" constant="9" id="GiS-E0-Mha"/>
-                            <constraint firstItem="ZTC-Ke-wh3" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="cOQ-zP-RWY" secondAttribute="trailing" constant="20" id="IK1-hc-yn9"/>
-                            <constraint firstAttribute="bottom" secondItem="8SP-4t-N6Q" secondAttribute="bottom" constant="176" id="Tfv-rB-jxo"/>
-                            <constraint firstItem="ZTC-Ke-wh3" firstAttribute="centerY" secondItem="cOQ-zP-RWY" secondAttribute="centerY" id="WZO-kg-Sj1"/>
-                            <constraint firstItem="8SP-4t-N6Q" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="20" id="YNV-n9-P80"/>
-                            <constraint firstItem="ZTC-Ke-wh3" firstAttribute="top" secondItem="8SP-4t-N6Q" secondAttribute="bottom" constant="40" id="cJ6-eh-fcy"/>
-                            <constraint firstItem="eiS-Fl-AtC" firstAttribute="leading" secondItem="ZTC-Ke-wh3" secondAttribute="trailing" constant="20" id="wte-nM-ims"/>
+                            <constraint firstItem="ZTC-Ke-wh3" firstAttribute="top" secondItem="8SP-4t-N6Q" secondAttribute="bottom" constant="200" id="IY8-kn-dWR">
+                                <variation key="heightClass=regular-widthClass=compact" constant="60"/>
+                            </constraint>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="ZTC-Ke-wh3" secondAttribute="bottom" constant="70" id="Kjj-4X-piI"/>
+                            <constraint firstItem="8SP-4t-N6Q" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="RFQ-dg-dEE"/>
+                            <constraint firstAttribute="centerX" secondItem="ZTC-Ke-wh3" secondAttribute="centerX" id="W5a-BS-sf7"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="eiS-Fl-AtC" secondAttribute="bottom" constant="50" id="WYq-Pv-mes"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="8SP-4t-N6Q" secondAttribute="trailing" id="m3L-cj-96l"/>
+                            <constraint firstItem="8SP-4t-N6Q" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="10" id="rPQ-KS-qGE"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="cOQ-zP-RWY" secondAttribute="bottom" constant="50" id="slx-fx-BGN"/>
+                            <constraint firstItem="cOQ-zP-RWY" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="30" id="svg-hM-nqv"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="eiS-Fl-AtC" secondAttribute="trailing" constant="30" id="zpc-LJ-qF4"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="svg-hM-nqv"/>
+                                <exclude reference="IY8-kn-dWR"/>
+                                <exclude reference="Kjj-4X-piI"/>
+                                <exclude reference="WYq-Pv-mes"/>
+                                <exclude reference="slx-fx-BGN"/>
+                                <exclude reference="zpc-LJ-qF4"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="svg-hM-nqv"/>
+                                <include reference="IY8-kn-dWR"/>
+                                <include reference="Kjj-4X-piI"/>
+                                <include reference="WYq-Pv-mes"/>
+                                <include reference="slx-fx-BGN"/>
+                                <include reference="zpc-LJ-qF4"/>
+                            </mask>
+                        </variation>
                     </view>
-                    <toolbarItems>
-                        <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="d7p-28-a1f"/>
-                    </toolbarItems>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" id="W7u-J1-sXY">
                         <barButtonItem key="leftBarButtonItem" image="star-64" id="zAZ-Ka-YpV">
                             <color key="tintColor" red="0.99215686270000003" green="0.80784313730000001" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
@@ -82,7 +116,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="880" y="-471"/>
+            <point key="canvasLocation" x="879" y="-471"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="AFQ-2T-KaS">

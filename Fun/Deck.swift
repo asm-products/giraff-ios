@@ -24,6 +24,10 @@ class Deck : NSObject {
         return card
     }
     
+    func cardForId(id:String) -> Card? {
+        return self.cards.objectForKey(id) as Card?
+    }
+    
     func reset() {
         currentIndex = 0
         cards.removeAllObjects()
