@@ -3,17 +3,17 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "fun-logo.png"
+      "filename" : "funLogo.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "fun-logo-1.png"
+      "filename" : "funLogo@2x.png"
     },
     {
       "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "fun-logo-2.png"
+      "filename" : "funLogo@3x.png"
     }
   ],
   "info" : {

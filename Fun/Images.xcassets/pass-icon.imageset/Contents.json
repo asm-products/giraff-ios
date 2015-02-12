@@ -3,17 +3,17 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "pass-icon.png"
+      "filename" : "passButton.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "pass-icon-1.png"
+      "filename" : "passButton@2x.png"
     },
     {
       "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "pass-icon-1-1.png"
+      "filename" : "passButton@3x.png"
     }
   ],
   "info" : {

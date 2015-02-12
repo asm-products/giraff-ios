@@ -64,7 +64,7 @@
                                     <constraint firstAttribute="height" constant="50" id="Z7I-k4-MO5"/>
                                 </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" backgroundImage="share_filled-50">
+                                <state key="normal" backgroundImage="share">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -131,10 +131,10 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="W7u-J1-sXY">
-                        <barButtonItem key="leftBarButtonItem" image="star-64" id="zAZ-Ka-YpV">
+                        <barButtonItem key="leftBarButtonItem" image="star" id="zAZ-Ka-YpV">
                             <color key="tintColor" red="0.99215686270000003" green="0.80784313730000001" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="settings-64" id="Bnz-zo-adS">
+                        <barButtonItem key="rightBarButtonItem" image="settings" id="Bnz-zo-adS">
                             <color key="tintColor" red="0.99215686270000003" green="0.80784313730000001" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
                     </navigationItem>
@@ -267,10 +267,10 @@
                     </collectionView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="MoL-lj-Uaf">
-                        <barButtonItem key="leftBarButtonItem" image="star-64" id="MhW-R9-ehP">
+                        <barButtonItem key="leftBarButtonItem" image="star" id="MhW-R9-ehP">
                             <color key="tintColor" red="0.99215686270000003" green="0.80784313730000001" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="settings-64" id="8VF-VH-UuU">
+                        <barButtonItem key="rightBarButtonItem" image="settings" id="8VF-VH-UuU">
                             <color key="tintColor" red="0.99215686270000003" green="0.80784313730000001" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
                     </navigationItem>
@@ -359,11 +359,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="pass-icon" width="128" height="128"/>
-        <image name="settings-64" width="64" height="64"/>
-        <image name="share_filled-50" width="50" height="50"/>
-        <image name="star-64" width="64" height="64"/>
-        <image name="star-button" width="128" height="128"/>
+        <image name="pass-icon" width="140" height="140"/>
+        <image name="settings" width="24" height="24"/>
+        <image name="share" width="50" height="50"/>
+        <image name="star" width="26" height="25"/>
+        <image name="star-button" width="140" height="141"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ARJ-Yv-NtF"/>
