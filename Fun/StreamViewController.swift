@@ -141,6 +141,8 @@ class StreamViewController: UIViewController, ZLSwipeableViewDataSource, ZLSwipe
     func nextViewForSwipeableView(swipeableView: ZLSwipeableView!) -> UIView! {
         if let card = self.deck.nextCard() {
             var view = GifView(frame: swipeableView.bounds)
+            
+            view.autoresizingMask = UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleWidth
         
             view.gifUrl = card.url!
             view.imageId = card.id!

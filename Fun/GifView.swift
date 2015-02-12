@@ -39,6 +39,7 @@ class GifView: UIView, NSURLSessionDataDelegate, NSURLSessionTaskDelegate{
     func addProgressIndicator() {
       var progress_width = self.bounds.width
       progressIndicator = CircleProgressView(frame: CGRectMake(progress_width/4, progress_width/4, progress_width/2, progress_width/2))
+      progressIndicator.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight
       progressIndicator.trackFillColor = UIColor(red: 0.918, green: 0.714, blue: 0.129, alpha: 1.0)
       progressIndicator.backgroundColor = UIColor.clearColor()
       progressIndicator.trackBackgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0)
@@ -50,12 +51,14 @@ class GifView: UIView, NSURLSessionDataDelegate, NSURLSessionTaskDelegate{
         caption.textAlignment = NSTextAlignment.Center
         caption.numberOfLines = 0
         caption.lineBreakMode = NSLineBreakMode.ByWordWrapping
+        caption.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleTopMargin
         addSubview(caption)
     }
 
     func addAnimatedImage() {
         self.animatedView = FLAnimatedImageView(frame: CGRectMake(0, 0, self.bounds.width, self.bounds.height))
         self.animatedView.contentMode = .ScaleAspectFit
+        self.animatedView.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight
         self.addSubview(animatedView)
     }
 
