@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import Fabric
+import Crashlytics
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,6 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var navAppearance = UINavigationBar.appearance()
         navAppearance.translucent = false
         navAppearance.barTintColor = UIColor(red:0.19, green:0.17, blue:0.16, alpha:1.0)
+      
+        Fabric.with([Crashlytics()])
 
         return true
     }
