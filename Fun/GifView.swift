@@ -46,7 +46,7 @@ class GifView: UIView, NSURLSessionDataDelegate, NSURLSessionTaskDelegate{
     }
 
     func addCaption() {
-        self.caption = UILabel(frame: CGRectMake(0, self.bounds.height-50, self.bounds.width, 50))
+        self.caption = UILabel(frame: CGRectMake(0, self.bounds.height-50, self.bounds.width, 45))
         caption.textAlignment = NSTextAlignment.Center
         caption.numberOfLines = 0
         caption.lineBreakMode = NSLineBreakMode.ByWordWrapping
@@ -54,11 +54,7 @@ class GifView: UIView, NSURLSessionDataDelegate, NSURLSessionTaskDelegate{
     }
 
     func addAnimatedImage() {
-        var margin:CGFloat = 50.0
-        if caption.text == nil {
-            margin = 0
-        }
-        self.animatedView = FLAnimatedImageView(frame: CGRectMake(0, 0, self.bounds.width, self.bounds.height - margin))
+        self.animatedView = FLAnimatedImageView(frame: CGRectMake(0, 0, self.bounds.width, self.bounds.height))
         self.animatedView.contentMode = .ScaleAspectFit
         self.addSubview(animatedView)
     }
@@ -79,6 +75,16 @@ class GifView: UIView, NSURLSessionDataDelegate, NSURLSessionTaskDelegate{
         self.addSubview(label)
 
         faveLabel = label
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        var margin:CGFloat = 50.0
+        if caption.text == nil {
+            margin = 0
+        }
+        
+        self.animatedView.frame = CGRectMake(0, 0, self.bounds.width, self.bounds.height - margin)
     }
 
 
