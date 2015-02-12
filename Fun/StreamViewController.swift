@@ -152,7 +152,6 @@ class StreamViewController: UIViewController, ZLSwipeableViewDataSource, ZLSwipe
             view.layer.shadowOpacity = 0.33
             view.layer.shadowOffset = CGSizeMake(0, 1.5)
             view.layer.shadowRadius = 4.0
-            view.layer.shouldRasterize = true
             
             return view
         }

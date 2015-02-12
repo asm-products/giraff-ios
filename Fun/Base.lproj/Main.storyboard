@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BKj-wd-lgM">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -275,53 +274,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lP5-qM-J7T">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            <view contentMode="top" translatesAutoresizingMaskIntoConstraints="NO" id="Dsi-h5-Ejc">
+                                <rect key="frame" x="21" y="100" width="558" height="558"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="lP5-qM-J7T" secondAttribute="height" multiplier="1:1" id="tyL-QP-30A"/>
+                                    <constraint firstAttribute="width" secondItem="Dsi-h5-Ejc" secondAttribute="height" multiplier="1:1" id="Qbd-CK-6dB"/>
                                 </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="tyL-QP-30A"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="tyL-QP-30A"/>
-                                    </mask>
-                                </variation>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.20784313730000001" green="0.18823529410000001" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="lP5-qM-J7T" firstAttribute="leading" secondItem="hyi-LD-anK" secondAttribute="leadingMargin" constant="20" id="E80-mL-ond"/>
-                            <constraint firstAttribute="centerY" secondItem="lP5-qM-J7T" secondAttribute="centerY" id="mhS-Lw-ysc"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="lP5-qM-J7T" secondAttribute="trailing" constant="20" id="tW7-2D-uKr"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Dsi-h5-Ejc" secondAttribute="trailing" constant="5" id="Kid-BH-54l"/>
+                            <constraint firstItem="Dsi-h5-Ejc" firstAttribute="leading" secondItem="hyi-LD-anK" secondAttribute="leadingMargin" constant="5" id="Tzz-04-8gZ"/>
+                            <constraint firstItem="Dsi-h5-Ejc" firstAttribute="top" secondItem="hyi-LD-anK" secondAttribute="topMargin" constant="100" id="iLl-ZZ-Ixg"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="lP5-qM-J7T"/>
-                            </mask>
-                            <mask key="constraints">
-                                <exclude reference="E80-mL-ond"/>
-                                <exclude reference="mhS-Lw-ysc"/>
-                                <exclude reference="tW7-2D-uKr"/>
-                            </mask>
-                        </variation>
-                        <variation key="heightClass=regular-widthClass=compact">
-                            <mask key="subviews">
-                                <include reference="lP5-qM-J7T"/>
-                            </mask>
-                            <mask key="constraints">
-                                <include reference="E80-mL-ond"/>
-                                <include reference="mhS-Lw-ysc"/>
-                                <include reference="tW7-2D-uKr"/>
-                            </mask>
-                        </variation>
                     </view>
                     <connections>
-                        <outlet property="imageView" destination="lP5-qM-J7T" id="Wtf-13-zPJ"/>
+                        <outlet property="imageView" destination="Dsi-h5-Ejc" id="Dgx-iK-5Kw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o3d-Zy-qXX" userLabel="First Responder" sceneMemberID="firstResponder"/>
