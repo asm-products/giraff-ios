@@ -50,12 +50,14 @@ class GifView: UIView, NSURLSessionDataDelegate, NSURLSessionTaskDelegate{
         caption.textAlignment = NSTextAlignment.Center
         caption.numberOfLines = 0
         caption.lineBreakMode = NSLineBreakMode.ByWordWrapping
+        caption.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleTopMargin
         addSubview(caption)
     }
 
     func addAnimatedImage() {
         self.animatedView = FLAnimatedImageView(frame: CGRectMake(0, 0, self.bounds.width, self.bounds.height))
         self.animatedView.contentMode = .ScaleAspectFit
+        self.animatedView.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight
         self.addSubview(animatedView)
     }
 
@@ -85,6 +87,14 @@ class GifView: UIView, NSURLSessionDataDelegate, NSURLSessionTaskDelegate{
         }
         
         self.animatedView.frame = CGRectMake(0, 0, self.bounds.width, self.bounds.height - margin)
+        
+        var progress_width = self.bounds.width
+        if self.bounds.width > self.bounds.height {
+            progress_width = self.bounds.height
+        }
+        progressIndicator.frame = CGRectMake(0, 0, progress_width/2, progress_width/2)
+        progressIndicator.center = CGPoint(x: self.bounds.width / 2.0, y: self.bounds.height / 2.0)
+
     }
 
 

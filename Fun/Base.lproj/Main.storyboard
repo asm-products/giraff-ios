@@ -78,17 +78,56 @@
                         </subviews>
                         <color key="backgroundColor" red="0.20784313725490197" green="0.18823529411764706" blue="0.1803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="cOQ-zP-RWY" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="44" id="K7V-hG-9Yn"/>
-                            <constraint firstItem="ZTC-Ke-wh3" firstAttribute="top" secondItem="8SP-4t-N6Q" secondAttribute="bottom" constant="46" id="Pe0-pG-nJi"/>
+                            <constraint firstItem="cOQ-zP-RWY" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="44" id="4eV-dU-Z2p"/>
+                            <constraint firstItem="8SP-4t-N6Q" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="BGm-DA-sfj"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="8SP-4t-N6Q" secondAttribute="bottom" constant="10" id="OFF-IZ-d1r"/>
                             <constraint firstItem="8SP-4t-N6Q" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="RFQ-dg-dEE"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="cOQ-zP-RWY" secondAttribute="bottom" constant="44" id="VGh-03-Wfl"/>
-                            <constraint firstAttribute="centerX" secondItem="ZTC-Ke-wh3" secondAttribute="centerX" id="W5a-BS-sf7"/>
+                            <constraint firstItem="ZTC-Ke-wh3" firstAttribute="top" secondItem="8SP-4t-N6Q" secondAttribute="bottom" constant="46" id="SXX-84-tel"/>
+                            <constraint firstAttribute="centerY" secondItem="ZTC-Ke-wh3" secondAttribute="centerY" id="StT-k2-qKi"/>
                             <constraint firstAttribute="trailingMargin" secondItem="eiS-Fl-AtC" secondAttribute="trailing" constant="44" id="XNg-RN-V2l"/>
+                            <constraint firstItem="ZTC-Ke-wh3" firstAttribute="centerY" secondItem="8SP-4t-N6Q" secondAttribute="centerY" id="Xub-24-xbl"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="ZTC-Ke-wh3" secondAttribute="bottom" constant="44" id="byh-qD-ppi"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="cOQ-zP-RWY" secondAttribute="bottom" constant="44" id="fuL-PM-uqS"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="eiS-Fl-AtC" secondAttribute="bottom" constant="44" id="hru-cZ-DLE"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="8SP-4t-N6Q" secondAttribute="trailing" id="m3L-cj-96l"/>
+                            <constraint firstItem="ZTC-Ke-wh3" firstAttribute="leading" secondItem="8SP-4t-N6Q" secondAttribute="trailing" constant="45" id="keR-vd-X1f"/>
+                            <constraint firstAttribute="centerX" secondItem="ZTC-Ke-wh3" secondAttribute="centerX" id="kqt-GV-gb4"/>
+                            <constraint firstItem="cOQ-zP-RWY" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="33" id="lH9-99-U79">
+                                <variation key="heightClass=compact" constant="44"/>
+                            </constraint>
+                            <constraint firstAttribute="trailingMargin" secondItem="cOQ-zP-RWY" secondAttribute="trailing" constant="20" id="pb2-1c-IGw">
+                                <variation key="heightClass=compact" constant="44"/>
+                            </constraint>
                             <constraint firstItem="8SP-4t-N6Q" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="10" id="rPQ-KS-qGE"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="ZTC-Ke-wh3" secondAttribute="bottom" constant="44" id="vDu-s6-gnc"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ZTC-Ke-wh3" secondAttribute="trailing" constant="44" id="uLq-sS-Oab"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="OFF-IZ-d1r"/>
+                                <exclude reference="lH9-99-U79"/>
+                                <exclude reference="pb2-1c-IGw"/>
+                                <exclude reference="StT-k2-qKi"/>
+                                <exclude reference="Xub-24-xbl"/>
+                                <exclude reference="keR-vd-X1f"/>
+                                <exclude reference="uLq-sS-Oab"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact">
+                            <mask key="constraints">
+                                <exclude reference="BGm-DA-sfj"/>
+                                <include reference="OFF-IZ-d1r"/>
+                                <exclude reference="byh-qD-ppi"/>
+                                <exclude reference="fuL-PM-uqS"/>
+                                <exclude reference="4eV-dU-Z2p"/>
+                                <include reference="lH9-99-U79"/>
+                                <include reference="pb2-1c-IGw"/>
+                                <exclude reference="SXX-84-tel"/>
+                                <exclude reference="StT-k2-qKi"/>
+                                <include reference="Xub-24-xbl"/>
+                                <include reference="keR-vd-X1f"/>
+                                <exclude reference="kqt-GV-gb4"/>
+                                <include reference="uLq-sS-Oab"/>
+                            </mask>
+                        </variation>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="W7u-J1-sXY">
