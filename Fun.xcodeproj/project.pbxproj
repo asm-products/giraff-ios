@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0178D1731A8C29FF00293AB3 /* CircleProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0178D1721A8C29FF00293AB3 /* CircleProgressView.swift */; };
 		0179C2571A85484E00A36023 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0179C2541A85484E00A36023 /* FacebookSDK.framework */; };
 		0179C2581A85484E00A36023 /* FBAudienceNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0179C2551A85484E00A36023 /* FBAudienceNetwork.framework */; };
 		0179C25A1A854A9400A36023 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0179C2591A854A9400A36023 /* LoginViewController.swift */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0178D1721A8C29FF00293AB3 /* CircleProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleProgressView.swift; sourceTree = "<group>"; };
 		0179C2541A85484E00A36023 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		0179C2551A85484E00A36023 /* FBAudienceNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBAudienceNetwork.framework; sourceTree = "<group>"; };
 		0179C2591A854A9400A36023 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				55E8E7E61A82FFFE0087F086 /* Bridging-Header.h */,
 				55ADA6AD1A841A3700A588BD /* GifView.swift */,
 				0179C2591A854A9400A36023 /* LoginViewController.swift */,
+				0178D1721A8C29FF00293AB3 /* CircleProgressView.swift */,
 				557FF6B81A85432C00895DC0 /* Card.swift */,
 				557FF6BA1A85478400895DC0 /* Deck.swift */,
 				55431B6E1A8945ED00F28569 /* FunSession.swift */,
@@ -328,6 +331,7 @@
 				55E8E7C21A82E5540087F086 /* StreamViewController.swift in Sources */,
 				55ADA6AE1A841A3700A588BD /* GifView.swift in Sources */,
 				557FF6BB1A85478400895DC0 /* Deck.swift in Sources */,
+				0178D1731A8C29FF00293AB3 /* CircleProgressView.swift in Sources */,
 				55CFA5DA1A8B3EBA00E1CDE2 /* FaveViewController.swift in Sources */,
 				55E8E7C01A82E5540087F086 /* AppDelegate.swift in Sources */,
 				557FF6B91A85432C00895DC0 /* Card.swift in Sources */,

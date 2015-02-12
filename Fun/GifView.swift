@@ -9,12 +9,15 @@ class GifView: UIView, NSURLSessionDataDelegate, NSURLSessionTaskDelegate{
     var task:NSURLSessionDataTask?
     var imageBytes:NSMutableData?
     var totalBytesLength:Float64?
+    var progressIndicator: CircleProgressView!
+    var progressLabel: UILabel!
 
     var passLabel:UILabel!
     var faveLabel:UILabel!
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+        addProgressIndicator()
         addCaption()
         addAnimatedImageWithSpinner()
         addPassLabel()
@@ -34,6 +37,22 @@ class GifView: UIView, NSURLSessionDataDelegate, NSURLSessionTaskDelegate{
         }
     }
 
+    func addProgressIndicator() {
+      var progress_width = self.bounds.width
+      progressIndicator = CircleProgressView(frame: CGRectMake(progress_width/4, progress_width/4, progress_width/2, progress_width/2))
+      progressIndicator.trackFillColor = UIColor(red: 0.918, green: 0.714, blue: 0.129, alpha: 1.0)
+      progressIndicator.backgroundColor = UIColor.whiteColor()
+      progressIndicator.trackBackgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0)
+      self.addSubview(progressIndicator)
+
+      progressLabel = UILabel(frame: CGRectMake(0, self.bounds.height/2-32.0, self.bounds.width, 32.0))
+      progressLabel.font = UIFont(name: progressLabel.font.fontName, size: 32)
+      progressLabel.textAlignment = .Center
+      progressLabel.textColor = UIColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1.0)
+      progressLabel.alpha = 0.9
+      addSubview(progressLabel)
+    }
+
     func addCaption() {
         self.caption = UILabel(frame: CGRectMake(0, self.bounds.height-50, self.bounds.width, 50))
         caption.textAlignment = NSTextAlignment.Center
@@ -49,8 +68,6 @@ class GifView: UIView, NSURLSessionDataDelegate, NSURLSessionTaskDelegate{
 
         self.animatedView = FLAnimatedImageView(frame: self.bounds)
         self.animatedView.contentMode = UIViewContentMode.ScaleAspectFit
-
-        self.animatedView.animatedImage = spinnerImage
 
         self.addSubview(animatedView)
     }
@@ -140,15 +157,25 @@ class GifView: UIView, NSURLSessionDataDelegate, NSURLSessionTaskDelegate{
     weak var myAnimatedView : FLAnimatedImageView? = self.animatedView
     if error != nil {
       NSLog("download error: %@", error!)
+      self.progressLabel.text = "Error"
     } else {
       if let myConcreteAnimatedView = myAnimatedView {
         myConcreteAnimatedView.animatedImage = FLAnimatedImage(animatedGIFData: self.imageBytes!)
+        dispatch_async(dispatch_get_main_queue(), {
+          self.progressIndicator.removeFromSuperview()
+        })
       }
     }
   }
 
   func URLSession(session: NSURLSession, dataTask: NSURLSessionDataTask, didReceiveData data: NSData) {
     self.imageBytes!.appendData(data)
-    var progress = floor((Float64(self.imageBytes!.length) / totalBytesLength!) * 100)
+    var progress = (Float64(self.imageBytes!.length) / totalBytesLength!)
+
+    dispatch_async(dispatch_get_main_queue(), {
+      self.progressLabel.text = "\(Int(progress * 100))%"
+      self.progressIndicator.progress = progress
+    })
+
   }
 }
