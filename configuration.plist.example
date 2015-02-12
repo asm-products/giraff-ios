@@ -4,5 +4,7 @@
 <dict>
   <key>FUN_API_URL</key>
   <string>http://fun-api.herokuapp.com</string>
+  <key>SHARE_URL</key>
+  <string>http://choosefun.com/#</string>
 </dict>
 </plist>
