@@ -39,7 +39,6 @@ class GifView: UIView, NSURLSessionDataDelegate, NSURLSessionTaskDelegate{
     func addProgressIndicator() {
       var progress_width = self.bounds.width
       progressIndicator = CircleProgressView(frame: CGRectMake(progress_width/4, progress_width/4, progress_width/2, progress_width/2))
-      progressIndicator.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight
       progressIndicator.trackFillColor = UIColor(red: 0.918, green: 0.714, blue: 0.129, alpha: 1.0)
       progressIndicator.backgroundColor = UIColor.clearColor()
       progressIndicator.trackBackgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0)
@@ -88,6 +87,14 @@ class GifView: UIView, NSURLSessionDataDelegate, NSURLSessionTaskDelegate{
         }
         
         self.animatedView.frame = CGRectMake(0, 0, self.bounds.width, self.bounds.height - margin)
+        
+        var progress_width = self.bounds.width
+        if self.bounds.width > self.bounds.height {
+            progress_width = self.bounds.height
+        }
+        progressIndicator.frame = CGRectMake(0, 0, progress_width/2, progress_width/2)
+        progressIndicator.center = CGPoint(x: self.bounds.width / 2.0, y: self.bounds.height / 2.0)
+
     }
 
 

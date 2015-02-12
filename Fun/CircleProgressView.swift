@@ -9,7 +9,6 @@ import UIKit
     let ninetyDegrees = 90.0
     let twoSeventyDegrees = 270.0
     var contentView:UIView = UIView()
-    var contentContainer:UIView = UIView()
   }
   
   let constants = Constants()
@@ -57,16 +56,13 @@ import UIKit
   required override init(frame: CGRect) {
     super.init(frame: frame)
     self.addSubview(contentView)
+    contentView.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight
   }
   
   required init(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
     self.addSubview(contentView)
-  }
-  
-  override func layoutSubviews() {
-    super.layoutSubviews()
-    self.addSubview(contentView)
+    contentView.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight
   }
   
   override func drawRect(rect: CGRect) {
