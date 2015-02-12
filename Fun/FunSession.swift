@@ -14,8 +14,7 @@ class FunSession {
         var plist = NSBundle.mainBundle().pathForResource("configuration", ofType: "plist")
         var config = NSDictionary(contentsOfFile: plist!)!
         apiUrl = config["FUN_API_URL"] as NSString
-        distinctId = "bshyong"
-      //UIDevice.currentDevice().identifierForVendor.UUIDString
+        distinctId = UIDevice.currentDevice().identifierForVendor.UUIDString
     }
     
     func fetchImages(callback: (NSArray) -> Void) {

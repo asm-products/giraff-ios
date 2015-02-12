@@ -35,7 +35,7 @@ class GifView: UIView, NSURLSessionDataDelegate, NSURLSessionTaskDelegate{
             }
         }
     }
-
+    
     func addProgressIndicator() {
       var progress_width = self.bounds.width
       progressIndicator = CircleProgressView(frame: CGRectMake(progress_width/4, progress_width/4, progress_width/2, progress_width/2))

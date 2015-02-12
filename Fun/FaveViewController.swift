@@ -63,8 +63,7 @@ class FaveViewController: UICollectionViewController, UICollectionViewDelegateFl
             
             let card = deck.cardAtIndex(UInt(indexPath!.row)) as Card!
             
-            vc.caption = card.caption!
-            vc.gifUrl = card.url!
+            vc.card = card
         }
     }
 }

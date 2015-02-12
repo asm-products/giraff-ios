@@ -102,21 +102,18 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="OFF-IZ-d1r"/>
                                 <exclude reference="lH9-99-U79"/>
                                 <exclude reference="pb2-1c-IGw"/>
                                 <exclude reference="StT-k2-qKi"/>
                                 <exclude reference="Xub-24-xbl"/>
                                 <exclude reference="keR-vd-X1f"/>
                                 <exclude reference="uLq-sS-Oab"/>
+                                <exclude reference="OFF-IZ-d1r"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=compact">
                             <mask key="constraints">
                                 <exclude reference="BGm-DA-sfj"/>
-                                <include reference="OFF-IZ-d1r"/>
-                                <exclude reference="byh-qD-ppi"/>
-                                <exclude reference="fuL-PM-uqS"/>
                                 <exclude reference="4eV-dU-Z2p"/>
                                 <include reference="lH9-99-U79"/>
                                 <include reference="pb2-1c-IGw"/>
@@ -126,6 +123,9 @@
                                 <include reference="keR-vd-X1f"/>
                                 <exclude reference="kqt-GV-gb4"/>
                                 <include reference="uLq-sS-Oab"/>
+                                <include reference="OFF-IZ-d1r"/>
+                                <exclude reference="byh-qD-ppi"/>
+                                <exclude reference="fuL-PM-uqS"/>
                             </mask>
                         </variation>
                     </view>
@@ -295,18 +295,39 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="top" translatesAutoresizingMaskIntoConstraints="NO" id="Dsi-h5-Ejc">
-                                <rect key="frame" x="21" y="100" width="558" height="558"/>
+                            <view contentMode="top" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dsi-h5-Ejc">
+                                <rect key="frame" x="138" y="72" width="234" height="234"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Dsi-h5-Ejc" secondAttribute="height" multiplier="1:1" id="Qbd-CK-6dB"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7ay-IX-OHp">
+                                <rect key="frame" x="230" y="530" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="O0c-jA-JmJ"/>
+                                    <constraint firstAttribute="height" constant="50" id="q0N-YA-UnC"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" backgroundImage="share_filled-50">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="175" y="602" width="50" height="50"/>
+                                </variation>
+                                <connections>
+                                    <action selector="shareButtonWasPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="8tv-3z-j4T"/>
+                                    <action selector="shareButtonWasPressed:" destination="FFM-zu-axG" eventType="touchUpInside" id="CXn-Tf-Sdn"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.20784313730000001" green="0.18823529410000001" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstAttribute="centerX" secondItem="7ay-IX-OHp" secondAttribute="centerX" id="GWd-dk-csc"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Dsi-h5-Ejc" secondAttribute="trailing" constant="5" id="Kid-BH-54l"/>
                             <constraint firstItem="Dsi-h5-Ejc" firstAttribute="leading" secondItem="hyi-LD-anK" secondAttribute="leadingMargin" constant="5" id="Tzz-04-8gZ"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="7ay-IX-OHp" secondAttribute="bottom" constant="50" id="VBP-gC-eV3"/>
                             <constraint firstItem="Dsi-h5-Ejc" firstAttribute="top" secondItem="hyi-LD-anK" secondAttribute="topMargin" constant="100" id="iLl-ZZ-Ixg"/>
                         </constraints>
                     </view>
@@ -316,7 +337,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o3d-Zy-qXX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2203.5" y="931.5"/>
+            <point key="canvasLocation" x="2365" y="931"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="OJz-Fc-8oT">
