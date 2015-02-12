@@ -11,8 +11,8 @@ class GifView: UIView, NSURLSessionDataDelegate, NSURLSessionTaskDelegate{
     var totalBytesLength:Float64?
     var progressIndicator: CircleProgressView!
 
-    var passLabel:UILabel!
-    var faveLabel:UILabel!
+    var passLabel:UIImageView!
+    var faveLabel:UIImageView!
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -64,42 +64,23 @@ class GifView: UIView, NSURLSessionDataDelegate, NSURLSessionTaskDelegate{
     }
 
     func addPassLabel() {
-        let label = createBaseLabel()
-        label.frame = CGRectMake(self.bounds.width - (self.bounds.width / 6) - 60, self.bounds.height / 4, 80, 50)
-        label.text = NSLocalizedString("Pass", comment: "")
-        label.textColor = UIColor.redColor()
+        let label = UIImageView(image: UIImage(named: "Pass"))
+        label.center = CGPoint(x: self.bounds.width - (self.bounds.width / 3.0), y: self.bounds.height / 3.0)
         label.alpha = 0.0
-        label.layer.borderColor = UIColor.redColor().CGColor
         self.addSubview(label)
-
-        label.transform=CGAffineTransformMakeRotation(CGFloat( ( -25.0 * M_PI ) / 180.0 ))
 
         passLabel = label
     }
 
     func addFaveLabel() {
-        let label = createBaseLabel()
-        label.frame = CGRectMake(self.bounds.width / 6, self.bounds.height / 4, 80, 50)
-        label.text = NSLocalizedString("Fave", comment: "")
-        label.textColor = UIColor.greenColor()
+        let label = UIImageView(image: UIImage(named: "Faved"))
+        label.center = CGPoint(x: self.bounds.width / 3.0, y: self.bounds.height / 3.0)
         label.alpha = 0.0
-        label.layer.borderColor = UIColor.greenColor().CGColor
         self.addSubview(label)
-
-        label.transform=CGAffineTransformMakeRotation(CGFloat( ( 25.0 * M_PI ) / 180.0 ))
-
 
         faveLabel = label
     }
 
-    func createBaseLabel() -> UILabel {
-        let label = UILabel(frame: CGRectZero)
-        label.textAlignment = NSTextAlignment.Center
-        label.layer.borderWidth = 2.0
-        label.layer.cornerRadius = 5.0
-
-        return label
-    }
 
 
     // Doesn't quite work, only 1 video shows, all others are black
