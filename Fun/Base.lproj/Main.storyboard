@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BKj-wd-lgM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BKj-wd-lgM">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -204,54 +206,127 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="Yjx-EB-ok6" kind="relationship" relationship="rootViewController" id="BlP-6X-2TS"/>
+                        <segue destination="OC2-8K-b9G" kind="relationship" relationship="rootViewController" id="Dqs-DC-Axi"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fDv-X7-Csx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="573" y="922"/>
         </scene>
-        <!--Title-->
-        <scene sceneID="zq9-mO-jC6">
+        <!--Fave View Controller-->
+        <scene sceneID="j6J-dd-fVt">
             <objects>
-                <viewController id="Yjx-EB-ok6" customClass="FaveViewController" customModule="Fun" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="E2J-PN-B4Z"/>
-                        <viewControllerLayoutGuide type="bottom" id="Eaa-c9-67P"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="bfQ-lE-9at">
+                <collectionViewController id="OC2-8K-b9G" customClass="FaveViewController" customModule="Fun" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="CXB-lM-NIC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Favorites" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hsC-xp-OD2">
-                                <rect key="frame" x="214" y="179" width="173" height="64"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" red="0.20784313730000001" green="0.18823529410000001" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="centerX" secondItem="hsC-xp-OD2" secondAttribute="centerX" id="aW0-93-Yme"/>
-                        </constraints>
-                    </view>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="NR4-px-hD7">
+                            <size key="itemSize" width="100" height="100"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="gifCell" id="ns4-fa-p5N">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <connections>
+                                    <segue destination="FFM-zu-axG" kind="show" identifier="detail" id="H1y-rh-UDZ"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="OC2-8K-b9G" id="SBF-SD-dD9"/>
+                            <outlet property="delegate" destination="OC2-8K-b9G" id="fXO-Wj-BI9"/>
+                        </connections>
+                    </collectionView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Title" id="A97-gE-jcx">
-                        <barButtonItem key="leftBarButtonItem" image="star-64" id="gvO-SJ-WEj">
+                    <navigationItem key="navigationItem" id="MoL-lj-Uaf">
+                        <barButtonItem key="leftBarButtonItem" image="star-64" id="MhW-R9-ehP">
                             <color key="tintColor" red="0.99215686270000003" green="0.80784313730000001" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="settings-64" id="Kvx-q9-p79">
+                        <barButtonItem key="rightBarButtonItem" image="settings-64" id="8VF-VH-UuU">
                             <color key="tintColor" red="0.99215686270000003" green="0.80784313730000001" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="revealButtonItem" destination="gvO-SJ-WEj" id="Bgc-KL-H7o"/>
+                        <outlet property="revealButtonItem" destination="MhW-R9-ehP" id="U5w-7Q-yag"/>
+                    </connections>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="quK-h1-8OO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1441.5" y="925.5"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="FUq-Pw-54j">
+            <objects>
+                <viewController id="FFM-zu-axG" customClass="DetailViewController" customModule="Fun" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="h7J-io-4mb"/>
+                        <viewControllerLayoutGuide type="bottom" id="kNs-BM-xx6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hyi-LD-anK">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lP5-qM-J7T">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="lP5-qM-J7T" secondAttribute="height" multiplier="1:1" id="tyL-QP-30A"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="tyL-QP-30A"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="tyL-QP-30A"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.20784313730000001" green="0.18823529410000001" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="lP5-qM-J7T" firstAttribute="leading" secondItem="hyi-LD-anK" secondAttribute="leadingMargin" constant="20" id="E80-mL-ond"/>
+                            <constraint firstAttribute="centerY" secondItem="lP5-qM-J7T" secondAttribute="centerY" id="mhS-Lw-ysc"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="lP5-qM-J7T" secondAttribute="trailing" constant="20" id="tW7-2D-uKr"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="lP5-qM-J7T"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="E80-mL-ond"/>
+                                <exclude reference="mhS-Lw-ysc"/>
+                                <exclude reference="tW7-2D-uKr"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="lP5-qM-J7T"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="E80-mL-ond"/>
+                                <include reference="mhS-Lw-ysc"/>
+                                <include reference="tW7-2D-uKr"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="lP5-qM-J7T" id="Wtf-13-zPJ"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Wt1-uf-TQ6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="o3d-Zy-qXX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1339" y="945"/>
+            <point key="canvasLocation" x="2203.5" y="931.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="OJz-Fc-8oT">

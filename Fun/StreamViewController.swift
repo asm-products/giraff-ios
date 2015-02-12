@@ -4,10 +4,8 @@ class StreamViewController: UIViewController, ZLSwipeableViewDataSource, ZLSwipe
     @IBOutlet weak var swipeableView: ZLSwipeableView!
     @IBOutlet weak var revealButtonItem: UIBarButtonItem!
     
-    var deck = Deck()
+    var deck = Deck(deckSourceMode: DeckSourceMode.NewGifs)
     var swipeStart: CGPoint!
-    
-    var deckSourceMode = "new"
     
     override func viewDidLoad() {
         super.viewDidLoad()

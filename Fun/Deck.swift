@@ -11,6 +11,15 @@ class Deck : NSObject {
     var deckSourceMode = DeckSourceMode.NewGifs
     var currentIndex:UInt = 0
     
+    init(deckSourceMode:DeckSourceMode) {
+        super.init()
+        self.deckSourceMode = deckSourceMode
+    }
+    
+    func count() -> UInt {
+        return self.cards.count()
+    }
+    
     func nextCard() -> Card? {
         if currentIndex >= self.cards.count() {
             return nil
@@ -26,6 +35,10 @@ class Deck : NSObject {
     
     func cardForId(id:String) -> Card? {
         return self.cards.objectForKey(id) as Card?
+    }
+    
+    func cardAtIndex(index:UInt) -> Card? {
+        return self.cards.objectAtIndex(index) as Card?
     }
     
     func reset() {
