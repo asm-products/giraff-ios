@@ -23,6 +23,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var navAppearance = UINavigationBar.appearance()
         navAppearance.translucent = false
         navAppearance.barTintColor = UIColor(red:0.19, green:0.17, blue:0.16, alpha:1.0)
+        
+        let cacheSizeMemory = 50*1024*1024; // 50 MB
+        let cacheSizeDisk = 300*1024*1024; // 300 MB
+        let sharedCache = NSURLCache(memoryCapacity: cacheSizeMemory, diskCapacity: cacheSizeDisk, diskPath: nil)
+        NSURLCache.setSharedURLCache(sharedCache)
       
         Fabric.with([Crashlytics()])
 
