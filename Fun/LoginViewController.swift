@@ -4,8 +4,6 @@ class LoginViewController: UIViewController, FBLoginViewDelegate {
     @IBOutlet weak var loginView: FBLoginView!
     @IBOutlet weak var bgImage: UIImageView!
     
-    var signedIn = false
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         loginView.readPermissions = ["public_profile", "email"]
@@ -22,16 +20,10 @@ class LoginViewController: UIViewController, FBLoginViewDelegate {
         var email = user.objectForKey("email") as String
         FunSession.sharedSession.signIn(email) {
             NSLog("API signin successful")
-            if !self.signedIn {
-                self.performSegueWithIdentifier("loggedIn", sender: user)
+            dispatch_async(dispatch_get_main_queue()) {
+                self.performSegueWithIdentifier("loggedIn", sender: self)
             }
-            self.signedIn = true
         }
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        NSLog("signed in: \(self.signedIn)")
     }
     
     func launchImage() -> UIImage? {
