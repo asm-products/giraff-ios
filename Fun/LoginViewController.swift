@@ -26,6 +26,10 @@ class LoginViewController: UIViewController, FBLoginViewDelegate {
         }
     }
     
+    func loginViewShowingLoggedOutUser(loginView: FBLoginView!) {
+        loginView.hidden = false
+    }
+    
     func launchImage() -> UIImage? {
         let fileName = launchImageFileName()
         if let file = NSBundle.mainBundle().pathForResource(fileName, ofType: "png") {
