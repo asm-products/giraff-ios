@@ -1,10 +1,14 @@
 import UIKit
 import MediaPlayer
 
-class GifView: UIView {
+class GifView: UIView, NSURLSessionDataDelegate, NSURLSessionTaskDelegate{
     var animatedView:FLAnimatedImageView!
     var caption:UILabel!
+    var mpc:MPMoviePlayerController!
     var imageId:NSString? // Not sure if this belongs here, but helps us know which Image is associated with this view
+    var task:NSURLSessionDataTask?
+    var imageBytes:NSMutableData?
+    var totalBytesLength:Float64?
     var progressIndicator: CircleProgressView!
 
     var passLabel:UIImageView!
@@ -21,6 +25,15 @@ class GifView: UIView {
 
     required init(coder: NSCoder) {
         super.init(coder: coder)
+    }
+
+    override func removeFromSuperview() {
+        super.removeFromSuperview()
+        if let t = self.task {
+            if t.state == NSURLSessionTaskState.Running {
+                t.cancel()
+            }
+        }
     }
 
     func addProgressIndicator() {
@@ -84,6 +97,30 @@ class GifView: UIView {
 
     }
 
+
+
+    // Doesn't quite work, only 1 video shows, all others are black
+    var mp4Url: NSString? = nil {
+        didSet {
+            self.animatedView.removeFromSuperview()
+
+            mpc = MPMoviePlayerController()
+            if let player = mpc {
+                player.view.frame = self.bounds
+                player.backgroundView.backgroundColor = UIColor.whiteColor()
+
+                player.movieSourceType = MPMovieSourceType.Streaming
+                player.contentURL = NSURL(string: mp4Url!)
+                player.shouldAutoplay = false
+                player.controlStyle = MPMovieControlStyle.None
+                player.repeatMode = MPMovieRepeatMode.One
+                player.prepareToPlay()
+
+                addSubview(player.view)
+            }
+        }
+    }
+
     var gifUrl: NSString = "" {
         didSet {
           NSLog("downloading %@", gifUrl)
@@ -92,25 +129,52 @@ class GifView: UIView {
     }
 
     func downloadData(url: NSURL!){
-        weak var myAnimatedView : FLAnimatedImageView? = self.animatedView
-        weak var myProgressIndicator : CircleProgressView? = self.progressIndicator
-        Cash.shared.get(url.absoluteString!, expiration: 60*60*24 /* cache for a day */) { (data: NSData?, error: NSError?) -> Void in
-            
-            if error != nil {
-                NSLog("download error: %@", error!)
-            } else {
-                if let concreteData = data {
-                    if let myConcreteAnimatedView = myAnimatedView {
-                        myConcreteAnimatedView.animatedImage = FLAnimatedImage(animatedGIFData: data)
-                        dispatch_async(dispatch_get_main_queue(), {
-                            if let myConcreteProgressIndicator = myProgressIndicator {
-                                self.progressIndicator.removeFromSuperview()
-                            }
-                        })
-                    }
-                }
-            }
-        }
+        var session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration(), delegate: self, delegateQueue: nil)
+        task = session.dataTaskWithURL(url)
+        task!.resume()
     }
-}
 
+  func URLSession(session: NSURLSession, dataTask: NSURLSessionDataTask, didReceiveResponse response: NSURLResponse, completionHandler: (NSURLSessionResponseDisposition) -> Void) {
+    completionHandler(NSURLSessionResponseDisposition.Allow)
+    NSLog("response received: \(response.expectedContentLength) bytes")
+    self.imageBytes = NSMutableData()
+    self.totalBytesLength = Float64(response.expectedContentLength)
+  }
+
+  func URLSession(session: NSURLSession, task: NSURLSessionTask, didCompleteWithError error: NSError?) {
+    weak var myAnimatedView : FLAnimatedImageView? = self.animatedView
+    if error != nil {
+      NSLog("download error: %@", error!)
+    } else {
+      if let myConcreteAnimatedView = myAnimatedView {
+        myConcreteAnimatedView.animatedImage = FLAnimatedImage(animatedGIFData: self.imageBytes!)
+        dispatch_async(dispatch_get_main_queue(), {
+          self.progressIndicator.removeFromSuperview()
+        })
+      }
+    }
+  }
+    
+  func URLSession(session: NSURLSession, dataTask: NSURLSessionDataTask, willCacheResponse proposedResponse: NSCachedURLResponse, completionHandler: (NSCachedURLResponse!) -> Void) {
+    
+    let response = proposedResponse.response as NSHTTPURLResponse
+    var headers = response.allHeaderFields
+    headers["Cache-Control"] = "max-age=86400, private" // cache for a day
+    headers.removeValueForKey("Expires")
+    headers.removeValueForKey("s-maxage")
+    let newResponse = NSHTTPURLResponse(URL: response.URL!, statusCode: response.statusCode, HTTPVersion: "HTTP/1.1", headerFields: headers)
+    let cached = NSCachedURLResponse(response: newResponse!, data: proposedResponse.data, userInfo: headers, storagePolicy: NSURLCacheStoragePolicy.Allowed)
+    
+    completionHandler(cached)
+  }
+
+  func URLSession(session: NSURLSession, dataTask: NSURLSessionDataTask, didReceiveData data: NSData) {
+    self.imageBytes!.appendData(data)
+    var progress = (Float64(self.imageBytes!.length) / totalBytesLength!)
+
+    dispatch_async(dispatch_get_main_queue(), {
+      self.progressIndicator.progress = progress
+    })
+
+  }
+}
