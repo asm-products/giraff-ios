@@ -35,7 +35,7 @@ class GifView: UIView, NSURLSessionDataDelegate, NSURLSessionTaskDelegate{
             }
         }
     }
-    
+
     func addProgressIndicator() {
       var progress_width = self.bounds.width
       progressIndicator = CircleProgressView(frame: CGRectMake(progress_width/4, progress_width/4, progress_width/2, progress_width/2))
@@ -78,16 +78,16 @@ class GifView: UIView, NSURLSessionDataDelegate, NSURLSessionTaskDelegate{
 
         faveLabel = label
     }
-    
+
     override func layoutSubviews() {
         super.layoutSubviews()
         var margin:CGFloat = 50.0
         if caption.text == nil {
             margin = 0
         }
-        
+
         self.animatedView.frame = CGRectMake(0, 0, self.bounds.width, self.bounds.height - margin)
-        
+
         var progress_width = self.bounds.width
         if self.bounds.width > self.bounds.height {
             progress_width = self.bounds.height

@@ -149,11 +149,12 @@ class StreamViewController: UIViewController, ZLSwipeableViewDataSource, ZLSwipe
             view.caption.text = card.caption!
 
             view.layer.backgroundColor = UIColor.whiteColor().CGColor
-            view.layer.cornerRadius = 10.0;
+            view.layer.cornerRadius = 10.0
             view.layer.shadowColor = UIColor.blackColor().CGColor
             view.layer.shadowOpacity = 0.33
             view.layer.shadowOffset = CGSizeMake(0, 1.5)
             view.layer.shadowRadius = 4.0
+//            view.layer.shouldRasterize = true
             
             return view
         }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BKj-wd-lgM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="h4R-ga-7th">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -134,9 +134,6 @@
                         <barButtonItem key="leftBarButtonItem" image="star" id="zAZ-Ka-YpV">
                             <color key="tintColor" red="0.99215686270000003" green="0.80784313730000001" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="settings" id="Bnz-zo-adS">
-                            <color key="tintColor" red="0.99215686270000003" green="0.80784313730000001" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
-                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -147,6 +144,49 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="879" y="-471"/>
+        </scene>
+        <!--Login View Controller-->
+        <scene sceneID="ViR-dI-6OC">
+            <objects>
+                <viewController id="h4R-ga-7th" customClass="LoginViewController" customModule="Fun" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3BU-cN-sHh"/>
+                        <viewControllerLayoutGuide type="bottom" id="tjs-ho-RfA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="FYv-Pq-mCb">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="rwn-JS-Qnb">
+                                <rect key="frame" x="16" y="0.0" width="568" height="600"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3ZA-Cy-NTu" customClass="FBLoginView">
+                                <rect key="frame" x="46" y="220" width="508" height="200"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="ebc-pl-Psw"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="rwn-JS-Qnb" firstAttribute="top" secondItem="FYv-Pq-mCb" secondAttribute="topMargin" id="1Mn-Qp-1w0"/>
+                            <constraint firstItem="3ZA-Cy-NTu" firstAttribute="leading" secondItem="FYv-Pq-mCb" secondAttribute="leadingMargin" constant="30" id="M37-wM-tOW"/>
+                            <constraint firstItem="rwn-JS-Qnb" firstAttribute="leading" secondItem="FYv-Pq-mCb" secondAttribute="leadingMargin" id="UBf-w1-bWj"/>
+                            <constraint firstItem="3ZA-Cy-NTu" firstAttribute="top" secondItem="3BU-cN-sHh" secondAttribute="bottom" constant="200" id="ZtY-np-m86"/>
+                            <constraint firstItem="tjs-ho-RfA" firstAttribute="top" secondItem="rwn-JS-Qnb" secondAttribute="bottom" id="egq-OC-kQR"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="rwn-JS-Qnb" secondAttribute="trailing" id="uTN-d6-jMi"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="3ZA-Cy-NTu" secondAttribute="trailing" constant="30" id="zrR-fv-cNe"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="loginView" destination="3ZA-Cy-NTu" id="L4w-Eg-DTQ"/>
+                        <segue destination="BKj-wd-lgM" kind="show" identifier="loggedIn" id="Gmy-45-Dy6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H3J-1O-NA3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1415" y="-476"/>
         </scene>
         <!--Reveal View Controller-->
         <scene sceneID="kqd-yL-AP7">
@@ -270,9 +310,6 @@
                         <barButtonItem key="leftBarButtonItem" image="star" id="MhW-R9-ehP">
                             <color key="tintColor" red="0.99215686270000003" green="0.80784313730000001" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="settings" id="8VF-VH-UuU">
-                            <color key="tintColor" red="0.99215686270000003" green="0.80784313730000001" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
-                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -359,9 +396,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="bg" width="662" height="588"/>
         <image name="pass-icon" width="140" height="140"/>
-        <image name="settings" width="24" height="24"/>
         <image name="share" width="50" height="50"/>
+        <image name="share_filled-50" width="128" height="128"/>
         <image name="star" width="26" height="25"/>
         <image name="star-button" width="140" height="141"/>
     </resources>

@@ -8,13 +8,19 @@ class FunSession {
     }
     
     let apiUrl:NSString
-    let distinctId:NSString
     
     init() {
         var plist = NSBundle.mainBundle().pathForResource("configuration", ofType: "plist")
         var config = NSDictionary(contentsOfFile: plist!)!
         apiUrl = config["FUN_API_URL"] as NSString
-        distinctId = UIDevice.currentDevice().identifierForVendor.UUIDString
+    }
+    
+    func signIn(email:String, callback: () -> Void) {
+        request("POST", url: "/sessions", body:["email":email]) {(data:NSData) in
+            let json = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as NSDictionary
+            NSUserDefaults.standardUserDefaults().setObject(json["authentication_token"], forKey: "authentication_token")
+            callback()
+        }
     }
     
     func fetchImages(callback: (NSArray) -> Void) {
@@ -42,26 +48,32 @@ class FunSession {
 
     
     func get(url:NSString, callback: (NSDictionary) -> Void) {
-        request("GET", url: url) {(data:NSData) -> Void in
+        request("GET", url: url, body:nil) {(data:NSData) in
             let json = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as NSDictionary
             callback(json)
         }
     }
     
     func post(url:NSString) {
-        request("POST", url: url) {(NSData) -> Void in
-            
+        request("POST", url: url, body:nil) {NSData in
         }
     }
     
-    func request(httpMethod:String, url:String, callback: (NSData) -> Void) {
+    func request(httpMethod:String, url:String, body:NSDictionary?, callback: (NSData) -> Void) {
         let session = NSURLSession.sharedSession()
         let url = "".join([apiUrl, url])
         let request = NSMutableURLRequest(URL: NSURL(string:url)!)
         request.HTTPMethod = httpMethod
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
-        request.addValue(distinctId, forHTTPHeaderField: "X-User-Token")
+        if let token = authenticationToken() {
+            request.addValue(token, forHTTPHeaderField: "X-User-Token")
+        }
+        
+        if let data = body {
+            request.HTTPBody = NSJSONSerialization.dataWithJSONObject(data, options: NSJSONWritingOptions.allZeros, error: nil)
+        }
+        
         NSLog("%@ %@", httpMethod, url)
         let task = session.dataTaskWithRequest(request) {(data, response, error) in
             var httpResponse = response as NSHTTPURLResponse?
@@ -76,6 +88,12 @@ class FunSession {
             }
         }
         task.resume()
-
+    }
+    
+    func authenticationToken() -> String? {
+        if let token = NSUserDefaults.standardUserDefaults().stringForKey("authentication_token") {
+            return token
+        }
+        return UIDevice.currentDevice().identifierForVendor.UUIDString
     }
 }

@@ -1,37 +1,24 @@
-//
-//  LoginViewController.swift
-//  Fun
-//
-//  Created by Ben Shyong on 2/6/15.
-//  Copyright (c) 2015 Assembly. All rights reserved.
-//
-
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, FBLoginViewDelegate {
+    @IBOutlet weak var loginView: FBLoginView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-      var loginView:FBLoginView = FBLoginView()
-      loginView.center = self.view.center
-      self.view.addSubview(loginView)
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        loginView.readPermissions = ["public_profile", "email"]
+        loginView.delegate = self
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func loginViewShowingLoggedInUser(loginView: FBLoginView!) {
+        NSLog("Facebook already logged in")
     }
-    */
-
+    
+    func loginViewFetchedUserInfo(loginView : FBLoginView!, user: FBGraphUser) {
+        NSLog("Facebook login successful")
+        var email = user.objectForKey("email") as String
+        FunSession.sharedSession.signIn(email) {
+            NSLog("API signin successful")
+            self.performSegueWithIdentifier("loggedIn", sender: user)
+        }
+    }
 }
