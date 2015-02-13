@@ -4,7 +4,6 @@ import MediaPlayer
 class GifView: UIView, NSURLSessionDataDelegate, NSURLSessionTaskDelegate{
     var animatedView:FLAnimatedImageView!
     var caption:UILabel!
-    var mpc:MPMoviePlayerController!
     var imageId:NSString? // Not sure if this belongs here, but helps us know which Image is associated with this view
     var task:NSURLSessionDataTask?
     var imageBytes:NSMutableData?
@@ -95,30 +94,6 @@ class GifView: UIView, NSURLSessionDataDelegate, NSURLSessionTaskDelegate{
         progressIndicator.frame = CGRectMake(0, 0, progress_width/2, progress_width/2)
         progressIndicator.center = CGPoint(x: self.bounds.width / 2.0, y: self.bounds.height / 2.0)
 
-    }
-
-
-
-    // Doesn't quite work, only 1 video shows, all others are black
-    var mp4Url: NSString? = nil {
-        didSet {
-            self.animatedView.removeFromSuperview()
-
-            mpc = MPMoviePlayerController()
-            if let player = mpc {
-                player.view.frame = self.bounds
-                player.backgroundView.backgroundColor = UIColor.whiteColor()
-
-                player.movieSourceType = MPMovieSourceType.Streaming
-                player.contentURL = NSURL(string: mp4Url!)
-                player.shouldAutoplay = false
-                player.controlStyle = MPMovieControlStyle.None
-                player.repeatMode = MPMovieRepeatMode.One
-                player.prepareToPlay()
-
-                addSubview(player.view)
-            }
-        }
     }
 
     var gifUrl: NSString = "" {
