@@ -353,14 +353,14 @@
                                     <constraint firstAttribute="width" secondItem="Dsi-h5-Ejc" secondAttribute="height" multiplier="1:1" id="Qbd-CK-6dB"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7ay-IX-OHp">
-                                <rect key="frame" x="230" y="530" width="50" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7ay-IX-OHp">
+                                <rect key="frame" x="275" y="500" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="O0c-jA-JmJ"/>
                                     <constraint firstAttribute="height" constant="50" id="q0N-YA-UnC"/>
                                 </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" backgroundImage="share_filled-50">
+                                <state key="normal" backgroundImage="share">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -411,8 +411,7 @@
     </scenes>
     <resources>
         <image name="pass-icon" width="140" height="140"/>
-        <image name="share" width="50" height="50"/>
-        <image name="share_filled-50" width="128" height="128"/>
+        <image name="share" width="140" height="140"/>
         <image name="star" width="26" height="25"/>
         <image name="star-button" width="140" height="141"/>
     </resources>
