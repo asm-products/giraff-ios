@@ -157,29 +157,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="rwn-JS-Qnb">
-                                <rect key="frame" x="16" y="0.0" width="568" height="600"/>
-                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3ZA-Cy-NTu" customClass="FBLoginView">
-                                <rect key="frame" x="46" y="220" width="508" height="200"/>
+                                <rect key="frame" x="46" y="390" width="508" height="200"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="ebc-pl-Psw"/>
                                 </constraints>
                             </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rwn-JS-Qnb">
+                                <rect key="frame" x="16" y="0.0" width="568" height="600"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="rwn-JS-Qnb" firstAttribute="top" secondItem="FYv-Pq-mCb" secondAttribute="topMargin" id="1Mn-Qp-1w0"/>
                             <constraint firstItem="3ZA-Cy-NTu" firstAttribute="leading" secondItem="FYv-Pq-mCb" secondAttribute="leadingMargin" constant="30" id="M37-wM-tOW"/>
+                            <constraint firstItem="tjs-ho-RfA" firstAttribute="top" secondItem="3ZA-Cy-NTu" secondAttribute="bottom" constant="10" id="MVA-an-SKj"/>
                             <constraint firstItem="rwn-JS-Qnb" firstAttribute="leading" secondItem="FYv-Pq-mCb" secondAttribute="leadingMargin" id="UBf-w1-bWj"/>
-                            <constraint firstItem="3ZA-Cy-NTu" firstAttribute="top" secondItem="3BU-cN-sHh" secondAttribute="bottom" constant="200" id="ZtY-np-m86"/>
                             <constraint firstItem="tjs-ho-RfA" firstAttribute="top" secondItem="rwn-JS-Qnb" secondAttribute="bottom" id="egq-OC-kQR"/>
                             <constraint firstAttribute="trailingMargin" secondItem="rwn-JS-Qnb" secondAttribute="trailing" id="uTN-d6-jMi"/>
                             <constraint firstAttribute="trailingMargin" secondItem="3ZA-Cy-NTu" secondAttribute="trailing" constant="30" id="zrR-fv-cNe"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bgImage" destination="rwn-JS-Qnb" id="mPy-Dd-l1a"/>
                         <outlet property="loginView" destination="3ZA-Cy-NTu" id="L4w-Eg-DTQ"/>
                         <segue destination="BKj-wd-lgM" kind="show" identifier="loggedIn" id="Gmy-45-Dy6"/>
                     </connections>
@@ -396,7 +397,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bg" width="662" height="588"/>
         <image name="pass-icon" width="140" height="140"/>
         <image name="share" width="50" height="50"/>
         <image name="share_filled-50" width="128" height="128"/>
