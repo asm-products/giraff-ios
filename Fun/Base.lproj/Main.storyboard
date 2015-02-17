@@ -217,23 +217,23 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rkF-N9-Urq">
                                 <rect key="frame" x="0.0" y="20" width="600" height="128"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="50" placeholderIntrinsicHeight="20.5" text=" " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="06P-Vh-GdN">
-                                        <rect key="frame" x="118" y="54.5" width="460" height="20.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="50" placeholderIntrinsicHeight="20.5" text=" " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="06P-Vh-GdN">
+                                        <rect key="frame" x="108" y="54.5" width="412" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile-placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="K8d-CD-Qck">
-                                        <rect key="frame" x="16" y="24" width="80" height="80"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile-placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="K8d-CD-Qck">
+                                        <rect key="frame" x="16" y="29" width="70" height="70"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="80" id="Cx4-F6-3Na"/>
-                                            <constraint firstAttribute="height" constant="80" id="fbp-rE-tJO"/>
+                                            <constraint firstAttribute="width" constant="70" id="Cx4-F6-3Na"/>
+                                            <constraint firstAttribute="height" constant="70" id="fbp-rE-tJO"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="06P-Vh-GdN" secondAttribute="trailing" constant="22" id="3VP-kd-7Kj"/>
+                                    <constraint firstAttribute="trailing" secondItem="06P-Vh-GdN" secondAttribute="trailing" constant="80" id="3VP-kd-7Kj"/>
                                     <constraint firstAttribute="height" constant="128" id="6Hn-1Y-9ZM"/>
                                     <constraint firstItem="06P-Vh-GdN" firstAttribute="leading" secondItem="K8d-CD-Qck" secondAttribute="trailing" constant="22" id="He4-4S-fBj"/>
                                     <constraint firstItem="K8d-CD-Qck" firstAttribute="leading" secondItem="rkF-N9-Urq" secondAttribute="leading" constant="16" id="UVo-uB-DyL"/>
