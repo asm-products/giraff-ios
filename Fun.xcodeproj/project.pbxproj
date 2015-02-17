@@ -13,6 +13,7 @@
 		0179C25A1A854A9400A36023 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0179C2591A854A9400A36023 /* LoginViewController.swift */; };
 		2836166F1A8C6D4E00E895D0 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2836166D1A8C6D4E00E895D0 /* Crashlytics.framework */; };
 		283616701A8C6D4E00E895D0 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2836166E1A8C6D4E00E895D0 /* Fabric.framework */; };
+		31E5CAAA1A92BAF900036EA8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E5CAA91A92BAF900036EA8 /* User.swift */; };
 		5515DFAD1A8D96AC00C87BB4 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5515DFAC1A8D96AC00C87BB4 /* MenuViewController.swift */; };
 		55431B6F1A8945ED00F28569 /* FunSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55431B6E1A8945ED00F28569 /* FunSession.swift */; };
 		55692A5A1A8C7CCD00FE83E6 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55692A591A8C7CCD00FE83E6 /* DetailViewController.swift */; };
@@ -48,6 +49,7 @@
 		0179C2591A854A9400A36023 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		2836166D1A8C6D4E00E895D0 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		2836166E1A8C6D4E00E895D0 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		31E5CAA91A92BAF900036EA8 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		5515DFAC1A8D96AC00C87BB4 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		55431B6E1A8945ED00F28569 /* FunSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FunSession.swift; sourceTree = "<group>"; };
 		55692A591A8C7CCD00FE83E6 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 				557FF6B81A85432C00895DC0 /* Card.swift */,
 				557FF6BA1A85478400895DC0 /* Deck.swift */,
 				55431B6E1A8945ED00F28569 /* FunSession.swift */,
+				31E5CAA91A92BAF900036EA8 /* User.swift */,
 				55CFA5D91A8B3EBA00E1CDE2 /* FaveViewController.swift */,
 				55692A591A8C7CCD00FE83E6 /* DetailViewController.swift */,
 				5515DFAC1A8D96AC00C87BB4 /* MenuViewController.swift */,
@@ -362,6 +365,7 @@
 				557FF6BB1A85478400895DC0 /* Deck.swift in Sources */,
 				0178D1731A8C29FF00293AB3 /* CircleProgressView.swift in Sources */,
 				55CFA5DA1A8B3EBA00E1CDE2 /* FaveViewController.swift in Sources */,
+				31E5CAAA1A92BAF900036EA8 /* User.swift in Sources */,
 				55692A5A1A8C7CCD00FE83E6 /* DetailViewController.swift in Sources */,
 				55E8E7C01A82E5540087F086 /* AppDelegate.swift in Sources */,
 				557FF6B91A85432C00895DC0 /* Card.swift in Sources */,

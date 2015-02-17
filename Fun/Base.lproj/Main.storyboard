@@ -214,8 +214,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rkF-N9-Urq">
+                                <rect key="frame" x="0.0" y="20" width="600" height="128"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="50" placeholderIntrinsicHeight="20.5" text=" " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="06P-Vh-GdN">
+                                        <rect key="frame" x="118" y="54.5" width="460" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile-placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="K8d-CD-Qck">
+                                        <rect key="frame" x="16" y="24" width="80" height="80"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="Cx4-F6-3Na"/>
+                                            <constraint firstAttribute="height" constant="80" id="fbp-rE-tJO"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="06P-Vh-GdN" secondAttribute="trailing" constant="22" id="3VP-kd-7Kj"/>
+                                    <constraint firstAttribute="height" constant="128" id="6Hn-1Y-9ZM"/>
+                                    <constraint firstItem="06P-Vh-GdN" firstAttribute="leading" secondItem="K8d-CD-Qck" secondAttribute="trailing" constant="22" id="He4-4S-fBj"/>
+                                    <constraint firstItem="K8d-CD-Qck" firstAttribute="leading" secondItem="rkF-N9-Urq" secondAttribute="leading" constant="16" id="UVo-uB-DyL"/>
+                                    <constraint firstItem="K8d-CD-Qck" firstAttribute="centerY" secondItem="06P-Vh-GdN" secondAttribute="centerY" id="Z54-hP-xFw"/>
+                                    <constraint firstAttribute="centerY" secondItem="K8d-CD-Qck" secondAttribute="centerY" id="x0N-af-cFq"/>
+                                </constraints>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7uC-HH-0kj">
-                                <rect key="frame" x="0.0" y="169" width="600" height="64"/>
+                                <rect key="frame" x="0.0" y="228" width="600" height="64"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="1rW-sc-rfY"/>
                                 </constraints>
@@ -229,7 +256,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fGM-oe-xI0">
-                                <rect key="frame" x="0.0" y="97" width="600" height="64"/>
+                                <rect key="frame" x="0.0" y="156" width="600" height="64"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="zlE-uH-DYr"/>
                                 </constraints>
@@ -252,19 +279,30 @@
                         </subviews>
                         <color key="backgroundColor" red="0.20784313730000001" green="0.18823529410000001" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="rkF-N9-Urq" firstAttribute="width" secondItem="fld-dv-HOv" secondAttribute="width" id="AU8-V2-x9h"/>
                             <constraint firstItem="gY0-0R-nzU" firstAttribute="top" secondItem="EhS-py-3sc" secondAttribute="bottom" constant="10" id="CX4-YI-sBX"/>
+                            <constraint firstItem="fGM-oe-xI0" firstAttribute="top" secondItem="rkF-N9-Urq" secondAttribute="bottom" constant="8" id="Ixi-Dd-Ac8"/>
+                            <constraint firstAttribute="centerX" secondItem="rkF-N9-Urq" secondAttribute="centerX" id="M6x-VR-hkT"/>
+                            <constraint firstItem="rkF-N9-Urq" firstAttribute="top" secondItem="1Ei-Nk-ihM" secondAttribute="bottom" id="NXM-ob-Qf3"/>
+                            <constraint firstItem="rkF-N9-Urq" firstAttribute="top" secondItem="1Ei-Nk-ihM" secondAttribute="bottom" id="Qbm-P5-YNp"/>
                             <constraint firstItem="7uC-HH-0kj" firstAttribute="top" secondItem="fGM-oe-xI0" secondAttribute="bottom" constant="8" id="VIt-zH-I4R"/>
                             <constraint firstAttribute="centerX" secondItem="7uC-HH-0kj" secondAttribute="centerX" id="e9T-6S-fqf"/>
                             <constraint firstItem="fGM-oe-xI0" firstAttribute="width" secondItem="fld-dv-HOv" secondAttribute="width" id="gpK-9S-9G6"/>
                             <constraint firstItem="EhS-py-3sc" firstAttribute="leading" secondItem="fld-dv-HOv" secondAttribute="leading" constant="30" id="hg0-p0-XeV"/>
-                            <constraint firstItem="fGM-oe-xI0" firstAttribute="top" secondItem="1Ei-Nk-ihM" secondAttribute="bottom" constant="77" id="jvB-4K-Ama"/>
                             <constraint firstAttribute="trailingMargin" secondItem="EhS-py-3sc" secondAttribute="trailing" constant="30" id="kWh-64-DXc"/>
                             <constraint firstAttribute="width" secondItem="7uC-HH-0kj" secondAttribute="width" id="njl-pU-MRB"/>
                             <constraint firstAttribute="centerX" secondItem="fGM-oe-xI0" secondAttribute="centerX" id="pwg-lZ-Pwv"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Qbm-P5-YNp"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="fbLoginView" destination="EhS-py-3sc" id="0aj-3f-c8T"/>
+                        <outlet property="userProfileImageView" destination="K8d-CD-Qck" id="TrJ-jr-k2b"/>
+                        <outlet property="usernameLabel" destination="06P-Vh-GdN" id="HIk-G2-tmH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="28x-Rp-73b" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -411,6 +449,7 @@
     </scenes>
     <resources>
         <image name="pass-icon" width="140" height="140"/>
+        <image name="profile-placeholder" width="80" height="80"/>
         <image name="share" width="140" height="140"/>
         <image name="star" width="26" height="25"/>
         <image name="star-button" width="140" height="141"/>
