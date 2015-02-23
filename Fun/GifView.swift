@@ -123,8 +123,11 @@ class GifView: UIView, NSURLSessionDataDelegate, NSURLSessionTaskDelegate{
     } else {
       if let myConcreteAnimatedView = myAnimatedView {
         myConcreteAnimatedView.animatedImage = FLAnimatedImage(animatedGIFData: self.imageBytes!)
-        dispatch_async(dispatch_get_main_queue(), {
-          self.progressIndicator.removeFromSuperview()
+        self.imageBytes = nil
+        dispatch_async(dispatch_get_main_queue(), {[weak self] in
+            if let strongSelf = self {
+              strongSelf.progressIndicator.removeFromSuperview()
+            }
         })
       }
     }
@@ -145,10 +148,12 @@ class GifView: UIView, NSURLSessionDataDelegate, NSURLSessionTaskDelegate{
 
   func URLSession(session: NSURLSession, dataTask: NSURLSessionDataTask, didReceiveData data: NSData) {
     self.imageBytes!.appendData(data)
-    var progress = (Float64(self.imageBytes!.length) / totalBytesLength!)
+    let progress = (Float64(self.imageBytes!.length) / totalBytesLength!)
 
-    dispatch_async(dispatch_get_main_queue(), {
-      self.progressIndicator.progress = progress
+    dispatch_async(dispatch_get_main_queue(), {[weak self] in
+        if let strongSelf = self {
+          strongSelf.progressIndicator.progress = progress
+        }
     })
 
   }

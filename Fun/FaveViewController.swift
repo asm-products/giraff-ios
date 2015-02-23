@@ -18,10 +18,12 @@ class FaveViewController: UICollectionViewController, UICollectionViewDelegateFl
         revealButtonItem.target = rvc
         revealButtonItem.action = "revealToggle:"
         navigationController!.navigationBar.addGestureRecognizer(rvc.panGestureRecognizer())
-        
+        weak var weakSelf = self
         deck.fetch() {
             dispatch_async(dispatch_get_main_queue()) {
-                self.collectionView!.reloadData()
+                if let strongSelf = weakSelf {
+                    strongSelf.collectionView!.reloadData()
+                }
                 NSLog("fetched faves")
             }
         }

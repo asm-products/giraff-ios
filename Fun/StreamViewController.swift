@@ -59,9 +59,7 @@ class StreamViewController: UIViewController, ZLSwipeableViewDataSource, ZLSwipe
         let view = swipeableView.topSwipeableView() as GifView
         let card = deck.cardForId(view.imageId!)!
         let avc = UIActivityViewController(activityItems: [card.caption!, card.shareUrl()], applicationActivities: nil)
-        navigationController?.presentViewController(avc, animated: true, completion: { () -> Void in
-            NSLog("shared")
-        })
+        navigationController?.presentViewController(avc, animated: true, completion: nil)
     }
 
     
@@ -80,7 +78,7 @@ class StreamViewController: UIViewController, ZLSwipeableViewDataSource, ZLSwipe
     // ZLSwipeableViewDelegate
     func swipeableView(swipeableView: ZLSwipeableView!, didStartSwipingView view: UIView!, atLocation location: CGPoint) {
         swipeStart = location
-//        NSLog("swipe start")
+        println("swipe start")
     }
     
     func swipeableView(swipeableView: ZLSwipeableView!, didEndSwipingView view: UIView!, atLocation location: CGPoint) {
@@ -95,13 +93,13 @@ class StreamViewController: UIViewController, ZLSwipeableViewDataSource, ZLSwipe
         let gifView = view as GifView
         switch(direction) {
         case .Left:
-            NSLog("\(gifView.imageId) passed")
+            println("\(gifView.imageId) passed")
             FunSession.sharedSession.imagePassed(gifView.imageId!)
         case .Right:
-            NSLog("\(gifView.imageId) faved")
+            println("\(gifView.imageId) faved")
             FunSession.sharedSession.imageFaved(gifView.imageId!)
         default:
-            NSLog("ignore swipe")
+            println("Ignore swipe")
         }
     }
     
