@@ -8,9 +8,8 @@ class DetailViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        let gifView = GifView(frame: imageView.bounds)
+        let gifView = GifView(frame: imageView.bounds, gifUrl: card!.gifvUrl!)
         imageView.addSubview(gifView)
-        gifView.gifUrl = self.card!.url!
         gifView.caption.text = self.card!.caption!
         
 //        gifView.layer.backgroundColor = UIColor(hue: 0, saturation: 0, brightness: 0.2, alpha: 1.0).CGColor

@@ -70,6 +70,13 @@ class StreamViewController: UIViewController, ZLSwipeableViewDataSource, ZLSwipe
                 if let myConcreteSwipeableView = mySwipeableView {
                     myConcreteSwipeableView.discardAllSwipeableViews()
                     myConcreteSwipeableView.loadNextSwipeableViewsIfNeeded()
+                    
+                    let gifView = myConcreteSwipeableView.topSwipeableView() as? GifView
+                    
+                    if let strongGifView = gifView {
+                        strongGifView.animatedViewController.play()
+                    }
+
                 }
             }
         }
@@ -100,6 +107,18 @@ class StreamViewController: UIViewController, ZLSwipeableViewDataSource, ZLSwipe
             FunSession.sharedSession.imageFaved(gifView.imageId!)
         default:
             println("Ignore swipe")
+        }
+        
+        let delay = 0.1//4.5 * Double(NSEC_PER_SEC)
+        let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+        dispatch_after(time, dispatch_get_main_queue()) { [weak self]() -> Void in
+            if let strongSelf = self {
+                let gifView = strongSelf.swipeableView.topSwipeableView() as? GifView
+                
+                if let strongGifView = gifView {
+                    strongGifView.animatedViewController.play()
+                }
+            }
         }
     }
     
@@ -138,11 +157,10 @@ class StreamViewController: UIViewController, ZLSwipeableViewDataSource, ZLSwipe
     // ZLSwipeableViewDataSource
     func nextViewForSwipeableView(swipeableView: ZLSwipeableView!) -> UIView! {
         if let card = self.deck.nextCard() {
-            var view = GifView(frame: swipeableView.bounds)
+            var view = GifView(frame: swipeableView.bounds, gifUrl:card.gifvUrl!)
             
             view.autoresizingMask = UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleWidth
         
-            view.gifUrl = card.url!
             view.imageId = card.id!
             view.caption.text = card.caption!
 
@@ -152,8 +170,6 @@ class StreamViewController: UIViewController, ZLSwipeableViewDataSource, ZLSwipe
             view.layer.shadowOpacity = 0.33
             view.layer.shadowOffset = CGSizeMake(0, 1.5)
             view.layer.shadowRadius = 4.0
-            view.layer.shouldRasterize = true
-            view.layer.rasterizationScale = UIScreen.mainScreen().scale
             
             return view
         }

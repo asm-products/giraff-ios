@@ -5,6 +5,11 @@ class Card : MTLModel, MTLJSONSerializing {
     var caption:String?
     var url:String?
     var shortcode:String?
+    var gifvUrl:String? {
+        get {
+            return "\(url!.stringByDeletingPathExtension).mp4"
+        }
+    }
     
     class func JSONKeyPathsByPropertyKey() -> [NSObject : AnyObject]! {
         return ["id":"id",

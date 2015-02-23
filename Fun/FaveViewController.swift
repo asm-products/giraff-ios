@@ -32,9 +32,8 @@ class FaveViewController: UICollectionViewController, UICollectionViewDelegateFl
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("gifCell", forIndexPath: indexPath) as UICollectionViewCell
         
-        let gifView = GifView(frame: cell.bounds)
         let card = deck.cardAtIndex(UInt(indexPath.row)) as Card!
-        gifView.gifUrl = card.url!
+        let gifView = GifView(frame: cell.bounds, gifUrl: card.gifvUrl!)
         cell.addSubview(gifView)
         
         gifView.layer.backgroundColor = UIColor(hue: 0, saturation: 0, brightness: 0.2, alpha: 1.0).CGColor
