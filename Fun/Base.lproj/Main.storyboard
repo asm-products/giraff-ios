@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="h4R-ga-7th">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -139,11 +140,171 @@
                     <connections>
                         <outlet property="revealButtonItem" destination="zAZ-Ka-YpV" id="jay-rj-rNG"/>
                         <outlet property="swipeableView" destination="8SP-4t-N6Q" id="PBX-Zb-Mpg"/>
+                        <segue destination="82w-Ko-eQW" kind="presentation" identifier="oops" id="Om3-lh-Xn3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="879" y="-471"/>
+            <point key="canvasLocation" x="942" y="-471"/>
+        </scene>
+        <!--Oops View Controller-->
+        <scene sceneID="JqE-gw-i5n">
+            <objects>
+                <viewController id="82w-Ko-eQW" customClass="OopsViewController" customModule="Fun" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="E5z-dM-5vv"/>
+                        <viewControllerLayoutGuide type="bottom" id="Jfy-nn-lHJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ewa-jA-GUi">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="oops_bg" translatesAutoresizingMaskIntoConstraints="NO" id="f0N-FE-tpo">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A67-Vr-4cx">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" backgroundImage="close">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="close:" destination="82w-Ko-eQW" eventType="touchUpInside" id="PHL-ie-bF7"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G63-MH-5Wx">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                <state key="normal" image="oops_upgrade_btn">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="zXK-AE-xeG" kind="presentation" id="ibb-gQ-thg"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Jfy-nn-lHJ" firstAttribute="top" secondItem="f0N-FE-tpo" secondAttribute="bottom" id="022-zu-crz"/>
+                            <constraint firstItem="A67-Vr-4cx" firstAttribute="top" secondItem="E5z-dM-5vv" secondAttribute="bottom" constant="8" id="Fe1-Zl-s3i">
+                                <variation key="widthClass=compact" constant="16"/>
+                            </constraint>
+                            <constraint firstAttribute="centerX" secondItem="G63-MH-5Wx" secondAttribute="centerX" id="G19-9O-YyL"/>
+                            <constraint firstItem="Jfy-nn-lHJ" firstAttribute="top" secondItem="G63-MH-5Wx" secondAttribute="bottom" constant="61" id="O6c-vY-rFS">
+                                <variation key="widthClass=compact" constant="50"/>
+                            </constraint>
+                            <constraint firstAttribute="trailingMargin" secondItem="f0N-FE-tpo" secondAttribute="trailing" constant="-16" id="SJx-lD-CWn"/>
+                            <constraint firstItem="A67-Vr-4cx" firstAttribute="trailing" secondItem="ewa-jA-GUi" secondAttribute="trailingMargin" id="XaW-De-Ggg"/>
+                            <constraint firstItem="f0N-FE-tpo" firstAttribute="top" secondItem="ewa-jA-GUi" secondAttribute="topMargin" id="ZCy-iZ-WJh"/>
+                            <constraint firstItem="f0N-FE-tpo" firstAttribute="leading" secondItem="ewa-jA-GUi" secondAttribute="leadingMargin" constant="-16" id="zjb-83-QTK"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="f0N-FE-tpo"/>
+                                <exclude reference="A67-Vr-4cx"/>
+                                <exclude reference="G63-MH-5Wx"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="022-zu-crz"/>
+                                <exclude reference="O6c-vY-rFS"/>
+                                <exclude reference="Fe1-Zl-s3i"/>
+                                <exclude reference="XaW-De-Ggg"/>
+                                <exclude reference="G19-9O-YyL"/>
+                                <exclude reference="SJx-lD-CWn"/>
+                                <exclude reference="ZCy-iZ-WJh"/>
+                                <exclude reference="zjb-83-QTK"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="f0N-FE-tpo"/>
+                                <include reference="A67-Vr-4cx"/>
+                                <include reference="G63-MH-5Wx"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="022-zu-crz"/>
+                                <include reference="O6c-vY-rFS"/>
+                                <include reference="Fe1-Zl-s3i"/>
+                                <include reference="XaW-De-Ggg"/>
+                                <include reference="G19-9O-YyL"/>
+                                <include reference="SJx-lD-CWn"/>
+                                <include reference="ZCy-iZ-WJh"/>
+                                <include reference="zjb-83-QTK"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LZX-c0-7k0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1722" y="-471"/>
+        </scene>
+        <!--Thanks View Controller-->
+        <scene sceneID="sOZ-cM-bI8">
+            <objects>
+                <viewController id="zXK-AE-xeG" customClass="ThanksViewController" customModule="Fun" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6re-rn-eDz"/>
+                        <viewControllerLayoutGuide type="bottom" id="1AE-lZ-d41"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3UE-jG-Nv1">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="thanks" translatesAutoresizingMaskIntoConstraints="NO" id="2au-wD-Pbz">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gHn-7Y-IBi">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" image="start_giffing">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="close:" destination="zXK-AE-xeG" eventType="touchUpInside" id="77h-ME-pV7"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="1AE-lZ-d41" firstAttribute="top" secondItem="2au-wD-Pbz" secondAttribute="bottom" id="2Xw-9P-6dh"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="2au-wD-Pbz" secondAttribute="trailing" constant="-16" id="5wn-25-NPg"/>
+                            <constraint firstItem="2au-wD-Pbz" firstAttribute="top" secondItem="3UE-jG-Nv1" secondAttribute="topMargin" id="EIv-0g-aM7"/>
+                            <constraint firstItem="1AE-lZ-d41" firstAttribute="top" secondItem="gHn-7Y-IBi" secondAttribute="bottom" constant="50" id="Ef6-X3-ciH"/>
+                            <constraint firstItem="2au-wD-Pbz" firstAttribute="leading" secondItem="3UE-jG-Nv1" secondAttribute="leadingMargin" constant="-16" id="Jba-HF-LVb"/>
+                            <constraint firstItem="gHn-7Y-IBi" firstAttribute="centerX" secondItem="2au-wD-Pbz" secondAttribute="centerX" id="wWK-LH-7Ju"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="2au-wD-Pbz"/>
+                                <exclude reference="gHn-7Y-IBi"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="2Xw-9P-6dh"/>
+                                <exclude reference="Ef6-X3-ciH"/>
+                                <exclude reference="wWK-LH-7Ju"/>
+                                <exclude reference="5wn-25-NPg"/>
+                                <exclude reference="EIv-0g-aM7"/>
+                                <exclude reference="Jba-HF-LVb"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="2au-wD-Pbz"/>
+                                <include reference="gHn-7Y-IBi"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="2Xw-9P-6dh"/>
+                                <include reference="Ef6-X3-ciH"/>
+                                <include reference="wWK-LH-7Ju"/>
+                                <include reference="5wn-25-NPg"/>
+                                <include reference="EIv-0g-aM7"/>
+                                <include reference="Jba-HF-LVb"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ais-4m-v7s" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2542.5" y="-471"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="ViR-dI-6OC">
@@ -452,12 +613,17 @@
         </scene>
     </scenes>
     <resources>
+        <image name="close" width="22" height="22"/>
         <image name="menu-star" width="31" height="29"/>
+        <image name="oops_bg" width="400" height="600"/>
+        <image name="oops_upgrade_btn" width="250" height="50"/>
         <image name="pass-icon" width="140" height="140"/>
         <image name="profile-placeholder" width="80" height="80"/>
         <image name="share" width="140" height="140"/>
         <image name="star" width="26" height="25"/>
         <image name="star-button" width="140" height="141"/>
+        <image name="start_giffing" width="251" height="50"/>
+        <image name="thanks" width="800" height="1200"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ARJ-Yv-NtF"/>

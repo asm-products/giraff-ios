@@ -6,6 +6,7 @@ class StreamViewController: UIViewController, ZLSwipeableViewDataSource, ZLSwipe
     
     var deck = Deck(deckSourceMode: DeckSourceMode.NewGifs)
     var swipeStart: CGPoint!
+    var totalFavedForSession: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,6 +98,11 @@ class StreamViewController: UIViewController, ZLSwipeableViewDataSource, ZLSwipe
             FunSession.sharedSession.imagePassed(gifView.imageId!)
         case .Right:
             println("\(gifView.imageId) faved")
+            totalFavedForSession += 1
+            // already faved 10 items: show them 'oops' payment page
+            if totalFavedForSession >= 10 {
+                self.performSegueWithIdentifier("oops", sender: self)
+            }
             FunSession.sharedSession.imageFaved(gifView.imageId!)
         default:
             println("Ignore swipe")
