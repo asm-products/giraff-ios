@@ -70,13 +70,6 @@ class StreamViewController: UIViewController, ZLSwipeableViewDataSource, ZLSwipe
                 if let myConcreteSwipeableView = mySwipeableView {
                     myConcreteSwipeableView.discardAllSwipeableViews()
                     myConcreteSwipeableView.loadNextSwipeableViewsIfNeeded()
-                    
-                    let gifView = myConcreteSwipeableView.topSwipeableView() as? GifView
-                    
-                    if let strongGifView = gifView {
-                        strongGifView.animatedViewController.play()
-                    }
-
                 }
             }
         }
@@ -107,18 +100,6 @@ class StreamViewController: UIViewController, ZLSwipeableViewDataSource, ZLSwipe
             FunSession.sharedSession.imageFaved(gifView.imageId!)
         default:
             println("Ignore swipe")
-        }
-        
-        let delay = 0.1//4.5 * Double(NSEC_PER_SEC)
-        let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
-        dispatch_after(time, dispatch_get_main_queue()) { [weak self]() -> Void in
-            if let strongSelf = self {
-                let gifView = strongSelf.swipeableView.topSwipeableView() as? GifView
-                
-                if let strongGifView = gifView {
-                    strongGifView.animatedViewController.play()
-                }
-            }
         }
     }
     
@@ -158,6 +139,11 @@ class StreamViewController: UIViewController, ZLSwipeableViewDataSource, ZLSwipe
     func nextViewForSwipeableView(swipeableView: ZLSwipeableView!) -> UIView! {
         if let card = self.deck.nextCard() {
             var view = GifView(frame: swipeableView.bounds, gifUrl:card.gifvUrl!)
+            dispatch_async(dispatch_get_main_queue()) { [weak view]() -> Void in
+                if let strongView = view {
+                    strongView.addAnimatedImage()
+                }
+            }
             
             view.autoresizingMask = UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleWidth
         

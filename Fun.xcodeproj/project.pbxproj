@@ -14,6 +14,7 @@
 		2836166F1A8C6D4E00E895D0 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2836166D1A8C6D4E00E895D0 /* Crashlytics.framework */; };
 		283616701A8C6D4E00E895D0 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2836166E1A8C6D4E00E895D0 /* Fabric.framework */; };
 		31E5CAAA1A92BAF900036EA8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E5CAA91A92BAF900036EA8 /* User.swift */; };
+		4A9ACF9C1A9C6A8700B1D811 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A9ACF9B1A9C6A8700B1D811 /* AVFoundation.framework */; };
 		5515DFAD1A8D96AC00C87BB4 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5515DFAC1A8D96AC00C87BB4 /* MenuViewController.swift */; };
 		55431B6F1A8945ED00F28569 /* FunSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55431B6E1A8945ED00F28569 /* FunSession.swift */; };
 		55692A5A1A8C7CCD00FE83E6 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55692A591A8C7CCD00FE83E6 /* DetailViewController.swift */; };
@@ -22,7 +23,6 @@
 		55A957171A88569D002A5F66 /* configuration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 55A957161A88569D002A5F66 /* configuration.plist */; };
 		55ADA6AC1A8419B100A588BD /* spinner.gif in Resources */ = {isa = PBXBuildFile; fileRef = 55ADA6AB1A8419B100A588BD /* spinner.gif */; };
 		55ADA6AE1A841A3700A588BD /* GifView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55ADA6AD1A841A3700A588BD /* GifView.swift */; };
-		55ADA6B01A843C6400A588BD /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55ADA6AF1A843C6400A588BD /* MediaPlayer.framework */; };
 		55CFA5DA1A8B3EBA00E1CDE2 /* FaveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55CFA5D91A8B3EBA00E1CDE2 /* FaveViewController.swift */; };
 		55E8E7C01A82E5540087F086 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E8E7BF1A82E5540087F086 /* AppDelegate.swift */; };
 		55E8E7C21A82E5540087F086 /* StreamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E8E7C11A82E5540087F086 /* StreamViewController.swift */; };
@@ -50,6 +50,7 @@
 		2836166D1A8C6D4E00E895D0 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		2836166E1A8C6D4E00E895D0 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		31E5CAA91A92BAF900036EA8 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		4A9ACF9B1A9C6A8700B1D811 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		5515DFAC1A8D96AC00C87BB4 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		55431B6E1A8945ED00F28569 /* FunSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FunSession.swift; sourceTree = "<group>"; };
 		55692A591A8C7CCD00FE83E6 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -80,9 +81,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A9ACF9C1A9C6A8700B1D811 /* AVFoundation.framework in Frameworks */,
 				0179C2571A85484E00A36023 /* FacebookSDK.framework in Frameworks */,
 				2836166F1A8C6D4E00E895D0 /* Crashlytics.framework in Frameworks */,
-				55ADA6B01A843C6400A588BD /* MediaPlayer.framework in Frameworks */,
 				0179C2581A85484E00A36023 /* FBAudienceNetwork.framework in Frameworks */,
 				D48D6C0E3A66A0FBCB2A5D86 /* libPods.a in Frameworks */,
 				283616701A8C6D4E00E895D0 /* Fabric.framework in Frameworks */,
@@ -181,6 +182,7 @@
 		C22EA1241867548343ED9419 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4A9ACF9B1A9C6A8700B1D811 /* AVFoundation.framework */,
 				2836166D1A8C6D4E00E895D0 /* Crashlytics.framework */,
 				2836166E1A8C6D4E00E895D0 /* Fabric.framework */,
 				0179C2541A85484E00A36023 /* FacebookSDK.framework */,

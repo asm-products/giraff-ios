@@ -1,8 +1,8 @@
 import UIKit
+import AVFoundation
 import MediaPlayer
 
 class GifView: UIView {
-    var animatedViewController:MPMoviePlayerController!
     var caption:UILabel!
     var imageId:NSString? // Not sure if this belongs here, but helps us know which Image is associated with this view
     var task:NSURLSessionDataTask?
@@ -13,29 +13,29 @@ class GifView: UIView {
     var passLabel:UIImageView!
     var faveLabel:UIImageView!
     var staticImage:UIImageView!
+    private var videoView:VideoView?
+    
+    typealias KVOContext = UInt8
+    var MyObservationContext = KVOContext()
     
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self)
+        self.videoView!.player().removeObserver(self, forKeyPath: "status", context: &MyObservationContext)
     }
 
     init(frame: CGRect, gifUrl: String) {
         self.gifUrl = gifUrl
         super.init(frame: frame)
-        addProgressIndicator()
+//        addProgressIndicator()
         addCaption()
-        addStaticImage()
-        addAnimatedImage()
+//        addStaticImage()
+        addVideoView()
         addPassLabel()
         addFaveLabel()
         
-        NSNotificationCenter.defaultCenter().addObserver(self,
-            selector: "videoThumbnailIsAvailable:",
-            name: MPMoviePlayerThumbnailImageRequestDidFinishNotification,
-            object: nil)
         
-        animatedViewController.requestThumbnailImagesAtTimes([0.0], timeOption: MPMovieTimeOption.NearestKeyFrame)
     }
-
+    
     required init(coder aDecoder: NSCoder) {
         self.gifUrl = ""
         super.init(coder: aDecoder)
@@ -69,15 +69,27 @@ class GifView: UIView {
     }
 
     func addAnimatedImage() {
-        animatedViewController = MPMoviePlayerController(contentURL: NSURL(string: gifUrl))
-        animatedViewController.backgroundView.backgroundColor = UIColor.clearColor()
-        let animatedView = animatedViewController.view
-        animatedViewController.repeatMode = .One
-        animatedViewController.controlStyle = .None
-        animatedView.contentMode = .ScaleAspectFit
-        animatedView.frame = CGRectMake(0, 0, self.bounds.width, self.bounds.height)
-        animatedView.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight
-//        self.addSubview(animatedView)
+        self.videoView!.setPlayer(AVPlayer(URL: NSURL(string:self.gifUrl)))
+            let options = NSKeyValueObservingOptions.New | NSKeyValueObservingOptions.Old
+            self.videoView!.player().addObserver(self, forKeyPath:"status", options: options, context: &MyObservationContext)
+
+        NSNotificationCenter.defaultCenter().addObserver(self,
+            selector: "playerItemDidReachEnd:",
+            name:AVPlayerItemDidPlayToEndTimeNotification,
+            object: self.videoView!.player().currentItem)
+        
+        self.videoView!.player().actionAtItemEnd = .None
+    }
+    
+    func playerItemDidReachEnd(notification: NSNotification) {
+        let p = notification.object as AVPlayerItem;
+        p.seekToTime(kCMTimeZero)
+    }
+    
+    override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
+        if (self.videoView!.player().status == .ReadyToPlay) {
+            self.videoView!.player().play()
+        }
     }
     
     func addStaticImage() {
@@ -86,6 +98,14 @@ class GifView: UIView {
         staticImage.contentMode = .ScaleAspectFit
         staticImage.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight
         addSubview(staticImage)
+    }
+    
+    func addVideoView() {
+        videoView = VideoView(frame: self.bounds)
+//        staticImage.backgroundColor = UIColor.clearColor()
+        videoView!.contentMode = .ScaleAspectFit
+        videoView!.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight
+        addSubview(videoView!)
     }
 
     func addPassLabel() {
@@ -113,31 +133,28 @@ class GifView: UIView {
             margin = 0
         }
 
-        self.animatedViewController.view.frame = CGRectMake(0, 0, self.bounds.width, self.bounds.height - margin)
-        self.staticImage.frame = self.animatedViewController.view.frame
-
         var progress_width = self.bounds.width
         if self.bounds.width > self.bounds.height {
             progress_width = self.bounds.height
         }
-        progressIndicator.frame = CGRectMake(0, 0, progress_width/2, progress_width/2)
-        progressIndicator.center = CGPoint(x: self.bounds.width / 2.0, y: self.bounds.height / 2.0)
+//        progressIndicator.frame = CGRectMake(0, 0, progress_width/2, progress_width/2)
+//        progressIndicator.center = CGPoint(x: self.bounds.width / 2.0, y: self.bounds.height / 2.0)
 
     }
-    
-    func videoThumbnailIsAvailable(notification: NSNotification){
-        if let player = animatedViewController{
-            if notification.object === player {
-                /* Now get the thumbnail out of the user info dictionary */
-                let thumbnail =
-                notification.userInfo![MPMoviePlayerThumbnailImageKey] as? UIImage
-                if let image = thumbnail{
-                    /* We got the thumbnail image. You can now use it here */
-                    self.staticImage.image = image
-                }
-            }
-        }
+}
+
+class VideoView: UIView {
+    override class func layerClass() -> AnyClass {
+        return AVPlayerLayer.self
     }
     
+    func player() -> AVPlayer {
+        let playerLayer = self.layer as AVPlayerLayer
+        return playerLayer.player
+    }
     
+    func setPlayer(player: AVPlayer) {
+        let playerLayer = self.layer as AVPlayerLayer
+        playerLayer.player = player
+    }
 }

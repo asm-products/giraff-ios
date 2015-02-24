@@ -9,6 +9,8 @@ class DetailViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         let gifView = GifView(frame: imageView.bounds, gifUrl: card!.gifvUrl!)
+        gifView.addAnimatedImage()
+
         imageView.addSubview(gifView)
         gifView.caption.text = self.card!.caption!
         

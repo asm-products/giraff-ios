@@ -34,6 +34,7 @@ class FaveViewController: UICollectionViewController, UICollectionViewDelegateFl
         
         let card = deck.cardAtIndex(UInt(indexPath.row)) as Card!
         let gifView = GifView(frame: cell.bounds, gifUrl: card.gifvUrl!)
+        gifView.addAnimatedImage()
         cell.addSubview(gifView)
         
         gifView.layer.backgroundColor = UIColor(hue: 0, saturation: 0, brightness: 0.2, alpha: 1.0).CGColor
