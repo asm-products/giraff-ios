@@ -12,15 +12,28 @@ class GifView: UIView {
     private var gifUrl: NSString
     var passLabel:UIImageView!
     var faveLabel:UIImageView!
+    var staticImage:UIImageView!
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
 
     init(frame: CGRect, gifUrl: String) {
         self.gifUrl = gifUrl
         super.init(frame: frame)
         addProgressIndicator()
         addCaption()
+        addStaticImage()
         addAnimatedImage()
         addPassLabel()
         addFaveLabel()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self,
+            selector: "videoThumbnailIsAvailable:",
+            name: MPMoviePlayerThumbnailImageRequestDidFinishNotification,
+            object: nil)
+        
+        animatedViewController.requestThumbnailImagesAtTimes([0.0], timeOption: MPMovieTimeOption.NearestKeyFrame)
     }
 
     required init(coder aDecoder: NSCoder) {
@@ -57,14 +70,22 @@ class GifView: UIView {
 
     func addAnimatedImage() {
         animatedViewController = MPMoviePlayerController(contentURL: NSURL(string: gifUrl))
-        animatedViewController.backgroundView.backgroundColor = UIColor.whiteColor()
+        animatedViewController.backgroundView.backgroundColor = UIColor.clearColor()
         let animatedView = animatedViewController.view
         animatedViewController.repeatMode = .One
         animatedViewController.controlStyle = .None
         animatedView.contentMode = .ScaleAspectFit
         animatedView.frame = CGRectMake(0, 0, self.bounds.width, self.bounds.height)
         animatedView.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight
-        self.addSubview(animatedView)
+//        self.addSubview(animatedView)
+    }
+    
+    func addStaticImage() {
+        staticImage = UIImageView(frame: CGRectMake(0, 0, self.bounds.width, self.bounds.height))
+        staticImage.backgroundColor = UIColor.clearColor()
+        staticImage.contentMode = .ScaleAspectFit
+        staticImage.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight
+        addSubview(staticImage)
     }
 
     func addPassLabel() {
@@ -93,6 +114,7 @@ class GifView: UIView {
         }
 
         self.animatedViewController.view.frame = CGRectMake(0, 0, self.bounds.width, self.bounds.height - margin)
+        self.staticImage.frame = self.animatedViewController.view.frame
 
         var progress_width = self.bounds.width
         if self.bounds.width > self.bounds.height {
@@ -102,4 +124,20 @@ class GifView: UIView {
         progressIndicator.center = CGPoint(x: self.bounds.width / 2.0, y: self.bounds.height / 2.0)
 
     }
+    
+    func videoThumbnailIsAvailable(notification: NSNotification){
+        if let player = animatedViewController{
+            if notification.object === player {
+                /* Now get the thumbnail out of the user info dictionary */
+                let thumbnail =
+                notification.userInfo![MPMoviePlayerThumbnailImageKey] as? UIImage
+                if let image = thumbnail{
+                    /* We got the thumbnail image. You can now use it here */
+                    self.staticImage.image = image
+                }
+            }
+        }
+    }
+    
+    
 }
