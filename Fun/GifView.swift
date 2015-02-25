@@ -69,7 +69,9 @@ class GifView: UIView {
     }
 
     func addAnimatedImage() {
-        self.videoView!.setPlayer(AVPlayer(URL: NSURL(string:self.gifUrl)))
+        let player = AVPlayer(URL: NSURL(string:self.gifUrl))
+        player.muted = true
+        self.videoView!.setPlayer(player)
             let options = NSKeyValueObservingOptions.New | NSKeyValueObservingOptions.Old
             self.videoView!.player().addObserver(self, forKeyPath:"status", options: options, context: &MyObservationContext)
 
