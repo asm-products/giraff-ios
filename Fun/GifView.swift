@@ -2,17 +2,29 @@ import UIKit
 import AVFoundation
 import MediaPlayer
 
-class GifView: UIView {
+class GifCollectionViewCell: UICollectionViewCell, NSURLSessionDataDelegate, NSURLSessionTaskDelegate{
     var caption:UILabel!
     var imageId:NSString? // Not sure if this belongs here, but helps us know which Image is associated with this view
     var task:NSURLSessionDataTask?
     var imageBytes:NSMutableData?
     var totalBytesLength:Float64?
     var progressIndicator: CircleProgressView!
-    private var gifUrl: NSString
+    var gifUrl: NSString?
+    var shouldPlay:Bool = false  {
+        didSet {
+            if let player = videoView!.player() {
+                if (player.status == .ReadyToPlay && shouldPlay) {
+                    player.play()
+                } else if player.status == .ReadyToPlay {
+                    player.pause()
+                }
+            }
+        }
+    }
+
     var passLabel:UIImageView!
     var faveLabel:UIImageView!
-    var staticImage:UIImageView!
+    var previewImageView:UIImageView!
     private var videoView:VideoView?
     
     typealias KVOContext = UInt8
@@ -20,25 +32,38 @@ class GifView: UIView {
     
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self)
-        self.videoView!.player().removeObserver(self, forKeyPath: "status", context: &MyObservationContext)
-    }
-
-    init(frame: CGRect, gifUrl: String) {
-        self.gifUrl = gifUrl
-        super.init(frame: frame)
-//        addProgressIndicator()
-        addCaption()
-//        addStaticImage()
-        addVideoView()
-        addPassLabel()
-        addFaveLabel()
-        
-        
+        self.videoView!.player()!.removeObserver(self, forKeyPath: "status", context: &MyObservationContext)
     }
     
-    required init(coder aDecoder: NSCoder) {
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        addPreviewImage()
+        
+        layer.backgroundColor = UIColor(hue: 0, saturation: 0, brightness: 0.2, alpha: 1.0).CGColor
+        layer.cornerRadius = 10.0;
+        layer.shadowColor = UIColor.blackColor().CGColor
+        layer.shadowOpacity = 0.33
+        layer.shadowOffset = CGSizeMake(0, 1.5)
+        layer.shadowRadius = 4.0
+
+        addVideoView()
+
+        addCaption()
+        addPassLabel()
+        addFaveLabel()
+    }
+
+//    init(frame: CGRect, gifUrl: String) {
+//        self.gifUrl = gifUrl
+//        super.init(frame: frame)
+//        addCaption()
+//        addPassLabel()
+//        addFaveLabel()
+//    }
+
+    required init(coder: NSCoder) {
         self.gifUrl = ""
-        super.init(coder: aDecoder)
+        super.init(coder: coder)
     }
 
     override func removeFromSuperview() {
@@ -69,18 +94,29 @@ class GifView: UIView {
     }
 
     func addAnimatedImage() {
-        let player = AVPlayer(URL: NSURL(string:self.gifUrl))
+        self.videoView!.hidden = false
+        let player = AVPlayer(URL: NSURL(string:self.gifUrl!))
         player.muted = true
         self.videoView!.setPlayer(player)
             let options = NSKeyValueObservingOptions.New | NSKeyValueObservingOptions.Old
-            self.videoView!.player().addObserver(self, forKeyPath:"status", options: options, context: &MyObservationContext)
+            self.videoView!.player()?.addObserver(self, forKeyPath:"status", options: options, context: &MyObservationContext)
 
         NSNotificationCenter.defaultCenter().addObserver(self,
             selector: "playerItemDidReachEnd:",
             name:AVPlayerItemDidPlayToEndTimeNotification,
-            object: self.videoView!.player().currentItem)
+            object: self.videoView!.player()?.currentItem)
         
-        self.videoView!.player().actionAtItemEnd = .None
+        self.videoView!.player()?.actionAtItemEnd = .None
+    }
+    
+    func addPreviewImage() {
+
+        previewImageView = UIImageView(frame: self.bounds)
+        previewImageView!.contentMode = .ScaleAspectFit
+        previewImageView!.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight
+        addSubview(previewImageView!)
+        
+        addProgressIndicator()
     }
     
     func playerItemDidReachEnd(notification: NSNotification) {
@@ -89,22 +125,13 @@ class GifView: UIView {
     }
     
     override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
-        if (self.videoView!.player().status == .ReadyToPlay) {
-            self.videoView!.player().play()
+        if (self.videoView!.player()!.status == .ReadyToPlay && self.shouldPlay) {
+            self.videoView!.player()!.play()
         }
-    }
-    
-    func addStaticImage() {
-        staticImage = UIImageView(frame: CGRectMake(0, 0, self.bounds.width, self.bounds.height))
-        staticImage.backgroundColor = UIColor.clearColor()
-        staticImage.contentMode = .ScaleAspectFit
-        staticImage.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight
-        addSubview(staticImage)
     }
     
     func addVideoView() {
         videoView = VideoView(frame: self.bounds)
-//        staticImage.backgroundColor = UIColor.clearColor()
         videoView!.contentMode = .ScaleAspectFit
         videoView!.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight
         addSubview(videoView!)
@@ -139,18 +166,77 @@ class GifView: UIView {
         if self.bounds.width > self.bounds.height {
             progress_width = self.bounds.height
         }
-//        progressIndicator.frame = CGRectMake(0, 0, progress_width/2, progress_width/2)
-//        progressIndicator.center = CGPoint(x: self.bounds.width / 2.0, y: self.bounds.height / 2.0)
+        if progressIndicator != nil {
+        progressIndicator.frame = CGRectMake(0, 0, progress_width/2, progress_width/2)
+        progressIndicator.center = CGPoint(x: self.bounds.width / 2.0, y: self.bounds.height / 2.0)
+        }
 
     }
+
+
+    func downloadData(){
+        var session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration(), delegate: self, delegateQueue: nil)
+        self.progressIndicator.hidden = false
+        self.progressIndicator.progress = 0.000001
+        self.previewImageView.image = nil
+        task = session.dataTaskWithURL(NSURL(string:self.gifUrl!)!)
+        task!.resume()
+    }
+
+  func URLSession(session: NSURLSession, dataTask: NSURLSessionDataTask, didReceiveResponse response: NSURLResponse, completionHandler: (NSURLSessionResponseDisposition) -> Void) {
+    completionHandler(NSURLSessionResponseDisposition.Allow)
+    NSLog("response received: \(response.expectedContentLength) bytes")
+    self.imageBytes = NSMutableData()
+    self.totalBytesLength = Float64(response.expectedContentLength)
+  }
+
+  func URLSession(session: NSURLSession, task: NSURLSessionTask, didCompleteWithError error: NSError?) {
+    if error != nil {
+      NSLog("download error: %@", error!)
+    } else {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { () -> Void in
+            if let imageBytes = self.imageBytes {
+                let image = UIImage(data:imageBytes)
+                if let loadedImage = image {
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.previewImageView.image = loadedImage
+                        self.progressIndicator.hidden = true
+                    })
+                }
+            }
+        })
+      }
+    }
+//  func URLSession(session: NSURLSession, dataTask: NSURLSessionDataTask, willCacheResponse proposedResponse: NSCachedURLResponse, completionHandler: (NSCachedURLResponse!) -> Void) {
+//    
+//    let response = proposedResponse.response as NSHTTPURLResponse
+//    var headers = response.allHeaderFields
+//    headers["Cache-Control"] = "max-age=86400, private" // cache for a day
+//    headers.removeValueForKey("Expires")
+//    headers.removeValueForKey("s-maxage")
+//    let newResponse = NSHTTPURLResponse(URL: response.URL!, statusCode: response.statusCode, HTTPVersion: "HTTP/1.1", headerFields: headers)
+//    let cached = NSCachedURLResponse(response: newResponse!, data: proposedResponse.data, userInfo: headers, storagePolicy: NSURLCacheStoragePolicy.Allowed)
+//    
+//    completionHandler(cached)
+//  }
+
+  func URLSession(session: NSURLSession, dataTask: NSURLSessionDataTask, didReceiveData data: NSData) {
+    self.imageBytes!.appendData(data)
+    var progress = (Float64(self.imageBytes!.length) / totalBytesLength!)
+    NSLog("data received: %@", dataTask)
+
+    dispatch_async(dispatch_get_main_queue(), {
+      self.progressIndicator.progress = progress
+    })
 }
 
+}
 class VideoView: UIView {
     override class func layerClass() -> AnyClass {
         return AVPlayerLayer.self
     }
     
-    func player() -> AVPlayer {
+    func player() -> AVPlayer? {
         let playerLayer = self.layer as AVPlayerLayer
         return playerLayer.player
     }

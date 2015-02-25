@@ -11,6 +11,12 @@ class Card : MTLModel, MTLJSONSerializing {
         }
     }
     
+    var gifUrlPreview:String? {
+        get {
+            return "\(url!.stringByDeletingPathExtension)l.gif"
+        }
+    }
+    
     class func JSONKeyPathsByPropertyKey() -> [NSObject : AnyObject]! {
         return ["id":"id",
                 "caption":"name",

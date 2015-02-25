@@ -49,14 +49,18 @@ class StreamViewController: UIViewController, ZLSwipeableViewDataSource, ZLSwipe
 
     @IBAction func faveButtonWasPressed(sender: AnyObject) {
         swipeableView.swipeTopViewToRight()
+        let view = swipeableView.topSwipeableView() as GifCollectionViewCell
+        view.shouldPlay = true
     }
     
     @IBAction func passButtonWasPressed(sender: AnyObject) {
         swipeableView.swipeTopViewToLeft()
+        let view = swipeableView.topSwipeableView() as GifCollectionViewCell
+        view.shouldPlay = true
     }
 
     @IBAction func shareButtonWasPressed(sender: AnyObject) {
-        let view = swipeableView.topSwipeableView() as GifView
+        let view = swipeableView.topSwipeableView() as GifCollectionViewCell
         let card = deck.cardForId(view.imageId!)!
         let avc = UIActivityViewController(activityItems: [card.caption!, card.shareUrl()], applicationActivities: nil)
         navigationController?.presentViewController(avc, animated: true, completion: nil)
@@ -84,13 +88,13 @@ class StreamViewController: UIViewController, ZLSwipeableViewDataSource, ZLSwipe
     func swipeableView(swipeableView: ZLSwipeableView!, didEndSwipingView view: UIView!, atLocation location: CGPoint) {
         swipeStart = nil
 
-        let gifView = view as GifView
+        let gifView = view as GifCollectionViewCell
         gifView.passLabel.alpha = 0.0
         gifView.faveLabel.alpha = 0.0
     }
     
     func swipeableView(swipeableView: ZLSwipeableView!, didSwipeView view: UIView!, inDirection direction: ZLSwipeableViewDirection) {
-        let gifView = view as GifView
+        let gifView = view as GifCollectionViewCell
         switch(direction) {
         case .Left:
             println("\(gifView.imageId) passed")
@@ -104,13 +108,13 @@ class StreamViewController: UIViewController, ZLSwipeableViewDataSource, ZLSwipe
     }
     
     func swipeableView(swipeableView: ZLSwipeableView!, didSwipeRight view: UIView!) {
-        let gifView = view as GifView
+        let gifView = view as GifCollectionViewCell
     }
     
     func swipeableView(swipeableView: ZLSwipeableView!, swipingView view: UIView!, atLocation location: CGPoint, translation: CGPoint) {
         let minimalDrag = CGFloat(10.0)
         let maximumDrag = CGFloat(40.0)
-        let gifView = view as GifView
+        let gifView = view as GifCollectionViewCell
         if let concreteSwipeStart = swipeStart {
             let swipeDiff = location.x - concreteSwipeStart.x
             let absSwipeDiff = abs(swipeDiff)
@@ -137,8 +141,14 @@ class StreamViewController: UIViewController, ZLSwipeableViewDataSource, ZLSwipe
     
     // ZLSwipeableViewDataSource
     func nextViewForSwipeableView(swipeableView: ZLSwipeableView!) -> UIView! {
+        
+        if let view = swipeableView.topSwipeableView() as? GifCollectionViewCell {
+            view.shouldPlay = true
+        }
+
         if let card = self.deck.nextCard() {
-            var view = GifView(frame: swipeableView.bounds, gifUrl:card.gifvUrl!)
+            var view = GifCollectionViewCell(frame:swipeableView.bounds)
+            view.gifUrl = card.gifvUrl!
             dispatch_async(dispatch_get_main_queue()) { [weak view]() -> Void in
                 if let strongView = view {
                     strongView.addAnimatedImage()
@@ -159,6 +169,7 @@ class StreamViewController: UIViewController, ZLSwipeableViewDataSource, ZLSwipe
             
             return view
         }
+
         return nil
     }
 }

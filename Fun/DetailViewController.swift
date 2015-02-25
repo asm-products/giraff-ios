@@ -8,7 +8,8 @@ class DetailViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        let gifView = GifView(frame: imageView.bounds, gifUrl: card!.gifvUrl!)
+        let gifView = GifCollectionViewCell(frame:imageView.bounds)
+        gifView.gifUrl = card!.gifvUrl!
         gifView.addAnimatedImage()
 
         imageView.addSubview(gifView)
