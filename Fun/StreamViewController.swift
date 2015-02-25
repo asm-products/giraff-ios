@@ -49,14 +49,16 @@ class StreamViewController: UIViewController, ZLSwipeableViewDataSource, ZLSwipe
 
     @IBAction func faveButtonWasPressed(sender: AnyObject) {
         swipeableView.swipeTopViewToRight()
-        let view = swipeableView.topSwipeableView() as GifCollectionViewCell
-        view.shouldPlay = true
+        if let view = swipeableView.topSwipeableView() as? GifCollectionViewCell {
+            view.shouldPlay = true
+        }
     }
     
     @IBAction func passButtonWasPressed(sender: AnyObject) {
         swipeableView.swipeTopViewToLeft()
-        let view = swipeableView.topSwipeableView() as GifCollectionViewCell
-        view.shouldPlay = true
+        if let view = swipeableView.topSwipeableView() as? GifCollectionViewCell {
+            view.shouldPlay = true
+        }
     }
 
     @IBAction func shareButtonWasPressed(sender: AnyObject) {
