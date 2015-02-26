@@ -9,7 +9,7 @@
 import UIKit
 import Fabric
 import Crashlytics
-
+import AVFoundation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -28,6 +28,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let cacheSizeDisk = 300*1024*1024; // 300 MB
         let sharedCache = NSURLCache(memoryCapacity: cacheSizeMemory, diskCapacity: cacheSizeDisk, diskPath: nil)
         NSURLCache.setSharedURLCache(sharedCache)
+      
+        // Set AudioSessionCategory
+        AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient, error: nil)
       
         Fabric.with([Crashlytics()])
 
