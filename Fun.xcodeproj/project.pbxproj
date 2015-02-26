@@ -30,6 +30,8 @@
 		55E8E7C71A82E5540087F086 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55E8E7C61A82E5540087F086 /* Images.xcassets */; };
 		55E8E7D61A82E5540087F086 /* FunTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E8E7D51A82E5540087F086 /* FunTests.swift */; };
 		D48D6C0E3A66A0FBCB2A5D86 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6700CA7FD39135D61A9D87A2 /* libPods.a */; };
+		F691558E1A9D199F005AE298 /* OopsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F691558D1A9D199F005AE298 /* OopsViewController.swift */; };
+		F69155901A9D1D5C005AE298 /* ThanksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F691558F1A9D1D5C005AE298 /* ThanksViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +76,8 @@
 		6700CA7FD39135D61A9D87A2 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5C330177C5833B47905205C /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		EDC99AFFA61A5C9BE9BFF0C6 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		F691558D1A9D199F005AE298 /* OopsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OopsViewController.swift; sourceTree = "<group>"; };
+		F691558F1A9D1D5C005AE298 /* ThanksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThanksViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +132,7 @@
 				55E8E7BF1A82E5540087F086 /* AppDelegate.swift */,
 				55E8E7C11A82E5540087F086 /* StreamViewController.swift */,
 				55E8E7C31A82E5540087F086 /* Main.storyboard */,
+				F691558F1A9D1D5C005AE298 /* ThanksViewController.swift */,
 				55E8E7C61A82E5540087F086 /* Images.xcassets */,
 				55E8E7BD1A82E5540087F086 /* Supporting Files */,
 				55E8E7E61A82FFFE0087F086 /* Bridging-Header.h */,
@@ -141,6 +146,7 @@
 				55CFA5D91A8B3EBA00E1CDE2 /* FaveViewController.swift */,
 				55692A591A8C7CCD00FE83E6 /* DetailViewController.swift */,
 				5515DFAC1A8D96AC00C87BB4 /* MenuViewController.swift */,
+				F691558D1A9D199F005AE298 /* OopsViewController.swift */,
 			);
 			path = Fun;
 			sourceTree = "<group>";
@@ -363,6 +369,7 @@
 				0179C25A1A854A9400A36023 /* LoginViewController.swift in Sources */,
 				55E8E7C21A82E5540087F086 /* StreamViewController.swift in Sources */,
 				55ADA6AE1A841A3700A588BD /* GifView.swift in Sources */,
+				F691558E1A9D199F005AE298 /* OopsViewController.swift in Sources */,
 				5515DFAD1A8D96AC00C87BB4 /* MenuViewController.swift in Sources */,
 				557FF6BB1A85478400895DC0 /* Deck.swift in Sources */,
 				0178D1731A8C29FF00293AB3 /* CircleProgressView.swift in Sources */,
@@ -371,6 +378,7 @@
 				55692A5A1A8C7CCD00FE83E6 /* DetailViewController.swift in Sources */,
 				55E8E7C01A82E5540087F086 /* AppDelegate.swift in Sources */,
 				557FF6B91A85432C00895DC0 /* Card.swift in Sources */,
+				F69155901A9D1D5C005AE298 /* ThanksViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
