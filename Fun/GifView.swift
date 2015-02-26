@@ -37,6 +37,15 @@ class GifCollectionViewCell: UICollectionViewCell, NSURLSessionDataDelegate, NSU
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.buildViewHierarchy()
+    }
+
+    required init(coder: NSCoder) {
+        super.init(coder: coder)
+        self.buildViewHierarchy()
+    }
+
+    private func buildViewHierarchy() {
         addPreviewImage()
         
         layer.backgroundColor = UIColor(hue: 0, saturation: 0, brightness: 0.2, alpha: 1.0).CGColor
@@ -51,19 +60,6 @@ class GifCollectionViewCell: UICollectionViewCell, NSURLSessionDataDelegate, NSU
         addCaption()
         addPassLabel()
         addFaveLabel()
-    }
-
-//    init(frame: CGRect, gifUrl: String) {
-//        self.gifUrl = gifUrl
-//        super.init(frame: frame)
-//        addCaption()
-//        addPassLabel()
-//        addFaveLabel()
-//    }
-
-    required init(coder: NSCoder) {
-        self.gifUrl = ""
-        super.init(coder: coder)
     }
 
     override func removeFromSuperview() {
