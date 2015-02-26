@@ -5,3 +5,4 @@ pod 'Mantle', '~> 1.5'
 pod 'FLAnimatedImage', '~> 1.0'
 pod 'SWRevealViewController'
 pod 'ZLSwipeableView', git: 'https://github.com/whatupdave/ZLSwipeableView'
+pod "SPXDataValidators"
