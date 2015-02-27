@@ -1,11 +1,12 @@
 import UIKit
 
-class LoginViewController: UIViewController, FBLoginViewDelegate {
+class LoginViewController: GAITrackedViewController, FBLoginViewDelegate {
     @IBOutlet weak var loginView: FBLoginView!
     @IBOutlet weak var bgImage: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.screenName = "Login"
         loginView.readPermissions = ["public_profile", "email"]
         loginView.delegate = self
         
@@ -17,6 +18,8 @@ class LoginViewController: UIViewController, FBLoginViewDelegate {
     
     func loginViewFetchedUserInfo(loginView : FBLoginView!, user: FBGraphUser) {
         NSLog("Facebook login successful");
+        GAI.sharedInstance().defaultTracker
+            .send(GAIDictionaryBuilder.createEventWithCategory("auth", action: "fb_login_success", label:"Facebook Login Successful", value:nil).build())
 
         User.currentUser.facebookName = user.objectForKey("name") as? String
         User.currentUser.facebookID = user.objectForKey("id") as? String

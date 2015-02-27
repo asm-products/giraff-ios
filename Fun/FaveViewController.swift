@@ -5,6 +5,15 @@ class FaveViewController: UICollectionViewController, UICollectionViewDelegateFl
     
     var deck = Deck(deckSourceMode: DeckSourceMode.Faves)
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated);
+
+        // GA
+        var tracker = GAI.sharedInstance().defaultTracker
+        tracker.set(kGAIScreenName, value: "Favorites")
+        tracker.send(GAIDictionaryBuilder.createScreenView().build())
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

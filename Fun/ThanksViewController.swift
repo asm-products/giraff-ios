@@ -8,14 +8,13 @@
 
 import UIKit
 
-class ThanksViewController: UIViewController {
+class ThanksViewController: GAITrackedViewController {
     
     var parent: AnyObject?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.screenName = "Thanks for Upgrading"
     }
 
     override func didReceiveMemoryWarning() {

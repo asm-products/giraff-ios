@@ -1,4 +1,4 @@
-    //
+//
 //  AppDelegate.swift
 //  Fun
 //
@@ -33,6 +33,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient, error: nil)
       
         Fabric.with([Crashlytics()])
+        
+        var plist = NSBundle.mainBundle().pathForResource("configuration", ofType: "plist")
+        var config = NSDictionary(contentsOfFile: plist!)!
+
+        // Google Analytics
+        GAI.sharedInstance().dispatchInterval = 10
+        GAI.sharedInstance().trackerWithTrackingId(config["GOOGLE_ANALYTICS_ID"] as NSString)
+        GAI.sharedInstance().defaultTracker.send(GAIDictionaryBuilder.createEventWithCategory("ui_action", action: "app_launched", label:"launch", value:nil).build())
 
         return true
     }
