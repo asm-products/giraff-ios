@@ -28,7 +28,6 @@ class LoginWithEmailViewController: UIViewController, UITextFieldDelegate {
 //            TODO: Show alert if login is not successful
 //            self.presentAlert("Error", message: "Invalid Account")
 //        }
-        
     }
     
     func textFieldDidBeginEditing(textField: DesignableTextField) {
