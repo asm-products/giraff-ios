@@ -16,15 +16,23 @@ class LoginViewController: UIViewController, FBLoginViewDelegate {
     }
     
     func loginViewFetchedUserInfo(loginView : FBLoginView!, user: FBGraphUser) {
-        NSLog("Facebook login successful")
-        var email = user.objectForKey("email") as String
+        NSLog("Facebook login successful");
 
         User.currentUser.facebookName = user.objectForKey("name") as? String
-        User.currentUser.facebookID = user.objectForKey("id") as NSString
+        User.currentUser.facebookID = user.objectForKey("id") as? String
         User.currentUser.getFacebookProfilePicture { _ in
             
         }
-        FunSession.sharedSession.signIn(email) {
+        
+        var loginEmail: String;
+        if let email = user.objectForKey("email") as? String {
+            loginEmail = email;
+        }
+        else {
+            loginEmail = "\(User.currentUser.facebookID!)@facebook.com"
+        }
+        
+        FunSession.sharedSession.signIn(loginEmail) {
             NSLog("API signin successful")
             dispatch_async(dispatch_get_main_queue()) {
                 self.performSegueWithIdentifier("loggedIn", sender: self)
