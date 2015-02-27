@@ -20,19 +20,14 @@ class SignUpWithEmailViewController: UIViewController {
         emailTextField.dataValidator = ValidatorFactory.emailValidator
         passwordTextField.dataValidator = ValidatorFactory.passwordValidator
         
-        signUpButton.enabled = true
+        signUpButton.enabled = false
     }
 
     @IBAction func signUpButtonDidPress(button: AnyObject) {
-        // TODO: Use the new sign up API with password and email
-
+//        TODO: Use the new sign up API with password and email
 //        FunSession.sharedSession.signIn(emailTextField.text) {
-        
-        self.delegate?.didSignUpWithEmail()
-
-
-        
-            //        TODO: Show alert if not successful
+            self.delegate?.didSignUpWithEmail()
+//            TODO: Show alert if not successful
 //        }
     }
     

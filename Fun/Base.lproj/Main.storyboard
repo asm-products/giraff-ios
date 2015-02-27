@@ -303,7 +303,7 @@
                     <connections>
                         <outlet property="bgImage" destination="rwn-JS-Qnb" id="mPy-Dd-l1a"/>
                         <outlet property="loginView" destination="3ZA-Cy-NTu" id="L4w-Eg-DTQ"/>
-                        <segue destination="BKj-wd-lgM" kind="show" identifier="loggedIn" id="tDb-3f-N3m"/>
+                        <segue destination="BKj-wd-lgM" kind="showDetail" identifier="loggedIn" id="tDb-3f-N3m"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H3J-1O-NA3" userLabel="First Responder" sceneMemberID="firstResponder"/>

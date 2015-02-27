@@ -30,12 +30,14 @@ class User: NSObject, NSCoding {
         
         return nil
     }
+    var didLoginWithFacebook: Bool? {didSet { cache() }}
 
     override init() {}
     
     required init(coder aDecoder: NSCoder) {
         self.facebookName = aDecoder.decodeObjectForKey("facebookName") as? String
         self.facebookID = aDecoder.decodeObjectForKey("facebookID") as? String
+        self.didLoginWithFacebook = aDecoder.decodeObjectForKey("didLoginWithFacebook") as? Bool
     }
     
     func encodeWithCoder(aCoder: NSCoder) {
@@ -44,6 +46,9 @@ class User: NSObject, NSCoding {
         }
         if let facebookID = self.facebookID {
             aCoder.encodeObject(facebookID, forKey: "facebookID")
+        }
+        if let didLoginWithFacebook = self.didLoginWithFacebook {
+            aCoder.encodeObject(didLoginWithFacebook, forKey: "didLoginWithFacebook")
         }
     }
     

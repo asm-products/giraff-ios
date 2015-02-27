@@ -17,7 +17,14 @@ class MenuViewController: UIViewController, FBLoginViewDelegate {
             }
         }
 
-        fbLoginView.delegate = self
+        if let didLoginWithFacebook = User.currentUser.didLoginWithFacebook {
+            if didLoginWithFacebook {
+                fbLoginView.delegate = self
+            } else {
+                fbLoginView.hidden = true
+            }
+        }
+
     }
     
     func loginViewShowingLoggedOutUser(loginView: FBLoginView!) {

@@ -12,7 +12,8 @@ class LoginViewController: UIViewController, FBLoginViewDelegate, LoginWithEmail
         loginView.readPermissions = ["public_profile", "email"]
         loginView.delegate = self
         
-//        TODO: We need launch images without logos
+//        TODO: Need launch images without logo. 
+//              Now the bgImage is using login-background.png, which isn't exactly the same scale with launch images
 //        if let image = launchImage() {
 //            bgImage.image = image
 //        }
@@ -31,6 +32,8 @@ class LoginViewController: UIViewController, FBLoginViewDelegate, LoginWithEmail
         User.currentUser.getFacebookProfilePicture { _ in
             
         }
+        User.currentUser.didLoginWithFacebook = true
+        
         FunSession.sharedSession.signIn(email) {
             NSLog("API signin successful")
             dispatch_async(dispatch_get_main_queue()) {
@@ -70,23 +73,25 @@ class LoginViewController: UIViewController, FBLoginViewDelegate, LoginWithEmail
     
     func didLoginWithEmail() {
         println("API login successful")
-//        self.dismissViewControllerAnimated(false, completion: nil)
-//        self.performSegueWithIdentifier("loggedIn", sender: self)
-        self.dismissViewControllerAnimated(true, completion: { () -> Void in
-            println("here")
-            self.performSegueWithIdentifier("loggedIn", sender: self)
-        })
-        println("here")
+
+        User.currentUser.didLoginWithFacebook = false
+        presentLoggedIn()
     }
     
     func didSignUpWithEmail() {
         println("API sign up successful")
-//        self.dismissViewControllerAnimated(false, completion: nil)
-//        self.performSegueWithIdentifier("loggedIn", sender: self)
-        self.dismissViewControllerAnimated(true, completion: { () -> Void in
-            println("here")
-            self.performSegueWithIdentifier("loggedIn", sender: self)
-        })
+        
+        User.currentUser.didLoginWithFacebook = false
+        presentLoggedIn()
+    }
+
+    func presentLoggedIn() {
+        dispatch_async(dispatch_get_main_queue()) {
+            self.dismissViewControllerAnimated(true, completion: { () -> Void in
+                
+                self.performSegueWithIdentifier("loggedIn", sender: self)
+            })
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

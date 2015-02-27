@@ -18,18 +18,14 @@ class LoginWithEmailViewController: UIViewController, UITextFieldDelegate {
         emailTextField.dataValidator = ValidatorFactory.emailValidator
         passwordTextField.dataValidator = ValidatorFactory.passwordValidator
         
-        loginButton.enabled = true
+        loginButton.enabled = false
     }
 
     @IBAction func loginButtonDidPress(sender: AnyObject) {
 //        TODO: Use the new login API with password and email
-
 //        FunSession.sharedSession.signIn(emailTextField.text) {
-            self.delegate!.didLoginWithEmail()
-
-
-            return
-//        TODO: Show alert if login is not successful
+            self.delegate?.didLoginWithEmail()
+//            TODO: Show alert if login is not successful
 //            self.presentAlert("Error", message: "Invalid Account")
 //        }
         
