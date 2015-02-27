@@ -12,7 +12,7 @@ class OopsViewController: GAITrackedViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.screenName = "Upgrade (Oops) Screen"
+        self.screenName = "Upgrade Proposal"
     }
 
     override func didReceiveMemoryWarning() {

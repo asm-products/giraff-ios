@@ -10,7 +10,7 @@ class StreamViewController: GAITrackedViewController, ZLSwipeableViewDataSource,
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.screenName = "Stream Screen"
+        self.screenName = "Stream"
       
         let titleImage = UIImage(named: "fun-logo.png")
         let titleImageView = UIImageView(frame: CGRectMake(0, 0, 30, 30))
