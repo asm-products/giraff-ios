@@ -15,6 +15,7 @@ class GifCollectionViewCell: UICollectionViewCell, NSURLSessionDataDelegate, NSU
             if let player = videoView!.player() {
                 if (player.status == .ReadyToPlay && shouldPlay) {
                     player.play()
+                    self.progressIndicator.hidden = true
                 } else if player.status == .ReadyToPlay {
                     player.pause()
                 }
@@ -127,6 +128,7 @@ class GifCollectionViewCell: UICollectionViewCell, NSURLSessionDataDelegate, NSU
     override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
         if (self.videoView!.player()!.status == .ReadyToPlay && self.shouldPlay) {
             self.videoView!.player()!.play()
+            self.progressIndicator.hidden = true
         }
     }
     
@@ -173,12 +175,12 @@ class GifCollectionViewCell: UICollectionViewCell, NSURLSessionDataDelegate, NSU
 
     }
 
-
     func downloadData(){
-        var session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration(), delegate: self, delegateQueue: nil)
         self.progressIndicator.hidden = false
         self.progressIndicator.progress = 0.000001
         self.previewImageView.image = nil
+        
+        var session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration(), delegate: self, delegateQueue: nil)
         task = session.dataTaskWithURL(NSURL(string:self.gifUrl!)!)
         task!.resume()
     }
