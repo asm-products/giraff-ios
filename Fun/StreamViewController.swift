@@ -116,10 +116,6 @@ class StreamViewController: UIViewController, ZLSwipeableViewDataSource, ZLSwipe
         }
     }
     
-    func swipeableView(swipeableView: ZLSwipeableView!, didSwipeRight view: UIView!) {
-        let gifView = view as GifCollectionViewCell
-    }
-    
     func swipeableView(swipeableView: ZLSwipeableView!, swipingView view: UIView!, atLocation location: CGPoint, translation: CGPoint) {
         let minimalDrag = CGFloat(10.0)
         let maximumDrag = CGFloat(40.0)

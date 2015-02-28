@@ -51,7 +51,10 @@ class Deck : NSObject {
             if let strongSelf = self {
                 let cards = MTLJSONAdapter.modelsOfClass(Card.self, fromJSONArray: images, error: nil)
                 for card in cards {
-                    strongSelf.cards.addObject(card, pairedWithKey: (card as Card).id)
+                    //Do not enter duplicate entries
+                    if (strongSelf.cards.objectForKey((card as Card).id) == nil) {
+                        strongSelf.cards.addObject(card, pairedWithKey: (card as Card).id)
+                    }
                 }
                 if callback != nil {
                     callback()

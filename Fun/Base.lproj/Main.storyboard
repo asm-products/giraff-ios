@@ -483,59 +483,41 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="OC2-8K-b9G" kind="relationship" relationship="rootViewController" id="Dqs-DC-Axi"/>
+                        <segue destination="43M-th-RQR" kind="relationship" relationship="rootViewController" id="EnT-3N-SOV"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fDv-X7-Csx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="573" y="922"/>
         </scene>
-        <!--Fave View Controller-->
-        <scene sceneID="j6J-dd-fVt">
+        <!--Async Fave View Controller-->
+        <scene sceneID="uF3-Ul-75s">
             <objects>
-                <collectionViewController id="OC2-8K-b9G" customClass="FaveViewController" customModule="Fun" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="CXB-lM-NIC">
+                <viewController id="43M-th-RQR" customClass="AsyncFaveViewController" customModule="Fun" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2NI-4x-6LO"/>
+                        <viewControllerLayoutGuide type="bottom" id="K4m-jc-RBq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Yun-Hf-lue">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="NR4-px-hD7">
-                            <size key="itemSize" width="100" height="100"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="gifCell" id="ns4-fa-p5N" customClass="GifCollectionViewCell" customModule="Fun" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                                <connections>
-                                    <segue destination="FFM-zu-axG" kind="show" identifier="detail" id="H1y-rh-UDZ"/>
-                                </connections>
-                            </collectionViewCell>
-                        </cells>
-                        <connections>
-                            <outlet property="dataSource" destination="OC2-8K-b9G" id="SBF-SD-dD9"/>
-                            <outlet property="delegate" destination="OC2-8K-b9G" id="fXO-Wj-BI9"/>
-                        </connections>
-                    </collectionView>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="MoL-lj-Uaf">
-                        <barButtonItem key="leftBarButtonItem" image="star" id="MhW-R9-ehP">
+                    <navigationItem key="navigationItem" id="Yii-fa-74U">
+                        <barButtonItem key="leftBarButtonItem" image="star" id="ZKQ-VK-kYj">
                             <color key="tintColor" red="0.99215686270000003" green="0.80784313730000001" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="revealButtonItem" destination="MhW-R9-ehP" id="U5w-7Q-yag"/>
+                        <outlet property="revealButtonItem" destination="ZKQ-VK-kYj" id="Rzn-DX-vHu"/>
+                        <segue destination="FFM-zu-axG" kind="show" identifier="detail" id="Vee-XO-FMc"/>
                     </connections>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="quK-h1-8OO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xLY-Sd-5eT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1441.5" y="925.5"/>
+            <point key="canvasLocation" x="1373" y="922"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="FUq-Pw-54j">
