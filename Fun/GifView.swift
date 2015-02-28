@@ -86,7 +86,7 @@ class GifCollectionViewCell: UICollectionViewCell, NSURLSessionDataDelegate, NSU
     }
 
     func addCaption() {
-        self.caption = UILabel(frame: CGRectMake(0, self.bounds.height-50, self.bounds.width, 45))
+        self.caption = UILabel(frame: CGRectMake(12, self.bounds.height-50, self.bounds.width-24, 45))
         caption.textAlignment = NSTextAlignment.Center
         caption.numberOfLines = 0
         caption.lineBreakMode = NSLineBreakMode.ByWordWrapping
