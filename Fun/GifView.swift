@@ -91,6 +91,10 @@ class GifCollectionViewCell: UICollectionViewCell, NSURLSessionDataDelegate, NSU
         caption.numberOfLines = 0
         caption.lineBreakMode = NSLineBreakMode.ByWordWrapping
         caption.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleTopMargin
+        caption.layer.shadowColor = UIColor.whiteColor().CGColor
+        caption.layer.shadowOpacity = 1
+        caption.layer.shadowOffset = CGSizeMake(0.75, 0.75)
+        caption.layer.shadowRadius = 0
         addSubview(caption)
     }
 
