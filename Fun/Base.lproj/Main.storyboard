@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="h4R-ga-7th">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="h4R-ga-7th">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
@@ -51,14 +51,7 @@
                                     <action selector="faveButtonWasPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="75J-iV-FMw"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8SP-4t-N6Q" customClass="ZLSwipeableView">
-                                <rect key="frame" x="16" y="10" width="568" height="342"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="0.0" y="0.0" width="400" height="569"/>
-                                </variation>
-                            </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZTC-Ke-wh3">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZTC-Ke-wh3">
                                 <rect key="frame" x="275" y="398" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="QQb-MG-U9T"/>
@@ -67,7 +60,6 @@
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" backgroundImage="share">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                     <rect key="frame" x="175" y="602" width="50" height="50"/>
@@ -76,6 +68,13 @@
                                     <action selector="shareButtonWasPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="3N9-cj-bLU"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8SP-4t-N6Q" customClass="ZLSwipeableView">
+                                <rect key="frame" x="16" y="10" width="568" height="342"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="0.0" width="400" height="569"/>
+                                </variation>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.20784313725490197" green="0.18823529411764706" blue="0.1803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -435,22 +434,24 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EhS-py-3sc" customClass="FBLoginView">
-                                <rect key="frame" x="30" y="440" width="524" height="150"/>
+                                <rect key="frame" x="30" y="490" width="524" height="100"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="zgg-KD-QpH"/>
+                                    <constraint firstAttribute="height" constant="100" id="zgg-KD-QpH"/>
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.20784313730000001" green="0.18823529410000001" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.12156862745098039" green="0.10980392156862745" blue="0.10588235294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="rkF-N9-Urq" firstAttribute="width" secondItem="fld-dv-HOv" secondAttribute="width" id="AU8-V2-x9h"/>
                             <constraint firstItem="gY0-0R-nzU" firstAttribute="top" secondItem="EhS-py-3sc" secondAttribute="bottom" constant="10" id="CX4-YI-sBX"/>
+                            <constraint firstItem="rkF-N9-Urq" firstAttribute="top" secondItem="1Ei-Nk-ihM" secondAttribute="bottom" id="EJo-Wv-3KB"/>
                             <constraint firstItem="fGM-oe-xI0" firstAttribute="top" secondItem="rkF-N9-Urq" secondAttribute="bottom" constant="8" id="Ixi-Dd-Ac8"/>
                             <constraint firstAttribute="centerX" secondItem="rkF-N9-Urq" secondAttribute="centerX" id="M6x-VR-hkT"/>
-                            <constraint firstItem="rkF-N9-Urq" firstAttribute="top" secondItem="1Ei-Nk-ihM" secondAttribute="bottom" id="NXM-ob-Qf3"/>
+                            <constraint firstItem="rkF-N9-Urq" firstAttribute="top" relation="greaterThanOrEqual" secondItem="1Ei-Nk-ihM" secondAttribute="bottom" id="NXM-ob-Qf3"/>
                             <constraint firstItem="rkF-N9-Urq" firstAttribute="top" secondItem="1Ei-Nk-ihM" secondAttribute="bottom" id="Qbm-P5-YNp"/>
                             <constraint firstItem="7uC-HH-0kj" firstAttribute="top" secondItem="fGM-oe-xI0" secondAttribute="bottom" constant="8" id="VIt-zH-I4R"/>
+                            <constraint firstItem="EhS-py-3sc" firstAttribute="top" relation="greaterThanOrEqual" secondItem="7uC-HH-0kj" secondAttribute="bottom" constant="12" id="cGC-kw-MO4"/>
                             <constraint firstAttribute="centerX" secondItem="7uC-HH-0kj" secondAttribute="centerX" id="e9T-6S-fqf"/>
                             <constraint firstItem="fGM-oe-xI0" firstAttribute="width" secondItem="fld-dv-HOv" secondAttribute="width" id="gpK-9S-9G6"/>
                             <constraint firstItem="EhS-py-3sc" firstAttribute="leading" secondItem="fld-dv-HOv" secondAttribute="leading" constant="30" id="hg0-p0-XeV"/>
@@ -549,14 +550,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="top" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dsi-h5-Ejc">
-                                <rect key="frame" x="138" y="72" width="234" height="234"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="Dsi-h5-Ejc" secondAttribute="height" multiplier="1:1" id="Qbd-CK-6dB"/>
-                                </constraints>
-                            </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7ay-IX-OHp">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7ay-IX-OHp">
                                 <rect key="frame" x="275" y="500" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="O0c-jA-JmJ"/>
@@ -565,7 +559,7 @@
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" backgroundImage="share">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                     <rect key="frame" x="175" y="602" width="50" height="50"/>
@@ -575,6 +569,13 @@
                                     <action selector="shareButtonWasPressed:" destination="FFM-zu-axG" eventType="touchUpInside" id="CXn-Tf-Sdn"/>
                                 </connections>
                             </button>
+                            <view contentMode="top" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dsi-h5-Ejc">
+                                <rect key="frame" x="138" y="72" width="234" height="234"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Dsi-h5-Ejc" secondAttribute="height" multiplier="1:1" id="Qbd-CK-6dB"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.20784313730000001" green="0.18823529410000001" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>

@@ -20,6 +20,8 @@ class StreamViewController: UIViewController, ZLSwipeableViewDataSource, ZLSwipe
         let rvc = self.revealViewController()
         revealButtonItem.target = rvc
         revealButtonItem.action = "revealToggle:"
+        
+        let tap = rvc.tapGestureRecognizer();
         navigationController!.navigationBar.addGestureRecognizer(rvc.panGestureRecognizer())
 
         view.setNeedsLayout()
