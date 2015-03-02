@@ -15,6 +15,11 @@
 		283616701A8C6D4E00E895D0 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2836166E1A8C6D4E00E895D0 /* Fabric.framework */; };
 		31E5CAAA1A92BAF900036EA8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E5CAA91A92BAF900036EA8 /* User.swift */; };
 		4A9ACF9C1A9C6A8700B1D811 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A9ACF9B1A9C6A8700B1D811 /* AVFoundation.framework */; };
+		31E97C0A1A9E2D7D005168D4 /* LoginWithEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E97C091A9E2D7D005168D4 /* LoginWithEmailViewController.swift */; };
+		31E97C0C1A9E5196005168D4 /* SignUpWithEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E97C0B1A9E5196005168D4 /* SignUpWithEmailViewController.swift */; };
+		31E97C0E1A9E51CF005168D4 /* DesignableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E97C0D1A9E51CF005168D4 /* DesignableTextField.swift */; };
+		31E97C101A9F1D9B005168D4 /* ValidatorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E97C0F1A9F1D9B005168D4 /* ValidatorFactory.swift */; };
+		31E97C121A9F29E2005168D4 /* DesignableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E97C111A9F29E2005168D4 /* DesignableButton.swift */; };
 		5515DFAD1A8D96AC00C87BB4 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5515DFAC1A8D96AC00C87BB4 /* MenuViewController.swift */; };
 		55431B6F1A8945ED00F28569 /* FunSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55431B6E1A8945ED00F28569 /* FunSession.swift */; };
 		55692A5A1A8C7CCD00FE83E6 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55692A591A8C7CCD00FE83E6 /* DetailViewController.swift */; };
@@ -53,6 +58,11 @@
 		2836166E1A8C6D4E00E895D0 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		31E5CAA91A92BAF900036EA8 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		4A9ACF9B1A9C6A8700B1D811 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		31E97C091A9E2D7D005168D4 /* LoginWithEmailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginWithEmailViewController.swift; sourceTree = "<group>"; };
+		31E97C0B1A9E5196005168D4 /* SignUpWithEmailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpWithEmailViewController.swift; sourceTree = "<group>"; };
+		31E97C0D1A9E51CF005168D4 /* DesignableTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableTextField.swift; sourceTree = "<group>"; };
+		31E97C0F1A9F1D9B005168D4 /* ValidatorFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidatorFactory.swift; sourceTree = "<group>"; };
+		31E97C111A9F29E2005168D4 /* DesignableButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableButton.swift; sourceTree = "<group>"; };
 		5515DFAC1A8D96AC00C87BB4 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		55431B6E1A8945ED00F28569 /* FunSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FunSession.swift; sourceTree = "<group>"; };
 		55692A591A8C7CCD00FE83E6 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -104,6 +114,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		31E97C131A9F3F93005168D4 /* Login and Signup */ = {
+			isa = PBXGroup;
+			children = (
+				31E97C0F1A9F1D9B005168D4 /* ValidatorFactory.swift */,
+				0179C2591A854A9400A36023 /* LoginViewController.swift */,
+				31E97C091A9E2D7D005168D4 /* LoginWithEmailViewController.swift */,
+				31E97C0B1A9E5196005168D4 /* SignUpWithEmailViewController.swift */,
+			);
+			name = "Login and Signup";
+			sourceTree = "<group>";
+		};
 		55E8E7B11A82E5540087F086 = {
 			isa = PBXGroup;
 			children = (
@@ -137,7 +158,9 @@
 				55E8E7BD1A82E5540087F086 /* Supporting Files */,
 				55E8E7E61A82FFFE0087F086 /* Bridging-Header.h */,
 				55ADA6AD1A841A3700A588BD /* GifView.swift */,
-				0179C2591A854A9400A36023 /* LoginViewController.swift */,
+				31E97C131A9F3F93005168D4 /* Login and Signup */,
+				31E97C0D1A9E51CF005168D4 /* DesignableTextField.swift */,
+				31E97C111A9F29E2005168D4 /* DesignableButton.swift */,
 				0178D1721A8C29FF00293AB3 /* CircleProgressView.swift */,
 				557FF6B81A85432C00895DC0 /* Card.swift */,
 				557FF6BA1A85478400895DC0 /* Deck.swift */,
@@ -365,6 +388,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31E97C121A9F29E2005168D4 /* DesignableButton.swift in Sources */,
+				31E97C0A1A9E2D7D005168D4 /* LoginWithEmailViewController.swift in Sources */,
 				55431B6F1A8945ED00F28569 /* FunSession.swift in Sources */,
 				0179C25A1A854A9400A36023 /* LoginViewController.swift in Sources */,
 				55E8E7C21A82E5540087F086 /* StreamViewController.swift in Sources */,
@@ -372,13 +397,16 @@
 				F691558E1A9D199F005AE298 /* OopsViewController.swift in Sources */,
 				5515DFAD1A8D96AC00C87BB4 /* MenuViewController.swift in Sources */,
 				557FF6BB1A85478400895DC0 /* Deck.swift in Sources */,
+				31E97C0E1A9E51CF005168D4 /* DesignableTextField.swift in Sources */,
 				0178D1731A8C29FF00293AB3 /* CircleProgressView.swift in Sources */,
+				31E97C0C1A9E5196005168D4 /* SignUpWithEmailViewController.swift in Sources */,
 				55CFA5DA1A8B3EBA00E1CDE2 /* FaveViewController.swift in Sources */,
 				31E5CAAA1A92BAF900036EA8 /* User.swift in Sources */,
 				55692A5A1A8C7CCD00FE83E6 /* DetailViewController.swift in Sources */,
 				55E8E7C01A82E5540087F086 /* AppDelegate.swift in Sources */,
 				557FF6B91A85432C00895DC0 /* Card.swift in Sources */,
 				F69155901A9D1D5C005AE298 /* ThanksViewController.swift in Sources */,
+				31E97C101A9F1D9B005168D4 /* ValidatorFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

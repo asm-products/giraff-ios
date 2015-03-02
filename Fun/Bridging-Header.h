@@ -16,4 +16,12 @@
 #import "ZLSwipeableView.h"
 #import <FacebookSDK/FacebookSDK.h>
 
+#import "SPXFormValidator.h"
+#import "SPXDataField.h"
+#import "SPXRegexDataValidator.h"
+#import "SPXNonEmptyDataValidator.h"
+#import "SPXCompoundDataValidator.h"
+#import "UITextField+SPXDataValidatorAdditions.h"
+
+
 #endif

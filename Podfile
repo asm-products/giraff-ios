@@ -4,3 +4,4 @@ pod 'M13OrderedDictionary', '~> 1.0'
 pod 'Mantle', '~> 1.5'
 pod 'SWRevealViewController'
 pod 'ZLSwipeableView', git: 'https://github.com/whatupdave/ZLSwipeableView'
+pod "SPXDataValidators"
