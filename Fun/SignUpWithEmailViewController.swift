@@ -11,6 +11,10 @@ class SignUpWithEmailViewController: UIViewController {
     @IBOutlet weak var passwordTextField: DesignableTextField!
     @IBOutlet weak var signUpButton: DesignableButton!
     
+    @IBOutlet weak var usernameTextFieldWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var usernameTextFieldIcon: UIImageView!
+    @IBOutlet weak var usernameTextFieldTopMarginConstraint: NSLayoutConstraint!
+    
     weak var delegate: SignUpWithEmailDelegate?
     
     override func viewDidLoad() {
@@ -21,11 +25,19 @@ class SignUpWithEmailViewController: UIViewController {
         passwordTextField.dataValidator = ValidatorFactory.passwordValidator
         
         signUpButton.enabled = false
+        
+        // Remove the following lines if want to use username
+        // Also update isValidated() function with usernameTextField
+        usernameTextField.hidden = true;
+        usernameTextFieldIcon.hidden = true;
+        usernameTextFieldWidthConstraint.constant = 0;
+        usernameTextFieldTopMarginConstraint.constant = 0;
     }
 
     @IBAction func signUpButtonDidPress(button: AnyObject) {
 //        TODO: Use the new sign up API with password and email
 //        FunSession.sharedSession.signIn(emailTextField.text) {
+            User.currentUser.email = emailTextField.text
             self.delegate?.didSignUpWithEmail()
 //            TODO: Show alert if not successful
 //        }
@@ -53,7 +65,7 @@ class SignUpWithEmailViewController: UIViewController {
             field.nextTextField?.becomeFirstResponder()
         }
         
-        if textField.tag == 1 && SPXFormValidator.validateFields([usernameTextField, emailTextField, passwordTextField]) {
+        if textField.tag == 1 && isValidated() {
                 self.signUpButtonDidPress(textField)
         }
         
@@ -61,7 +73,11 @@ class SignUpWithEmailViewController: UIViewController {
     }
     
     @IBAction func textFieldDidChangeEditing(sender: UITextField) {
-        self.signUpButton.enabled = SPXFormValidator.validateFields([usernameTextField, emailTextField, passwordTextField])
+        self.signUpButton.enabled = isValidated()
+    }
+    
+    func isValidated() -> Bool {
+        return SPXFormValidator.validateFields([emailTextField, passwordTextField])
     }
     
 }

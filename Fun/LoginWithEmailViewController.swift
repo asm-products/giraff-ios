@@ -24,6 +24,7 @@ class LoginWithEmailViewController: UIViewController, UITextFieldDelegate {
     @IBAction func loginButtonDidPress(sender: AnyObject) {
 //        TODO: Use the new login API with password and email
 //        FunSession.sharedSession.signIn(emailTextField.text) {
+            User.currentUser.email = emailTextField.text
             self.delegate?.didLoginWithEmail()
 //            TODO: Show alert if login is not successful
 //            self.presentAlert("Error", message: "Invalid Account")
