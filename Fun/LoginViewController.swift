@@ -61,14 +61,12 @@ class LoginViewController: UIViewController, FBLoginViewDelegate, LoginWithEmail
     func didLoginWithEmail() {
         println("API login successful")
 
-        User.currentUser.didLoginWithFacebook = false
         presentLoggedIn()
     }
     
     func didSignUpWithEmail() {
         println("API sign up successful")
         
-        User.currentUser.didLoginWithFacebook = false
         presentLoggedIn()
     }
 

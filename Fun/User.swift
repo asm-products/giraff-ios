@@ -21,6 +21,7 @@ class User: NSObject, NSCoding {
         NSUserDefaults.standardUserDefaults().setObject(nil, forKey: UserKey)
     }
     
+    var email: String? { didSet { cache() } }
     var facebookName: String? { didSet { cache() } }
     var facebookID: String? { didSet { cache() } }
     var facebookProfilePictureURL: String? {
@@ -30,26 +31,29 @@ class User: NSObject, NSCoding {
         
         return nil
     }
-    var didLoginWithFacebook: Bool? {didSet { cache() }}
+    var didLoginWithFacebook: Bool = false {didSet { cache() }}
 
     override init() {}
     
     required init(coder aDecoder: NSCoder) {
+        self.email = aDecoder.decodeObjectForKey("email") as? String
         self.facebookName = aDecoder.decodeObjectForKey("facebookName") as? String
         self.facebookID = aDecoder.decodeObjectForKey("facebookID") as? String
-        self.didLoginWithFacebook = aDecoder.decodeObjectForKey("didLoginWithFacebook") as? Bool
+        self.didLoginWithFacebook = aDecoder.decodeObjectForKey("didLoginWithFacebook") as Bool
     }
     
     func encodeWithCoder(aCoder: NSCoder) {
+        if let email = self.email {
+            aCoder.encodeObject(email, forKey: "email")
+        }
         if let facebookName = self.facebookName {
             aCoder.encodeObject(facebookName, forKey: "facebookName")
         }
         if let facebookID = self.facebookID {
             aCoder.encodeObject(facebookID, forKey: "facebookID")
         }
-        if let didLoginWithFacebook = self.didLoginWithFacebook {
-            aCoder.encodeObject(didLoginWithFacebook, forKey: "didLoginWithFacebook")
-        }
+
+        aCoder.encodeObject(didLoginWithFacebook, forKey: "didLoginWithFacebook")
     }
     
     func getFacebookProfilePicture(callback: (image: UIImage?) -> Void) {

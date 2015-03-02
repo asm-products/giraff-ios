@@ -11,18 +11,18 @@ class MenuViewController: UIViewController, FBLoginViewDelegate {
             usernameLabel.text = facebookName.uppercaseString
         }
         
-        User.currentUser.getFacebookProfilePicture { image in
-            if let facebookProfilePicture = image {
-                self.userProfileImageView.image = facebookProfilePicture
+        if User.currentUser.didLoginWithFacebook {
+            User.currentUser.getFacebookProfilePicture { image in
+                if let facebookProfilePicture = image {
+                    self.userProfileImageView.image = facebookProfilePicture
+                }
             }
-        }
-
-        if let didLoginWithFacebook = User.currentUser.didLoginWithFacebook {
-            if didLoginWithFacebook {
-                fbLoginView.delegate = self
-            } else {
-                fbLoginView.hidden = true
+            fbLoginView.delegate = self
+        } else {
+            if let email = User.currentUser.email {
+                usernameLabel.text = email
             }
+            fbLoginView.hidden = true
         }
 
     }
