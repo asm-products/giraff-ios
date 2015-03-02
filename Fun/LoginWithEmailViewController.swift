@@ -1,6 +1,6 @@
 import UIKit
 
-protocol LoginWithEmailDelegate {
+protocol LoginWithEmailDelegate: class {
     func didLoginWithEmail()
 }
 
@@ -10,7 +10,7 @@ class LoginWithEmailViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passwordTextField: DesignableTextField!
     @IBOutlet weak var loginButton: DesignableButton!
 
-    var delegate: LoginWithEmailDelegate?
+    weak var delegate: LoginWithEmailDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
