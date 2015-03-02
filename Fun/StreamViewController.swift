@@ -21,6 +21,8 @@ class StreamViewController: GAITrackedViewController, ZLSwipeableViewDataSource,
         let rvc = self.revealViewController()
         revealButtonItem.target = rvc
         revealButtonItem.action = "revealToggle:"
+        
+        let tap = rvc.tapGestureRecognizer();
         navigationController!.navigationBar.addGestureRecognizer(rvc.panGestureRecognizer())
 
         view.setNeedsLayout()
@@ -64,10 +66,11 @@ class StreamViewController: GAITrackedViewController, ZLSwipeableViewDataSource,
     }
 
     @IBAction func shareButtonWasPressed(sender: AnyObject) {
-        let view = swipeableView.topSwipeableView() as GifCollectionViewCell
-        let card = deck.cardForId(view.imageId!)!
-        let avc = UIActivityViewController(activityItems: [card.caption!, card.shareUrl()], applicationActivities: nil)
-        navigationController?.presentViewController(avc, animated: true, completion: nil)
+        if let view = swipeableView.topSwipeableView() as? GifCollectionViewCell {
+            let card = deck.cardForId(view.imageId!)!
+            let avc = UIActivityViewController(activityItems: [card.caption!, card.shareUrl()], applicationActivities: nil)
+            navigationController?.presentViewController(avc, animated: true, completion: nil)
+        }
     }
 
     

@@ -17,7 +17,6 @@ class FaveViewController: UICollectionViewController, UICollectionViewDelegateFl
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        collectionView?.registerClass(GifCollectionViewCell.self, forCellWithReuseIdentifier: "gifCell")
         
         let titleImage = UIImage(named: "fun-logo.png")
         let titleImageView = UIImageView(frame: CGRectMake(0, 0, 30, 30))
@@ -61,6 +60,8 @@ class FaveViewController: UICollectionViewController, UICollectionViewDelegateFl
         return CGSize(width: size, height: size)
     }
     
+
+
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "detail" {
             let cell = sender as UICollectionViewCell

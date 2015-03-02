@@ -15,6 +15,7 @@ class GifCollectionViewCell: UICollectionViewCell, NSURLSessionDataDelegate, NSU
             if let player = videoView!.player() {
                 if (player.status == .ReadyToPlay && shouldPlay) {
                     player.play()
+                    self.progressIndicator.hidden = true
                 } else if player.status == .ReadyToPlay {
                     player.pause()
                 }
@@ -37,6 +38,15 @@ class GifCollectionViewCell: UICollectionViewCell, NSURLSessionDataDelegate, NSU
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.buildViewHierarchy()
+    }
+
+    required init(coder: NSCoder) {
+        super.init(coder: coder)
+        self.buildViewHierarchy()
+    }
+
+    private func buildViewHierarchy() {
         addPreviewImage()
         
         layer.backgroundColor = UIColor(hue: 0, saturation: 0, brightness: 0.2, alpha: 1.0).CGColor
@@ -51,19 +61,6 @@ class GifCollectionViewCell: UICollectionViewCell, NSURLSessionDataDelegate, NSU
         addCaption()
         addPassLabel()
         addFaveLabel()
-    }
-
-//    init(frame: CGRect, gifUrl: String) {
-//        self.gifUrl = gifUrl
-//        super.init(frame: frame)
-//        addCaption()
-//        addPassLabel()
-//        addFaveLabel()
-//    }
-
-    required init(coder: NSCoder) {
-        self.gifUrl = ""
-        super.init(coder: coder)
     }
 
     override func removeFromSuperview() {
@@ -85,11 +82,15 @@ class GifCollectionViewCell: UICollectionViewCell, NSURLSessionDataDelegate, NSU
     }
 
     func addCaption() {
-        self.caption = UILabel(frame: CGRectMake(0, self.bounds.height-50, self.bounds.width, 45))
+        self.caption = UILabel(frame: CGRectMake(12, self.bounds.height-50, self.bounds.width-24, 45))
         caption.textAlignment = NSTextAlignment.Center
         caption.numberOfLines = 0
         caption.lineBreakMode = NSLineBreakMode.ByWordWrapping
         caption.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleTopMargin
+        caption.layer.shadowColor = UIColor.whiteColor().CGColor
+        caption.layer.shadowOpacity = 1
+        caption.layer.shadowOffset = CGSizeMake(0.75, 0.75)
+        caption.layer.shadowRadius = 0
         addSubview(caption)
     }
 
@@ -127,6 +128,7 @@ class GifCollectionViewCell: UICollectionViewCell, NSURLSessionDataDelegate, NSU
     override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
         if (self.videoView!.player()!.status == .ReadyToPlay && self.shouldPlay) {
             self.videoView!.player()!.play()
+            self.progressIndicator.hidden = true
         }
     }
     
@@ -173,12 +175,12 @@ class GifCollectionViewCell: UICollectionViewCell, NSURLSessionDataDelegate, NSU
 
     }
 
-
     func downloadData(){
-        var session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration(), delegate: self, delegateQueue: nil)
         self.progressIndicator.hidden = false
         self.progressIndicator.progress = 0.000001
         self.previewImageView.image = nil
+        
+        var session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration(), delegate: self, delegateQueue: nil)
         task = session.dataTaskWithURL(NSURL(string:self.gifUrl!)!)
         task!.resume()
     }
