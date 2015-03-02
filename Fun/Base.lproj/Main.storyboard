@@ -1225,6 +1225,9 @@
                         <outlet property="passwordTextField" destination="sKx-lR-nAX" id="tUI-M7-a32"/>
                         <outlet property="signUpButton" destination="whg-TW-C6X" id="qaB-cD-4hp"/>
                         <outlet property="usernameTextField" destination="BEc-wX-f53" id="Myk-aZ-Dhb"/>
+                        <outlet property="usernameTextFieldIcon" destination="pQr-xQ-kKa" id="o1H-dd-Uc7"/>
+                        <outlet property="usernameTextFieldTopMarginConstraint" destination="NrI-gS-foR" id="Orf-Dn-lHn"/>
+                        <outlet property="usernameTextFieldWidthConstraint" destination="VPu-sV-aqr" id="ixu-UP-vF9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fzo-uL-8Vf" userLabel="First Responder" sceneMemberID="firstResponder"/>
