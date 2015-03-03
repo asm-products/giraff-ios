@@ -42,7 +42,9 @@ class LoginViewController: UIViewController, FBLoginViewDelegate, LoginWithEmail
             loginEmail = "\(User.currentUser.facebookID!)@facebook.com"
         }
 
-        FunSession.sharedSession.signIn(loginEmail) {
+        var authToken = "\(FBSession.activeSession().accessTokenData)"
+
+        FunSession.sharedSession.fbSignIn(loginEmail, authToken: authToken) {
             NSLog("API signin successful")
             dispatch_async(dispatch_get_main_queue()) {
                 self.performSegueWithIdentifier("loggedIn", sender: self)

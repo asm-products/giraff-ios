@@ -22,13 +22,12 @@ class LoginWithEmailViewController: UIViewController, UITextFieldDelegate {
     }
 
     @IBAction func loginButtonDidPress(sender: AnyObject) {
-//        TODO: Use the new login API with password and email
-//        FunSession.sharedSession.signIn(emailTextField.text) {
-            User.currentUser.email = emailTextField.text
+      FunSession.sharedSession.signIn(emailTextField.text, password: passwordTextField.text) {
+            User.currentUser.email = self.emailTextField.text
             self.delegate?.didLoginWithEmail()
 //            TODO: Show alert if login is not successful
 //            self.presentAlert("Error", message: "Invalid Account")
-//        }
+        }
     }
     
     func textFieldDidBeginEditing(textField: DesignableTextField) {

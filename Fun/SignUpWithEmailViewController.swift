@@ -35,12 +35,11 @@ class SignUpWithEmailViewController: UIViewController {
     }
 
     @IBAction func signUpButtonDidPress(button: AnyObject) {
-//        TODO: Use the new sign up API with password and email
-//        FunSession.sharedSession.signIn(emailTextField.text) {
-            User.currentUser.email = emailTextField.text
+      FunSession.sharedSession.signIn(emailTextField.text, password: passwordTextField.text) {
+            User.currentUser.email = self.emailTextField.text
             self.delegate?.didSignUpWithEmail()
 //            TODO: Show alert if not successful
-//        }
+        }
     }
     
     func textFieldDidBeginEditing(textField: DesignableTextField) {
