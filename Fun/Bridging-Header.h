@@ -17,4 +17,12 @@
 #import <FacebookSDK/FacebookSDK.h>
 #import <AsyncDisplayKit/AsyncDisplayKit.h>
 
+#import "SPXFormValidator.h"
+#import "SPXDataField.h"
+#import "SPXRegexDataValidator.h"
+#import "SPXNonEmptyDataValidator.h"
+#import "SPXCompoundDataValidator.h"
+#import "UITextField+SPXDataValidatorAdditions.h"
+
+
 #endif

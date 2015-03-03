@@ -4,6 +4,7 @@ class MenuViewController: UIViewController, FBLoginViewDelegate {
     @IBOutlet weak var fbLoginView: FBLoginView!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var userProfileImageView: UIImageView!
+    @IBOutlet weak var logoutButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -11,18 +12,32 @@ class MenuViewController: UIViewController, FBLoginViewDelegate {
             usernameLabel.text = facebookName.uppercaseString
         }
         
-        User.currentUser.getFacebookProfilePicture { image in
-            if let facebookProfilePicture = image {
-                self.userProfileImageView.image = facebookProfilePicture
+        if User.currentUser.didLoginWithFacebook {
+            User.currentUser.getFacebookProfilePicture { image in
+                if let facebookProfilePicture = image {
+                    self.userProfileImageView.image = facebookProfilePicture
+                }
             }
+            fbLoginView.delegate = self
+            logoutButton.hidden = true
+        } else {
+            if let email = User.currentUser.email {
+                usernameLabel.text = email
+            }
+            fbLoginView.hidden = true
         }
 
-        fbLoginView.delegate = self
     }
     
     func loginViewShowingLoggedOutUser(loginView: FBLoginView!) {
         NSLog("Facebook logged out")
         User.removeCache()
         revealViewController().dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    @IBAction func logoutButtonDidPress(button: UIButton) {
+        User.removeCache()
+        revealViewController().dismissViewControllerAnimated(true, completion: nil)
+
     }
 }

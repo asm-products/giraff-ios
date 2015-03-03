@@ -16,21 +16,31 @@ class FunSession {
         apiUrl = config["FUN_API_URL"] as NSString
     }
     
-    func signIn(email:String, callback: () -> Void) {
-        request("POST", url: "/sessions", body:["email":email]) {(data:NSData) in
+    func signIn(email:String, password:String, callback: () -> Void) {
+        request("POST", url: "/sessions", body:["email":email, "password":password]) {(data:NSData) in
+            println("CALLED")
             let json = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as NSDictionary
+            println(json)
             NSUserDefaults.standardUserDefaults().setObject(json["authentication_token"], forKey: "authentication_token")
             callback()
         }
     }
-    
+
+    func fbSignIn(email:String, authToken:String, callback: () -> Void) {
+      request("POST", url: "/fbcreate", body:["email":email, "fb_auth_token":authToken]) {(data:NSData) in
+        let json = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as NSDictionary
+        NSUserDefaults.standardUserDefaults().setObject(json["authentication_token"], forKey: "authentication_token")
+        callback()
+      }
+    }
+  
     func fetchImages(callback: (NSArray) -> Void) {
         get("/images") {(json:NSDictionary) -> Void in
             let images = json["images"] as NSArray
             callback(images)
         }
     }
-    
+
     func fetchFaves(callback: (NSArray) -> Void) {
         get("/images/favorites?page=\(currentFavePage)") {(json:NSDictionary) -> Void in
             let images = json["images"] as NSArray
@@ -38,7 +48,6 @@ class FunSession {
             callback(images)
         }
     }
-
     
     func imagePassed(imageId:NSString) {
         post("/images/\(imageId)/passes")
