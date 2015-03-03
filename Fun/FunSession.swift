@@ -8,7 +8,6 @@ class FunSession {
     }
     
     let apiUrl:NSString
-    var currentFavePage = 1
     
     init() {
         var plist = NSBundle.mainBundle().pathForResource("configuration", ofType: "plist")
@@ -41,10 +40,9 @@ class FunSession {
         }
     }
 
-    func fetchFaves(callback: (NSArray) -> Void) {
+    func fetchFaves(currentFavePage:Int,callback: (NSArray) -> Void) {
         get("/images/favorites?page=\(currentFavePage)") {(json:NSDictionary) -> Void in
             let images = json["images"] as NSArray
-            self.currentFavePage++
             callback(images)
         }
     }

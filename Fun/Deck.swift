@@ -10,6 +10,8 @@ class Deck : NSObject {
     var cards = M13MutableOrderedDictionary()
     var deckSourceMode = DeckSourceMode.NewGifs
     var currentIndex:UInt = 0
+    var currentFavePage: Int = 1
+
     
     init(deckSourceMode:DeckSourceMode) {
         super.init()
@@ -67,7 +69,8 @@ class Deck : NSObject {
             FunSession.sharedSession.fetchImages(imageHandler)
             break
         case .Faves:
-            FunSession.sharedSession.fetchFaves(imageHandler)
+            FunSession.sharedSession.fetchFaves(currentFavePage, callback: imageHandler)
+            currentFavePage++
             break
         }
     }
