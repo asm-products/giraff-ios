@@ -10,6 +10,8 @@ class Deck : NSObject {
     var cards = M13MutableOrderedDictionary()
     var deckSourceMode = DeckSourceMode.NewGifs
     var currentIndex:UInt = 0
+    var currentFavePage: Int = 1
+
     
     init(deckSourceMode:DeckSourceMode) {
         super.init()
@@ -51,7 +53,10 @@ class Deck : NSObject {
             if let strongSelf = self {
                 let cards = MTLJSONAdapter.modelsOfClass(Card.self, fromJSONArray: images, error: nil)
                 for card in cards {
-                    strongSelf.cards.addObject(card, pairedWithKey: (card as Card).id)
+                    //Do not enter duplicate entries
+                    if (strongSelf.cards.objectForKey((card as Card).id) == nil) {
+                        strongSelf.cards.addObject(card, pairedWithKey: (card as Card).id)
+                    }
                 }
                 if callback != nil {
                     callback()
@@ -64,7 +69,8 @@ class Deck : NSObject {
             FunSession.sharedSession.fetchImages(imageHandler)
             break
         case .Faves:
-            FunSession.sharedSession.fetchFaves(imageHandler)
+            FunSession.sharedSession.fetchFaves(currentFavePage, callback: imageHandler)
+            currentFavePage++
             break
         }
     }

@@ -40,8 +40,8 @@ class FunSession {
         }
     }
 
-    func fetchFaves(callback: (NSArray) -> Void) {
-        get("/images/favorites") {(json:NSDictionary) -> Void in
+    func fetchFaves(currentFavePage:Int,callback: (NSArray) -> Void) {
+        get("/images/favorites?page=\(currentFavePage)") {(json:NSDictionary) -> Void in
             let images = json["images"] as NSArray
             callback(images)
         }
@@ -92,7 +92,7 @@ class FunSession {
                 let message = NSHTTPURLResponse.localizedStringForStatusCode(httpResponse!.statusCode)
                 NSLog("Server error: %d – %@", httpResponse!.statusCode, message)
             } else {
-                NSLog("%@ %@ – %d", httpMethod, url, httpResponse!.statusCode)
+                println("\(httpMethod) \(url) - \(httpResponse!.statusCode)")
                 callback(data)
             }
         }
