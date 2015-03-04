@@ -8,12 +8,11 @@
 
 import UIKit
 
-class OopsViewController: UIViewController {
+class OopsViewController: GAITrackedViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.screenName = "Upgrade Proposal"
     }
 
     override func didReceiveMemoryWarning() {

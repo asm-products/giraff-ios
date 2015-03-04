@@ -2,6 +2,9 @@ PODS:
   - AsyncDisplayKit (1.1.1):
     - AsyncDisplayKit/ASDealloc2MainObject (= 1.1.1)
   - AsyncDisplayKit/ASDealloc2MainObject (1.1.1)
+  - GoogleAnalytics-iOS-SDK (3.10):
+    - GoogleAnalytics-iOS-SDK/Core (= 3.10)
+  - GoogleAnalytics-iOS-SDK/Core (3.10)
   - M13OrderedDictionary (1.0.6)
   - Mantle (1.5.4):
     - Mantle/extobjc (= 1.5.4)
@@ -12,6 +15,7 @@ PODS:
 
 DEPENDENCIES:
   - AsyncDisplayKit (from `https://github.com/facebook/AsyncDisplayKit.git`, commit `3c822fe698`)
+  - GoogleAnalytics-iOS-SDK (~> 3.10)
   - M13OrderedDictionary (~> 1.0)
   - Mantle (~> 1.5)
   - SPXDataValidators
@@ -35,6 +39,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   AsyncDisplayKit: 2c355970d1aabe00608211d9a50e35b7a5dc0ae4
+  GoogleAnalytics-iOS-SDK: f422062075d9ccb1ea8d783fc5ba3829461e9502
   M13OrderedDictionary: 8f721284b4960aabaf567b7894911a45cb9c71b0
   Mantle: d5fbaf30fbc58031223af13812c060e15934a1fe
   SPXDataValidators: a4036c59cbc578ddd24d0f80bee23cf2aaa8f164

@@ -1,6 +1,6 @@
 import UIKit
 
-class DetailViewController: UIViewController {
+class DetailViewController: GAITrackedViewController {
 
     @IBOutlet weak var imageView: UIView!
     
@@ -8,6 +8,8 @@ class DetailViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        self.screenName = "Datail"
+        
         let gifView = GifCollectionViewCell(frame:imageView.bounds)
         gifView.gifUrl = card!.gifvUrl!
         gifView.addAnimatedImage()

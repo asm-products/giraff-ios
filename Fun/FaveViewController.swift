@@ -21,6 +21,15 @@ class AsyncFaveViewController : UIViewController, ASCollectionViewDataSource, AS
 
     }
 
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated);
+
+        // GA
+        var tracker = GAI.sharedInstance().defaultTracker
+        tracker.set(kGAIScreenName, value: "Favorites")
+        tracker.send(GAIDictionaryBuilder.createScreenView().build())
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.addSubview(self.collectionView)

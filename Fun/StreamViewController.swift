@@ -1,6 +1,6 @@
 import UIKit
 
-class StreamViewController: UIViewController, ZLSwipeableViewDataSource, ZLSwipeableViewDelegate {
+class StreamViewController: GAITrackedViewController, ZLSwipeableViewDataSource, ZLSwipeableViewDelegate {
     @IBOutlet weak var swipeableView: ZLSwipeableView!
     @IBOutlet weak var revealButtonItem: UIBarButtonItem!
     
@@ -10,6 +10,7 @@ class StreamViewController: UIViewController, ZLSwipeableViewDataSource, ZLSwipe
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.screenName = "Stream"
       
         let titleImage = UIImage(named: "fun-logo.png")
         let titleImageView = UIImageView(frame: CGRectMake(0, 0, 30, 30))
@@ -104,9 +105,11 @@ class StreamViewController: UIViewController, ZLSwipeableViewDataSource, ZLSwipe
         switch(direction) {
         case .Left:
             println("\(gifView.imageId) passed")
+            GAI.sharedInstance().defaultTracker.send(GAIDictionaryBuilder.createEventWithCategory("gif", action: "passed", label:"Gif Passed", value:nil).build())
             FunSession.sharedSession.imagePassed(gifView.imageId!)
         case .Right:
             println("\(gifView.imageId) faved")
+            GAI.sharedInstance().defaultTracker.send(GAIDictionaryBuilder.createEventWithCategory("gif", action: "faved", label:"Gif Faved", value:nil).build())
             totalFavedForSession += 1
             // already faved 10 items: show them 'oops' payment page
             if totalFavedForSession >= 10 {
