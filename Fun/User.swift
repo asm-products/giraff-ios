@@ -19,6 +19,7 @@ class User: NSObject, NSCoding {
     
     class func removeCache() {
         NSUserDefaults.standardUserDefaults().setObject(nil, forKey: UserKey)
+        NSUserDefaults.standardUserDefaults().synchronize()
     }
     
     var email: String? { didSet { cache() } }

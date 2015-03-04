@@ -1,6 +1,7 @@
 import Foundation
 
 private let _sharedSession = FunSession()
+private let authentication_token_key = "authentication_token"
 
 class FunSession {
     class var sharedSession: FunSession {
@@ -20,7 +21,8 @@ class FunSession {
             println("CALLED")
             let json = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as NSDictionary
             println(json)
-            NSUserDefaults.standardUserDefaults().setObject(json["authentication_token"], forKey: "authentication_token")
+            NSUserDefaults.standardUserDefaults().setObject(json[authentication_token_key], forKey: authentication_token_key)
+            NSUserDefaults.standardUserDefaults().synchronize()
             callback()
         }
     }
@@ -28,7 +30,8 @@ class FunSession {
     func fbSignIn(email:String, authToken:String, callback: () -> Void) {
       request("POST", url: "/fbcreate", body:["email":email, "fb_auth_token":authToken]) {(data:NSData) in
         let json = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as NSDictionary
-        NSUserDefaults.standardUserDefaults().setObject(json["authentication_token"], forKey: "authentication_token")
+        NSUserDefaults.standardUserDefaults().setObject(json[authentication_token_key], forKey: authentication_token_key)
+        NSUserDefaults.standardUserDefaults().synchronize()
         callback()
       }
     }
@@ -100,7 +103,7 @@ class FunSession {
     }
     
     func authenticationToken() -> String? {
-        if let token = NSUserDefaults.standardUserDefaults().stringForKey("authentication_token") {
+        if let token = NSUserDefaults.standardUserDefaults().stringForKey(authentication_token_key) {
             return token
         }
         return UIDevice.currentDevice().identifierForVendor.UUIDString
