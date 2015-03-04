@@ -108,4 +108,17 @@ class FunSession {
         }
         return UIDevice.currentDevice().identifierForVendor.UUIDString
     }
+
+    func deletePersistedAuthenticationToken() {
+        NSUserDefaults.standardUserDefaults().setObject(nil, forKey: authentication_token_key)
+        NSUserDefaults.standardUserDefaults().synchronize()
+    }
+
+    func authenticationTokenExists() -> Bool {
+        if let token = NSUserDefaults.standardUserDefaults().stringForKey(authentication_token_key) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
