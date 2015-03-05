@@ -88,6 +88,7 @@ class LoginViewController: GAITrackedViewController, FBLoginViewDelegate, LoginW
     
     func didSignUpWithEmail() {
         println("API sign up successful")
+        GAI.sharedInstance().defaultTracker.send(GAIDictionaryBuilder.createEventWithCategory("auth", action: "signup_email", label:"Sign Up with Email", value:nil).build())
         
         presentLoggedIn()
     }
