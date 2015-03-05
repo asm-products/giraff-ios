@@ -23,8 +23,25 @@ class LoginViewController: GAITrackedViewController, FBLoginViewDelegate, LoginW
 //        }
     }
 
-    override func viewWillDisappear(animated: Bool) {
-      super.viewWillDisappear(animated)
+    override func viewDidDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.view.hidden = false
+    }
+
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+
+        if FunSession.sharedSession.authenticationTokenExists() {
+            self.view.hidden = true
+        }
+    }
+
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+
+        if FunSession.sharedSession.authenticationTokenExists() {
+            self.performSegueWithIdentifier("loggedIn", sender: self)
+        }
     }
 
     func loginViewFetchedUserInfo(loginView : FBLoginView!, user: FBGraphUser) {

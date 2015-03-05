@@ -31,13 +31,17 @@ class MenuViewController: UIViewController, FBLoginViewDelegate {
     
     func loginViewShowingLoggedOutUser(loginView: FBLoginView!) {
         NSLog("Facebook logged out")
-        User.removeCache()
+        self.logoutUser()
         revealViewController().dismissViewControllerAnimated(true, completion: nil)
     }
     
     @IBAction func logoutButtonDidPress(button: UIButton) {
-        User.removeCache()
+        self.logoutUser()
         revealViewController().dismissViewControllerAnimated(true, completion: nil)
+    }
 
+    func logoutUser() {
+        User.removeCache()
+        FunSession.sharedSession.deletePersistedAuthenticationToken()
     }
 }
