@@ -46,6 +46,7 @@ class LoginViewController: GAITrackedViewController, FBLoginViewDelegate, LoginW
 
     func loginViewFetchedUserInfo(loginView : FBLoginView!, user: FBGraphUser) {
         NSLog("Facebook login successful");
+        Flurry.logEvent("Login: Facebook Successful")
         GAI.sharedInstance().defaultTracker
             .send(GAIDictionaryBuilder.createEventWithCategory("auth", action: "fb_login_success", label:"Facebook Login Successful", value:nil).build())
 

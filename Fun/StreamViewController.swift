@@ -31,6 +31,8 @@ class StreamViewController: GAITrackedViewController, ZLSwipeableViewDataSource,
         swipeableView.dataSource = self
         swipeableView.delegate = self
         swipeableView.backgroundColor = UIColor.clearColor()
+
+        Flurry.logAllPageViewsForTarget(self.navigationController)
     
         fetchCardsAndUpdateView()
     }
@@ -68,6 +70,7 @@ class StreamViewController: GAITrackedViewController, ZLSwipeableViewDataSource,
     @IBAction func shareButtonWasPressed(sender: AnyObject) {
         if let view = swipeableView.topSwipeableView() as? GifCollectionViewCell {
             let card = deck.cardForId(view.imageId!)!
+            Flurry.logEvent("share", withParameters: ["gif":view.imageId!])
             let avc = UIActivityViewController(activityItems: [card.caption!, card.shareUrl()], applicationActivities: nil)
             navigationController?.presentViewController(avc, animated: true, completion: nil)
         }
@@ -101,14 +104,17 @@ class StreamViewController: GAITrackedViewController, ZLSwipeableViewDataSource,
     }
     
     func swipeableView(swipeableView: ZLSwipeableView!, didSwipeView view: UIView!, inDirection direction: ZLSwipeableViewDirection) {
+        //Flurry.logEvent("swipe", withParameters: ["direction" : direction])
         let gifView = view as GifCollectionViewCell
         switch(direction) {
         case .Left:
             println("\(gifView.imageId) passed")
+            Flurry.logEvent("swipe", withParameters: ["direction" : "left"])
             GAI.sharedInstance().defaultTracker.send(GAIDictionaryBuilder.createEventWithCategory("gif", action: "passed", label:"Gif Passed", value:nil).build())
             FunSession.sharedSession.imagePassed(gifView.imageId!)
         case .Right:
             println("\(gifView.imageId) faved")
+            Flurry.logEvent("swipe", withParameters: ["direction" : "right"])
             GAI.sharedInstance().defaultTracker.send(GAIDictionaryBuilder.createEventWithCategory("gif", action: "faved", label:"Gif Faved", value:nil).build())
             totalFavedForSession += 1
             // already faved 10 items: show them 'oops' payment page

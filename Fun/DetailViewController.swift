@@ -17,7 +17,8 @@ class DetailViewController: GAITrackedViewController {
         imageView.addSubview(gifView)
         gifView.caption.text = self.card!.caption!
         gifView.shouldPlay = true
-        
+
+        Flurry.logEvent("Detail Page Shown")
         
 //        view.layer.backgroundColor = UIColor.whiteColor().CGColor
 //        view.layer.cornerRadius = 10.0
