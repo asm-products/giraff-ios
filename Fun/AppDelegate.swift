@@ -37,6 +37,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var plist = NSBundle.mainBundle().pathForResource("configuration", ofType: "plist")
         var config = NSDictionary(contentsOfFile: plist!)!
 
+        Flurry.startSession("937KPSK9TXHBHGTNFRZZ")
+
         // Google Analytics
         GAI.sharedInstance().dispatchInterval = 10
         GAI.sharedInstance().trackerWithTrackingId(config["GOOGLE_ANALYTICS_ID"] as NSString)

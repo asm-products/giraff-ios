@@ -33,7 +33,10 @@ class AsyncFaveViewController : UIViewController, ASCollectionViewDataSource, AS
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.addSubview(self.collectionView)
-        
+
+        Flurry.logAllPageViewsForTarget(self.navigationController)
+        Flurry.logEvent("Favorite Page Shown")
+
         let titleImage = UIImage(named: "fun-logo.png")
         let titleImageView = UIImageView(frame: CGRectMake(0, 0, 30, 30))
         titleImageView.contentMode = .ScaleAspectFit

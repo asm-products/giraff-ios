@@ -25,7 +25,9 @@ class SignUpWithEmailViewController: UIViewController {
         passwordTextField.dataValidator = ValidatorFactory.passwordValidator
         
         signUpButton.enabled = false
-        
+
+        Flurry.logEvent("Login: Sign Up With Email Shown")
+
         // Remove the following lines if want to use username
         // Also update isValidated() function with usernameTextField
         usernameTextField.hidden = true;
@@ -38,6 +40,8 @@ class SignUpWithEmailViewController: UIViewController {
       FunSession.sharedSession.signIn(emailTextField.text, password: passwordTextField.text) {
             User.currentUser.email = self.emailTextField.text
             self.delegate?.didSignUpWithEmail()
+            Flurry.logEvent("Login: Sign Up With Email Pressed")
+
 //            TODO: Show alert if not successful
         }
     }

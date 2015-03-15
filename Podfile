@@ -7,3 +7,4 @@ pod 'AsyncDisplayKit', :git => 'https://github.com/facebook/AsyncDisplayKit.git'
 pod 'ZLSwipeableView', :git => 'https://github.com/whatupdave/ZLSwipeableView'
 pod "SPXDataValidators"
 pod 'GoogleAnalytics-iOS-SDK', '~> 3.10'
+pod 'FlurrySDK'
