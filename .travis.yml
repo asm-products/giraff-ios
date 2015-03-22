@@ -1,0 +1,8 @@
+language: objective-c
+xcode_workspace: Fun.xcworkspace
+xcode_scheme: Fun
+xcode_sdk: iphonesimulator
+
+install:
+  - sudo gem install cocoapods
+  - pod install
