@@ -1,5 +1,5 @@
 language: objective-c
-xcode_project: Fun.xcodeproj
+xcode_workspace: Fun.xcworkspace
 xcode_scheme: Fun
 xcode_sdk: iphonesimulator
 
