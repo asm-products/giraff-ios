@@ -16,7 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         application.statusBarHidden = true
@@ -72,6 +71,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
       return FBAppCall.handleOpenURL(url, sourceApplication: sourceApplication)
+    }
+
+    override class func initialize() -> Void {
+        iRate.sharedInstance().onlyPromptIfLatestVersion = true
+        //make sure the user likes the app. He needs to use it a certain amount of days and times.
+        iRate.sharedInstance().usesUntilPrompt = 3
+        iRate.sharedInstance().daysUntilPrompt = 2
+
+        //iRate.sharedInstance().previewMode = true
     }
 }
 

@@ -14,12 +14,12 @@
 		2836166F1A8C6D4E00E895D0 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2836166D1A8C6D4E00E895D0 /* Crashlytics.framework */; };
 		283616701A8C6D4E00E895D0 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2836166E1A8C6D4E00E895D0 /* Fabric.framework */; };
 		31E5CAAA1A92BAF900036EA8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E5CAA91A92BAF900036EA8 /* User.swift */; };
-		4A9ACF9C1A9C6A8700B1D811 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A9ACF9B1A9C6A8700B1D811 /* AVFoundation.framework */; };
 		31E97C0A1A9E2D7D005168D4 /* LoginWithEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E97C091A9E2D7D005168D4 /* LoginWithEmailViewController.swift */; };
 		31E97C0C1A9E5196005168D4 /* SignUpWithEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E97C0B1A9E5196005168D4 /* SignUpWithEmailViewController.swift */; };
 		31E97C0E1A9E51CF005168D4 /* DesignableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E97C0D1A9E51CF005168D4 /* DesignableTextField.swift */; };
 		31E97C101A9F1D9B005168D4 /* ValidatorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E97C0F1A9F1D9B005168D4 /* ValidatorFactory.swift */; };
 		31E97C121A9F29E2005168D4 /* DesignableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E97C111A9F29E2005168D4 /* DesignableButton.swift */; };
+		4A9ACF9C1A9C6A8700B1D811 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A9ACF9B1A9C6A8700B1D811 /* AVFoundation.framework */; };
 		5515DFAD1A8D96AC00C87BB4 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5515DFAC1A8D96AC00C87BB4 /* MenuViewController.swift */; };
 		55431B6F1A8945ED00F28569 /* FunSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55431B6E1A8945ED00F28569 /* FunSession.swift */; };
 		55692A5A1A8C7CCD00FE83E6 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55692A591A8C7CCD00FE83E6 /* DetailViewController.swift */; };
@@ -57,12 +57,12 @@
 		2836166D1A8C6D4E00E895D0 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		2836166E1A8C6D4E00E895D0 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		31E5CAA91A92BAF900036EA8 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		4A9ACF9B1A9C6A8700B1D811 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		31E97C091A9E2D7D005168D4 /* LoginWithEmailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginWithEmailViewController.swift; sourceTree = "<group>"; };
 		31E97C0B1A9E5196005168D4 /* SignUpWithEmailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpWithEmailViewController.swift; sourceTree = "<group>"; };
 		31E97C0D1A9E51CF005168D4 /* DesignableTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableTextField.swift; sourceTree = "<group>"; };
 		31E97C0F1A9F1D9B005168D4 /* ValidatorFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidatorFactory.swift; sourceTree = "<group>"; };
 		31E97C111A9F29E2005168D4 /* DesignableButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableButton.swift; sourceTree = "<group>"; };
+		4A9ACF9B1A9C6A8700B1D811 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		5515DFAC1A8D96AC00C87BB4 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		55431B6E1A8945ED00F28569 /* FunSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FunSession.swift; sourceTree = "<group>"; };
 		55692A591A8C7CCD00FE83E6 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -275,10 +275,11 @@
 				TargetAttributes = {
 					55E8E7B91A82E5540087F086 = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = X6E8S7R9CM;
+						DevelopmentTeam = KTJLH9P683;
 					};
 					55E8E7CE1A82E5540087F086 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = KTJLH9P683;
 						TestTargetID = 55E8E7B91A82E5540087F086;
 					};
 				};

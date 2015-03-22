@@ -17,6 +17,7 @@
 #import <FacebookSDK/FacebookSDK.h>
 #import <AsyncDisplayKit/AsyncDisplayKit.h>
 #import <FlurrySDK/Flurry.h>
+#import "iRate.h"
 
 #import "SPXFormValidator.h"
 #import "SPXDataField.h"
