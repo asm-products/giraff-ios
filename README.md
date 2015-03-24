@@ -2,6 +2,8 @@
 
 ## One Tap Curated Gifs
 
+[![Build Status](https://travis-ci.org/asm-products/giraff-ios.svg?branch=master)](https://travis-ci.org/asm-products/giraff-ios)
+
 This is a product being built by the Assembly community. You can help push this idea forward by visiting [https://assembly.com/fun](https://assembly.com/fun).
 
 **Quick Start**: Install Xcode, cocoapods, `pod install`, `cp configuration.plist.example configuration.plist`
