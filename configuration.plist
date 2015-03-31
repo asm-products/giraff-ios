@@ -5,7 +5,7 @@
   <key>FUN_API_URL</key>
   <string>http://fun-api.herokuapp.com</string>
   <key>SHARE_URL</key>
-  <string>http://choosefun.com/#</string>
+  <string>http://choosefun.com/v/</string>
   <key>GOOGLE_ANALYTICS_ID</key>
   <string>UA-59726211-1</string>
 </dict>
