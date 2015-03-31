@@ -275,11 +275,11 @@
 				TargetAttributes = {
 					55E8E7B91A82E5540087F086 = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = KTJLH9P683;
+						DevelopmentTeam = X6E8S7R9CM;
 					};
 					55E8E7CE1A82E5540087F086 = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = KTJLH9P683;
+						DevelopmentTeam = X6E8S7R9CM;
 						TestTargetID = 55E8E7B91A82E5540087F086;
 					};
 				};

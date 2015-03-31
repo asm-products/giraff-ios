@@ -44,14 +44,14 @@ CHECKOUT OPTIONS:
     :git: https://github.com/whatupdave/ZLSwipeableView
 
 SPEC CHECKSUMS:
-  AsyncDisplayKit: 2c355970d1aabe00608211d9a50e35b7a5dc0ae4
-  FlurrySDK: 710642d1de75c220eeb48a387a80a943fe1c3371
-  GoogleAnalytics-iOS-SDK: f422062075d9ccb1ea8d783fc5ba3829461e9502
-  iRate: 5e1978bac8b3f3f0296dbeccc0dd7b50e6e50657
-  M13OrderedDictionary: 8f721284b4960aabaf567b7894911a45cb9c71b0
-  Mantle: d5fbaf30fbc58031223af13812c060e15934a1fe
-  SPXDataValidators: a4036c59cbc578ddd24d0f80bee23cf2aaa8f164
-  SWRevealViewController: f6d80638b8e12323e87ac79562345403a799cb77
-  ZLSwipeableView: 668c90a07a0d704b78a4dc8432875caafd6d9efc
+  AsyncDisplayKit: e4424d28338c25639442cb83a593b22b6c7e72a0
+  FlurrySDK: 6d8cc2f898589214ed72e481cf59cffa55b88fe0
+  GoogleAnalytics-iOS-SDK: 4f98a376c1d61e6ac4ca47951655820314856eef
+  iRate: 09ef501c74ade02013348bc33225ea48f7aa4e55
+  M13OrderedDictionary: ca1bb2d743fd64500ffabee811d4bf2d0a65c908
+  Mantle: 60acd0cd363e27d945bda0a6b8e90577112d28f3
+  SPXDataValidators: 669c9300138e6ed28bc83235df7d6e729b4ffb8b
+  SWRevealViewController: 6d3fd97f70112fd7cef9de14df4260eacce4c63a
+  ZLSwipeableView: affdfc8d15e041bf788c3cf6b2bced573f0809e2
 
-COCOAPODS: 0.36.0
+COCOAPODS: 0.35.0
