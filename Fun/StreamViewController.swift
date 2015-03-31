@@ -118,9 +118,9 @@ class StreamViewController: GAITrackedViewController, ZLSwipeableViewDataSource,
             GAI.sharedInstance().defaultTracker.send(GAIDictionaryBuilder.createEventWithCategory("gif", action: "faved", label:"Gif Faved", value:nil).build())
             totalFavedForSession += 1
             // already faved 10 items: show them 'oops' payment page
-            if totalFavedForSession >= 10 {
-                self.performSegueWithIdentifier("oops", sender: self)
-            }
+//            if totalFavedForSession >= 10 {
+//                self.performSegueWithIdentifier("oops", sender: self)
+//            }
             FunSession.sharedSession.imageFaved(gifView.imageId!)
         default:
             println("Ignore swipe")
