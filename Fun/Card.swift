@@ -13,7 +13,7 @@ class Card : MTLModel, MTLJSONSerializing {
     
     var gifUrlPreview:String? {
         get {
-            return "\(url!.stringByDeletingPathExtension)l.gif"
+            return "\(url!.stringByDeletingPathExtension).png"
         }
     }
     
