@@ -40,8 +40,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // Google Analytics
         GAI.sharedInstance().dispatchInterval = 10
-        GAI.sharedInstance().trackerWithTrackingId(config["GOOGLE_ANALYTICS_ID"] as NSString)
-        GAI.sharedInstance().defaultTracker.send(GAIDictionaryBuilder.createEventWithCategory("ui_action", action: "app_launched", label:"launch", value:nil).build())
+        GAI.sharedInstance().trackerWithTrackingId(config["GOOGLE_ANALYTICS_ID"] as! String)
+        let event = GAIDictionaryBuilder.createEventWithCategory("ui_action", action: "app_launched", label:"launch", value:nil).build() as NSDictionary
+        GAI.sharedInstance().defaultTracker.send(event as [NSObject: AnyObject])
 
         return true
     }
