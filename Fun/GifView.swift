@@ -9,7 +9,7 @@ class GifCollectionViewCell: UICollectionViewCell, NSURLSessionDataDelegate, NSU
     var imageBytes:NSMutableData?
     var totalBytesLength:Float64?
     var progressIndicator: CircleProgressView!
-    var gifUrl: NSString?
+    var gifUrl: String?
     var shouldPlay:Bool = false  {
         didSet {
             if let player = videoView!.player() {
@@ -121,7 +121,7 @@ class GifCollectionViewCell: UICollectionViewCell, NSURLSessionDataDelegate, NSU
     }
     
     func playerItemDidReachEnd(notification: NSNotification) {
-        let p = notification.object as AVPlayerItem;
+        let p = notification.object as! AVPlayerItem;
         p.seekToTime(kCMTimeZero)
     }
     
@@ -239,12 +239,12 @@ class VideoView: UIView {
     }
     
     func player() -> AVPlayer? {
-        let playerLayer = self.layer as AVPlayerLayer
+        let playerLayer = self.layer as! AVPlayerLayer
         return playerLayer.player
     }
     
     func setPlayer(player: AVPlayer) {
-        let playerLayer = self.layer as AVPlayerLayer
+        let playerLayer = self.layer as! AVPlayerLayer
         playerLayer.player = player
     }
 }

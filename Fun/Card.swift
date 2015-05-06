@@ -27,7 +27,7 @@ class Card : MTLModel, MTLJSONSerializing {
     func shareUrl() -> String {
         let plist = NSBundle.mainBundle().pathForResource("configuration", ofType: "plist")
         let config = NSDictionary(contentsOfFile: plist!)!
-        let shareUrl = config["SHARE_URL"] as NSString
+        let shareUrl = config["SHARE_URL"] as! String
         return "".join([shareUrl, shortcode!])
     }
 }

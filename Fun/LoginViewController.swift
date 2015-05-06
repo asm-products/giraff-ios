@@ -47,8 +47,9 @@ class LoginViewController: GAITrackedViewController, FBLoginViewDelegate, LoginW
     func loginViewFetchedUserInfo(loginView : FBLoginView!, user: FBGraphUser) {
         NSLog("Facebook login successful");
         Flurry.logEvent("Login: Facebook Successful")
+        let event = GAIDictionaryBuilder.createEventWithCategory("auth", action: "fb_login_success", label:"Facebook Login Successful", value:nil).build() as NSDictionary
         GAI.sharedInstance().defaultTracker
-            .send(GAIDictionaryBuilder.createEventWithCategory("auth", action: "fb_login_success", label:"Facebook Login Successful", value:nil).build())
+            .send(event as [NSObject: AnyObject])
 
         User.currentUser.facebookName = user.objectForKey("name") as? String
         User.currentUser.facebookID = user.objectForKey("id") as? String
@@ -89,7 +90,8 @@ class LoginViewController: GAITrackedViewController, FBLoginViewDelegate, LoginW
     
     func didSignUpWithEmail() {
         println("API sign up successful")
-        GAI.sharedInstance().defaultTracker.send(GAIDictionaryBuilder.createEventWithCategory("auth", action: "signup_email", label:"Sign Up with Email", value:nil).build())
+        let event = GAIDictionaryBuilder.createEventWithCategory("auth", action: "signup_email", label:"Sign Up with Email", value:nil).build() as NSDictionary
+        GAI.sharedInstance().defaultTracker.send(event as [NSObject: AnyObject])
         
         presentLoggedIn()
     }

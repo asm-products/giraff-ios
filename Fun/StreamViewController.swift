@@ -69,7 +69,7 @@ class StreamViewController: GAITrackedViewController, ZLSwipeableViewDataSource,
 
     @IBAction func shareButtonWasPressed(sender: AnyObject) {
         if let view = swipeableView.topSwipeableView() as? GifCollectionViewCell {
-            let card = deck.cardForId(view.imageId!)!
+            let card = deck.cardForId(view.imageId! as String)!
             Flurry.logEvent("share", withParameters: ["gif":view.imageId!])
             let avc = UIActivityViewController(activityItems: [card.caption!, card.shareUrl()], applicationActivities: nil)
             navigationController?.presentViewController(avc, animated: true, completion: nil)
@@ -98,24 +98,26 @@ class StreamViewController: GAITrackedViewController, ZLSwipeableViewDataSource,
     func swipeableView(swipeableView: ZLSwipeableView!, didEndSwipingView view: UIView!, atLocation location: CGPoint) {
         swipeStart = nil
 
-        let gifView = view as GifCollectionViewCell
+        let gifView = view as! GifCollectionViewCell
         gifView.passLabel.alpha = 0.0
         gifView.faveLabel.alpha = 0.0
     }
     
     func swipeableView(swipeableView: ZLSwipeableView!, didSwipeView view: UIView!, inDirection direction: ZLSwipeableViewDirection) {
         //Flurry.logEvent("swipe", withParameters: ["direction" : direction])
-        let gifView = view as GifCollectionViewCell
+        let gifView = view as! GifCollectionViewCell
         switch(direction) {
         case .Left:
             println("\(gifView.imageId) passed")
             Flurry.logEvent("swipe", withParameters: ["direction" : "left"])
-            GAI.sharedInstance().defaultTracker.send(GAIDictionaryBuilder.createEventWithCategory("gif", action: "passed", label:"Gif Passed", value:nil).build())
+            let event = GAIDictionaryBuilder.createEventWithCategory("gif", action: "passed", label:"Gif Passed", value:nil).build() as NSDictionary
+            GAI.sharedInstance().defaultTracker.send(event as [NSObject: AnyObject])
             FunSession.sharedSession.imagePassed(gifView.imageId!)
         case .Right:
             println("\(gifView.imageId) faved")
             Flurry.logEvent("swipe", withParameters: ["direction" : "right"])
-            GAI.sharedInstance().defaultTracker.send(GAIDictionaryBuilder.createEventWithCategory("gif", action: "faved", label:"Gif Faved", value:nil).build())
+            let event = GAIDictionaryBuilder.createEventWithCategory("gif", action: "faved", label:"Gif Faved", value:nil).build() as NSDictionary
+            GAI.sharedInstance().defaultTracker.send(event as [NSObject: AnyObject])
             totalFavedForSession += 1
             // already faved 10 items: show them 'oops' payment page
 //            if totalFavedForSession >= 10 {
@@ -130,7 +132,7 @@ class StreamViewController: GAITrackedViewController, ZLSwipeableViewDataSource,
     func swipeableView(swipeableView: ZLSwipeableView!, swipingView view: UIView!, atLocation location: CGPoint, translation: CGPoint) {
         let minimalDrag = CGFloat(10.0)
         let maximumDrag = CGFloat(40.0)
-        let gifView = view as GifCollectionViewCell
+        let gifView = view as! GifCollectionViewCell
         if let concreteSwipeStart = swipeStart {
             let swipeDiff = location.x - concreteSwipeStart.x
             let absSwipeDiff = abs(swipeDiff)
