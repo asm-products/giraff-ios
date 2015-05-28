@@ -27,7 +27,8 @@ class AsyncFaveViewController : UIViewController, ASCollectionViewDataSource, AS
         // GA
         var tracker = GAI.sharedInstance().defaultTracker
         tracker.set(kGAIScreenName, value: "Favorites")
-        tracker.send(GAIDictionaryBuilder.createScreenView().build())
+        let event = GAIDictionaryBuilder.createScreenView().build() as NSDictionary
+        tracker.send(event as [NSObject: AnyObject])
     }
     
     override func viewDidLoad() {
@@ -104,8 +105,8 @@ class AsyncFaveViewController : UIViewController, ASCollectionViewDataSource, AS
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "detail" {
-            let card = sender as Card
-            let vc = segue.destinationViewController as DetailViewController
+            let card = sender as! Card
+            let vc = segue.destinationViewController as! DetailViewController
             vc.card = card
         }
     }

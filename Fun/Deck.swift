@@ -5,7 +5,7 @@ enum DeckSourceMode {
 }
 
 class Deck : NSObject {
-    let FETCH_BUFFER = 10
+    let FETCH_BUFFER:UInt = 10
     
     var cards = M13MutableOrderedDictionary()
     var deckSourceMode = DeckSourceMode.NewGifs
@@ -26,7 +26,7 @@ class Deck : NSObject {
         if currentIndex >= self.cards.count() {
             return nil
         }
-        let card = self.cards.objectAtIndex(currentIndex) as Card
+        let card = self.cards.objectAtIndex(currentIndex) as! Card
         currentIndex++
         
         if (cards.count() - currentIndex < FETCH_BUFFER) {
@@ -36,11 +36,11 @@ class Deck : NSObject {
     }
     
     func cardForId(id:String) -> Card? {
-        return self.cards.objectForKey(id) as Card?
+        return self.cards.objectForKey(id) as! Card?
     }
     
     func cardAtIndex(index:UInt) -> Card? {
-        return self.cards.objectAtIndex(index) as Card?
+        return self.cards.objectAtIndex(index) as! Card?
     }
     
     func reset() {
@@ -51,11 +51,11 @@ class Deck : NSObject {
     func fetch(callback: (() -> Void)!) {
         let imageHandler:(NSArray) -> Void = {[weak self](images) in
             if let strongSelf = self {
-                let cards = MTLJSONAdapter.modelsOfClass(Card.self, fromJSONArray: images, error: nil)
+                let cards = MTLJSONAdapter.modelsOfClass(Card.self, fromJSONArray: images as [AnyObject], error: nil)
                 for card in cards {
                     //Do not enter duplicate entries
-                    if (strongSelf.cards.objectForKey((card as Card).id) == nil) {
-                        strongSelf.cards.addObject(card, pairedWithKey: (card as Card).id)
+                    if (strongSelf.cards.objectForKey((card as! Card).id) == nil) {
+                        strongSelf.cards.addObject(card, pairedWithKey: (card as! Card).id)
                     }
                 }
                 if callback != nil {

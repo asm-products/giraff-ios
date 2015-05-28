@@ -8,18 +8,18 @@ class FunSession {
         return _sharedSession
     }
     
-    let apiUrl:NSString
+    let apiUrl:String
     
     init() {
         var plist = NSBundle.mainBundle().pathForResource("configuration", ofType: "plist")
         var config = NSDictionary(contentsOfFile: plist!)!
-        apiUrl = config["FUN_API_URL"] as NSString
+        apiUrl = config["FUN_API_URL"] as! String
     }
     
     func signIn(email:String, password:String, callback: () -> Void) {
         request("POST", url: "/sessions", body:["email":email, "password":password]) {(data:NSData) in
             println("CALLED")
-            let json = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as NSDictionary
+            let json = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as! NSDictionary
             println(json)
             NSUserDefaults.standardUserDefaults().setObject(json[authentication_token_key], forKey: authentication_token_key)
             NSUserDefaults.standardUserDefaults().synchronize()
@@ -29,7 +29,7 @@ class FunSession {
 
     func fbSignIn(email:String, authToken:String, callback: () -> Void) {
       request("POST", url: "/fbcreate", body:["email":email, "fb_auth_token":authToken]) {(data:NSData) in
-        let json = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as NSDictionary
+        let json = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as! NSDictionary
         NSUserDefaults.standardUserDefaults().setObject(json[authentication_token_key], forKey: authentication_token_key)
         NSUserDefaults.standardUserDefaults().synchronize()
         callback()
@@ -38,14 +38,14 @@ class FunSession {
   
     func fetchImages(callback: (NSArray) -> Void) {
         get("/images") {(json:NSDictionary) -> Void in
-            let images = json["images"] as NSArray
+            let images = json["images"] as! NSArray
             callback(images)
         }
     }
 
     func fetchFaves(currentFavePage:Int,callback: (NSArray) -> Void) {
         get("/images/favorites?page=\(currentFavePage)") {(json:NSDictionary) -> Void in
-            let images = json["images"] as NSArray
+            let images = json["images"] as! NSArray
             callback(images)
         }
     }
@@ -59,14 +59,14 @@ class FunSession {
     }
 
     
-    func get(url:NSString, callback: (NSDictionary) -> Void) {
+    func get(url:String, callback: (NSDictionary) -> Void) {
         request("GET", url: url, body:nil) {(data:NSData) in
-            let json = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as NSDictionary
+            let json = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as! NSDictionary
             callback(json)
         }
     }
     
-    func post(url:NSString) {
+    func post(url:String) {
         request("POST", url: url, body:nil) {NSData in
         }
     }
@@ -88,7 +88,7 @@ class FunSession {
         
         NSLog("%@ %@", httpMethod, url)
         let task = session.dataTaskWithRequest(request) {(data, response, error) in
-            var httpResponse = response as NSHTTPURLResponse?
+            var httpResponse = response as! NSHTTPURLResponse?
             if error != nil {
                 NSLog("Failed to connect to server: %@", error)
             } else if httpResponse!.statusCode != 200 {

@@ -34,15 +34,19 @@ class LoginWithEmailViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    func textFieldDidBeginEditing(textField: DesignableTextField) {
-        textField.validated = .Unknown
+    func textFieldDidBeginEditing(textField: UITextField) {
+        if let field = textField as? DesignableTextField {
+            field.validated = .Unknown
+        }
     }
     
-    func textFieldDidEndEditing(textField: DesignableTextField) {
-        if SPXFormValidator.validateField(textField) {
-            textField.validated = .Valid
-        } else {
-            textField.validated = .Invalid
+    func textFieldDidEndEditing(textField: UITextField) {
+        if let field = textField as? DesignableTextField {
+            if SPXFormValidator.validateField(field) {
+                field.validated = .Valid
+            } else {
+                field.validated = .Invalid
+            }
         }
     }
     
@@ -57,7 +61,7 @@ class LoginWithEmailViewController: UIViewController, UITextFieldDelegate {
         }
         
         if textField.tag == 1 && SPXFormValidator.validateFields([emailTextField, passwordTextField]) {
-                loginButtonDidPress(textField)
+            loginButtonDidPress(textField)
         }
         
         return true

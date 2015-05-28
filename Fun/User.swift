@@ -40,7 +40,7 @@ class User: NSObject, NSCoding {
         self.email = aDecoder.decodeObjectForKey("email") as? String
         self.facebookName = aDecoder.decodeObjectForKey("facebookName") as? String
         self.facebookID = aDecoder.decodeObjectForKey("facebookID") as? String
-        self.didLoginWithFacebook = aDecoder.decodeObjectForKey("didLoginWithFacebook") as Bool
+        self.didLoginWithFacebook = aDecoder.decodeObjectForKey("didLoginWithFacebook") as! Bool
     }
     
     func encodeWithCoder(aCoder: NSCoder) {
