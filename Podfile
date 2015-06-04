@@ -1,11 +1,12 @@
 platform :ios, '7.0'
 
+pod 'AsyncDisplayKit', :git => 'https://github.com/facebook/AsyncDisplayKit.git', :commit => '3c822fe698'
+pod 'Facebook-iOS-SDK', '~> 3.23.2'
+pod 'FlurrySDK'
+pod 'GoogleAnalytics-iOS-SDK', '~> 3.10'
+pod 'iRate'
 pod 'M13OrderedDictionary', '~> 1.0'
 pod 'Mantle', '~> 1.5'
+pod 'SPXDataValidators'
 pod 'SWRevealViewController'
-pod 'AsyncDisplayKit', :git => 'https://github.com/facebook/AsyncDisplayKit.git', :commit => '3c822fe698'
 pod 'ZLSwipeableView', :git => 'https://github.com/whatupdave/ZLSwipeableView'
-pod "SPXDataValidators"
-pod 'GoogleAnalytics-iOS-SDK', '~> 3.10'
-pod 'FlurrySDK'
-pod 'iRate'
