@@ -13,6 +13,9 @@
 		0179C25A1A854A9400A36023 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0179C2591A854A9400A36023 /* LoginViewController.swift */; };
 		2836166F1A8C6D4E00E895D0 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2836166D1A8C6D4E00E895D0 /* Crashlytics.framework */; };
 		283616701A8C6D4E00E895D0 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2836166E1A8C6D4E00E895D0 /* Fabric.framework */; };
+		2CE073201B029760005AD679 /* flag.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CE0731D1B02975F005AD679 /* flag.png */; };
+		2CE073211B029760005AD679 /* flag@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CE0731E1B02975F005AD679 /* flag@2x.png */; };
+		2CE073221B029760005AD679 /* flag@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CE0731F1B02975F005AD679 /* flag@3x.png */; };
 		31E5CAAA1A92BAF900036EA8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E5CAA91A92BAF900036EA8 /* User.swift */; };
 		31E97C0A1A9E2D7D005168D4 /* LoginWithEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E97C091A9E2D7D005168D4 /* LoginWithEmailViewController.swift */; };
 		31E97C0C1A9E5196005168D4 /* SignUpWithEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E97C0B1A9E5196005168D4 /* SignUpWithEmailViewController.swift */; };
@@ -56,6 +59,9 @@
 		0179C2591A854A9400A36023 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		2836166D1A8C6D4E00E895D0 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		2836166E1A8C6D4E00E895D0 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		2CE0731D1B02975F005AD679 /* flag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = flag.png; path = Images.xcassets/flag.imageset/flag.png; sourceTree = "<group>"; };
+		2CE0731E1B02975F005AD679 /* flag@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "flag@2x.png"; path = "Images.xcassets/flag.imageset/flag@2x.png"; sourceTree = "<group>"; };
+		2CE0731F1B02975F005AD679 /* flag@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "flag@3x.png"; path = "Images.xcassets/flag.imageset/flag@3x.png"; sourceTree = "<group>"; };
 		31E5CAA91A92BAF900036EA8 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		31E97C091A9E2D7D005168D4 /* LoginWithEmailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginWithEmailViewController.swift; sourceTree = "<group>"; };
 		31E97C0B1A9E5196005168D4 /* SignUpWithEmailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpWithEmailViewController.swift; sourceTree = "<group>"; };
@@ -152,6 +158,9 @@
 				55ADA6AB1A8419B100A588BD /* spinner.gif */,
 				55E8E7BF1A82E5540087F086 /* AppDelegate.swift */,
 				55E8E7C11A82E5540087F086 /* StreamViewController.swift */,
+				2CE0731D1B02975F005AD679 /* flag.png */,
+				2CE0731E1B02975F005AD679 /* flag@2x.png */,
+				2CE0731F1B02975F005AD679 /* flag@3x.png */,
 				55E8E7C31A82E5540087F086 /* Main.storyboard */,
 				F691558F1A9D1D5C005AE298 /* ThanksViewController.swift */,
 				55E8E7C61A82E5540087F086 /* Images.xcassets */,
@@ -275,7 +284,7 @@
 				TargetAttributes = {
 					55E8E7B91A82E5540087F086 = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = X6E8S7R9CM;
+						DevelopmentTeam = 6Y8A4KLDZ7;
 					};
 					55E8E7CE1A82E5540087F086 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -310,8 +319,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				55A957171A88569D002A5F66 /* configuration.plist in Resources */,
+				2CE073201B029760005AD679 /* flag.png in Resources */,
+				2CE073211B029760005AD679 /* flag@2x.png in Resources */,
 				55E8E7C51A82E5540087F086 /* Main.storyboard in Resources */,
 				55ADA6AC1A8419B100A588BD /* spinner.gif in Resources */,
+				2CE073221B029760005AD679 /* flag@3x.png in Resources */,
 				55E8E7C71A82E5540087F086 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -564,6 +576,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Sergio Sa (5AEFKAS898)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Sergio Sa (5AEFKAS898)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -583,6 +597,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Sergio Sa (5AEFKAS898)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Sergio Sa (5AEFKAS898)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
