@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0178D1731A8C29FF00293AB3 /* CircleProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0178D1721A8C29FF00293AB3 /* CircleProgressView.swift */; };
-		0179C2571A85484E00A36023 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0179C2541A85484E00A36023 /* FacebookSDK.framework */; };
 		0179C2581A85484E00A36023 /* FBAudienceNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0179C2551A85484E00A36023 /* FBAudienceNetwork.framework */; };
 		0179C25A1A854A9400A36023 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0179C2591A854A9400A36023 /* LoginViewController.swift */; };
 		2836166F1A8C6D4E00E895D0 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2836166D1A8C6D4E00E895D0 /* Crashlytics.framework */; };
@@ -54,7 +53,6 @@
 
 /* Begin PBXFileReference section */
 		0178D1721A8C29FF00293AB3 /* CircleProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleProgressView.swift; sourceTree = "<group>"; };
-		0179C2541A85484E00A36023 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		0179C2551A85484E00A36023 /* FBAudienceNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBAudienceNetwork.framework; sourceTree = "<group>"; };
 		0179C2591A854A9400A36023 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		2836166D1A8C6D4E00E895D0 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
@@ -102,7 +100,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4A9ACF9C1A9C6A8700B1D811 /* AVFoundation.framework in Frameworks */,
-				0179C2571A85484E00A36023 /* FacebookSDK.framework in Frameworks */,
 				2836166F1A8C6D4E00E895D0 /* Crashlytics.framework in Frameworks */,
 				0179C2581A85484E00A36023 /* FBAudienceNetwork.framework in Frameworks */,
 				D48D6C0E3A66A0FBCB2A5D86 /* libPods.a in Frameworks */,
@@ -223,7 +220,6 @@
 				4A9ACF9B1A9C6A8700B1D811 /* AVFoundation.framework */,
 				2836166D1A8C6D4E00E895D0 /* Crashlytics.framework */,
 				2836166E1A8C6D4E00E895D0 /* Fabric.framework */,
-				0179C2541A85484E00A36023 /* FacebookSDK.framework */,
 				0179C2551A85484E00A36023 /* FBAudienceNetwork.framework */,
 				55ADA6AF1A843C6400A588BD /* MediaPlayer.framework */,
 				6700CA7FD39135D61A9D87A2 /* libPods.a */,

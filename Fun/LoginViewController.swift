@@ -1,9 +1,11 @@
 import UIKit
 
-class LoginViewController: GAITrackedViewController, FBLoginViewDelegate, LoginWithEmailDelegate, SignUpWithEmailDelegate {
+class LoginViewController: GAITrackedViewController {
     
     @IBOutlet weak var loginView: FBLoginView!
     @IBOutlet weak var bgImage: UIImageView!
+
+    var facebookUserLoggedIn = false;
   
     enum SegueIdentifier: String {
         case PresentLoginWithEmail = "presentLoginWithEmail"
@@ -12,7 +14,9 @@ class LoginViewController: GAITrackedViewController, FBLoginViewDelegate, LoginW
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         self.screenName = "Login"
+
         loginView.readPermissions = ["public_profile", "email"]
         loginView.delegate = self
         
@@ -43,63 +47,14 @@ class LoginViewController: GAITrackedViewController, FBLoginViewDelegate, LoginW
             self.performSegueWithIdentifier("loggedIn", sender: self)
         }
     }
-
-    func loginViewFetchedUserInfo(loginView : FBLoginView!, user: FBGraphUser) {
-        NSLog("Facebook login successful");
-        Flurry.logEvent("Login: Facebook Successful")
-        let event = GAIDictionaryBuilder.createEventWithCategory("auth", action: "fb_login_success", label:"Facebook Login Successful", value:nil).build() as NSDictionary
-        GAI.sharedInstance().defaultTracker
-            .send(event as [NSObject: AnyObject])
-
-        User.currentUser.facebookName = user.objectForKey("name") as? String
-        User.currentUser.facebookID = user.objectForKey("id") as? String
-        User.currentUser.getFacebookProfilePicture { _ in}
-        User.currentUser.didLoginWithFacebook = true
-        
-        var loginEmail: String;
-        if let email = user.objectForKey("email") as? String {
-            loginEmail = email;
-        }
-        else {
-            loginEmail = "\(User.currentUser.facebookID!)@facebook.com"
-        }
-
-        var authToken = "\(FBSession.activeSession().accessTokenData)"
-
-        FunSession.sharedSession.fbSignIn(loginEmail, authToken: authToken) {
-            NSLog("API signin successful")
-            dispatch_async(dispatch_get_main_queue()) {
-                self.performSegueWithIdentifier("loggedIn", sender: self)
-            }
-        }
-    }
-
-    func loginViewShowingLoggedOutUser(loginView: FBLoginView!) {
-        loginView.hidden = false
-    }
     
     @IBAction func cancelLogin(unwindSegue: UIStoryboardSegue) {
         
-    }
-    
-    func didLoginWithEmail() {
-        println("API login successful")
-
-        presentLoggedIn()
-    }
-    
-    func didSignUpWithEmail() {
-        println("API sign up successful")
-        let event = GAIDictionaryBuilder.createEventWithCategory("auth", action: "signup_email", label:"Sign Up with Email", value:nil).build() as NSDictionary
-        GAI.sharedInstance().defaultTracker.send(event as [NSObject: AnyObject])
-        
-        presentLoggedIn()
     }
 
     func presentLoggedIn() {
         dispatch_async(dispatch_get_main_queue()) {
             self.dismissViewControllerAnimated(true, completion: { () -> Void in
-                
                 self.performSegueWithIdentifier("loggedIn", sender: self)
             })
         }
@@ -140,4 +95,74 @@ class LoginViewController: GAITrackedViewController, FBLoginViewDelegate, LoginW
         }
         return nil
     }
+}
+
+extension LoginViewController : FBLoginViewDelegate {
+
+    func loginViewFetchedUserInfo(loginView : FBLoginView!, user: FBGraphUser) {
+        if (facebookUserLoggedIn) {
+            return
+        }
+        facebookUserLoggedIn = true
+
+        NSLog("Facebook login successful");
+        Flurry.logEvent("Login: Facebook Successful")
+        let event = GAIDictionaryBuilder.createEventWithCategory("auth", action: "fb_login_success", label:"Facebook Login Successful", value:nil).build() as NSDictionary
+        GAI.sharedInstance().defaultTracker
+            .send(event as [NSObject: AnyObject])
+
+        User.currentUser.facebookName = user.objectForKey("name") as? String
+        User.currentUser.facebookID = user.objectForKey("id") as? String
+        User.currentUser.getFacebookProfilePicture { _ in}
+        User.currentUser.didLoginWithFacebook = true
+
+        if FunSession.sharedSession.authenticationTokenExists() {
+            return;
+        }
+
+        var loginEmail: String;
+        if let email = user.objectForKey("email") as? String {
+            loginEmail = email;
+        }
+        else {
+            loginEmail = "\(User.currentUser.facebookID!)@facebook.com"
+        }
+
+        var authToken = "\(FBSession.activeSession().accessTokenData)"
+
+        FunSession.sharedSession.fbSignIn(loginEmail, authToken: authToken) {
+            NSLog("API signin successful")
+            dispatch_async(dispatch_get_main_queue()) {
+                self.performSegueWithIdentifier("loggedIn", sender: self)
+            }
+        }
+    }
+
+    func loginViewShowingLoggedOutUser(loginView: FBLoginView!) {
+        facebookUserLoggedIn = false
+        loginView.hidden = false
+    }
+
+}
+
+extension LoginViewController : LoginWithEmailDelegate {
+
+    func didLoginWithEmail() {
+        println("API login successful")
+
+        presentLoggedIn()
+    }
+
+}
+
+extension LoginViewController : SignUpWithEmailDelegate {
+
+    func didSignUpWithEmail() {
+        println("API sign up successful")
+        let event = GAIDictionaryBuilder.createEventWithCategory("auth", action: "signup_email", label:"Sign Up with Email", value:nil).build() as NSDictionary
+        GAI.sharedInstance().defaultTracker.send(event as [NSObject: AnyObject])
+
+        presentLoggedIn()
+    }
+
 }

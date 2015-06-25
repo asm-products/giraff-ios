@@ -2,6 +2,14 @@ PODS:
   - AsyncDisplayKit (1.1.1):
     - AsyncDisplayKit/ASDealloc2MainObject (= 1.1.1)
   - AsyncDisplayKit/ASDealloc2MainObject (1.1.1)
+  - Bolts (1.2.0):
+    - Bolts/AppLinks (= 1.2.0)
+    - Bolts/Tasks (= 1.2.0)
+  - Bolts/AppLinks (1.2.0):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.2.0)
+  - Facebook-iOS-SDK (3.23.2):
+    - Bolts (~> 1.0)
   - FlurrySDK (6.2.0):
     - FlurrySDK/FlurrySDK (= 6.2.0)
   - FlurrySDK/FlurrySDK (6.2.0)
@@ -20,6 +28,7 @@ PODS:
 DEPENDENCIES:
   - AsyncDisplayKit (from `https://github.com/facebook/AsyncDisplayKit.git`, commit
     `3c822fe698`)
+  - Facebook-iOS-SDK (~> 3.23.2)
   - FlurrySDK
   - GoogleAnalytics-iOS-SDK (~> 3.10)
   - iRate
@@ -46,6 +55,8 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   AsyncDisplayKit: 2c355970d1aabe00608211d9a50e35b7a5dc0ae4
+  Bolts: d176cb1e0012175589e389a9db49b85e27787576
+  Facebook-iOS-SDK: cd87f0b2f0c1d9574b44e8fa2baacc275524bac3
   FlurrySDK: 6d8cc2f898589214ed72e481cf59cffa55b88fe0
   GoogleAnalytics-iOS-SDK: 4f98a376c1d61e6ac4ca47951655820314856eef
   iRate: 09ef501c74ade02013348bc33225ea48f7aa4e55
