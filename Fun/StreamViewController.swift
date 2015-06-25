@@ -1,6 +1,6 @@
 import UIKit
 
-class StreamViewController: GAITrackedViewController, ZLSwipeableViewDataSource, ZLSwipeableViewDelegate {
+class StreamViewController: GAITrackedViewController, ZLSwipeableViewDataSource, ZLSwipeableViewDelegate, UIAlertViewDelegate {
     @IBOutlet weak var swipeableView: ZLSwipeableView!
     @IBOutlet weak var revealButtonItem: UIBarButtonItem!
     
@@ -58,6 +58,15 @@ class StreamViewController: GAITrackedViewController, ZLSwipeableViewDataSource,
         if let view = swipeableView.topSwipeableView() as? GifCollectionViewCell {
             view.shouldPlay = true
         }
+    }
+    
+    @IBAction func flagButtonWasPressed(sender: AnyObject) {
+        let alert: UIAlertView = UIAlertView(title: "Flag image",
+            message: "Are you sure you want to flag this image as offensive?",
+            delegate: self,
+            cancelButtonTitle: "Cancel",
+            otherButtonTitles: "Flag")
+        alert.show()
     }
     
     @IBAction func passButtonWasPressed(sender: AnyObject) {
@@ -164,7 +173,31 @@ class StreamViewController: GAITrackedViewController, ZLSwipeableViewDataSource,
             view.shouldPlay = true
         }
 
-        if let card = self.deck.nextCard() {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        
+        var maybeCard = self.deck.nextCard()
+        if maybeCard != nil {
+            
+            //If a card is flagged, skip to the next card
+            //Not sure if necessary to check id for nil, defensive coding here
+
+            var ccid = maybeCard!.id
+            var isFlagged = false
+            if ccid != nil {
+                isFlagged = defaults.boolForKey(ccid!)
+            }
+            while (ccid != nil && isFlagged) {
+                maybeCard = self.deck.nextCard()
+                if (maybeCard != nil) {
+                    ccid = maybeCard!.id
+                    if (ccid != nil) {
+                        isFlagged = defaults.boolForKey(ccid!)
+                    }
+                }
+            }
+            
+            let card = maybeCard!
+            
             var view = GifCollectionViewCell(frame:swipeableView.bounds)
             view.gifUrl = card.gifvUrl!
             dispatch_async(dispatch_get_main_queue()) { [weak view]() -> Void in
@@ -189,6 +222,17 @@ class StreamViewController: GAITrackedViewController, ZLSwipeableViewDataSource,
         }
 
         return nil
+    }
+    
+    func alertView(alertView: UIAlertView, didDismissWithButtonIndex buttonIndex: Int) {
+        if (buttonIndex == 1) {
+            let defaults = NSUserDefaults.standardUserDefaults()
+            let cc = self.deck.currentCard()?.id
+            if cc != nil {
+                defaults.setBool(true, forKey: cc!)
+            }
+            passButtonWasPressed(alertView)
+        }
     }
 }
 

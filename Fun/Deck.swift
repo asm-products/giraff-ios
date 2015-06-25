@@ -43,6 +43,10 @@ class Deck : NSObject {
         return self.cards.objectAtIndex(index) as! Card?
     }
     
+    func currentCard() -> Card? {
+        return self.cards.objectAtIndex(self.currentIndex) as! Card?
+    }
+    
     func reset() {
         currentIndex = 0
         cards.removeAllObjects()
