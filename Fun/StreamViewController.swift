@@ -67,13 +67,17 @@ class StreamViewController: GAITrackedViewController, ZLSwipeableViewDataSource,
         }
     }
     @IBAction func flagButtonWasPressed(sender: AnyObject) {
-        var alert = UIAlertController(title: "Gif Reported!", message: "", preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+        var alert = UIAlertController(title: "Flag image", message: "Are you sure you want to flag this image as offensive?", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Flag", style: UIAlertActionStyle.Default, handler: flagHandler))
+        
         self.presentViewController(alert, animated: true, completion: nil)
         
+    }
+    func flagHandler(alert: UIAlertAction!) {
         swipeableView.swipeTopViewToDown()
         if let view = swipeableView.topSwipeableView() as? GifCollectionViewCell {
-
+            
             println("\(view.imageId) flagged")
             Flurry.logEvent("flagged", withParameters: ["gif":view.imageId!])
             
@@ -83,7 +87,6 @@ class StreamViewController: GAITrackedViewController, ZLSwipeableViewDataSource,
             view.shouldPlay = true
         }
     }
-
 
     @IBAction func shareButtonWasPressed(sender: AnyObject) {
         if let view = swipeableView.topSwipeableView() as? GifCollectionViewCell {
