@@ -66,6 +66,27 @@ class StreamViewController: GAITrackedViewController, ZLSwipeableViewDataSource,
             view.shouldPlay = true
         }
     }
+    @IBAction func flagButtonWasPressed(sender: AnyObject) {
+        var alert = UIAlertController(title: "Flag image", message: "Are you sure you want to flag this image as offensive?", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Flag", style: UIAlertActionStyle.Default, handler: flagHandler))
+        
+        self.presentViewController(alert, animated: true, completion: nil)
+        
+    }
+    func flagHandler(alert: UIAlertAction!) {
+        swipeableView.swipeTopViewToDown()
+        if let view = swipeableView.topSwipeableView() as? GifCollectionViewCell {
+            
+            println("\(view.imageId) flagged")
+            Flurry.logEvent("flagged", withParameters: ["gif":view.imageId!])
+            
+            let event = GAIDictionaryBuilder.createEventWithCategory("gif", action: "flagged", label:"Gif Flagged", value:nil).build() as NSDictionary
+            GAI.sharedInstance().defaultTracker.send(event as [NSObject: AnyObject])
+            FunSession.sharedSession.imageFlaggedAsInappropriate(view.imageId!)
+            view.shouldPlay = true
+        }
+    }
 
     @IBAction func shareButtonWasPressed(sender: AnyObject) {
         if let view = swipeableView.topSwipeableView() as? GifCollectionViewCell {

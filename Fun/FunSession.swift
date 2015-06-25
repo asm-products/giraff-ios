@@ -57,7 +57,9 @@ class FunSession {
     func imageFaved(imageId:NSString) {
         post("/images/\(imageId)/favorites")
     }
-
+    func imageFlaggedAsInappropriate(imageId:NSString) {
+        post("/images/\(imageId)/inappropriate")
+    }
     
     func get(url:String, callback: (NSDictionary) -> Void) {
         request("GET", url: url, body:nil) {(data:NSData) in

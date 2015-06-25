@@ -2,12 +2,12 @@ PODS:
   - AsyncDisplayKit (1.1.1):
     - AsyncDisplayKit/ASDealloc2MainObject (= 1.1.1)
   - AsyncDisplayKit/ASDealloc2MainObject (1.1.1)
-  - Bolts (1.1.5):
-    - Bolts/AppLinks (= 1.1.5)
-    - Bolts/Tasks (= 1.1.5)
-  - Bolts/AppLinks (1.1.5):
+  - Bolts (1.2.0):
+    - Bolts/AppLinks (= 1.2.0)
+    - Bolts/Tasks (= 1.2.0)
+  - Bolts/AppLinks (1.2.0):
     - Bolts/Tasks
-  - Bolts/Tasks (1.1.5)
+  - Bolts/Tasks (1.2.0)
   - Facebook-iOS-SDK (3.23.2):
     - Bolts (~> 1.0)
   - FlurrySDK (6.2.0):
@@ -55,7 +55,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   AsyncDisplayKit: 2c355970d1aabe00608211d9a50e35b7a5dc0ae4
-  Bolts: aac24961496d504aa56fc267cde95162a71bac39
+  Bolts: d176cb1e0012175589e389a9db49b85e27787576
   Facebook-iOS-SDK: cd87f0b2f0c1d9574b44e8fa2baacc275524bac3
   FlurrySDK: 6d8cc2f898589214ed72e481cf59cffa55b88fe0
   GoogleAnalytics-iOS-SDK: 4f98a376c1d61e6ac4ca47951655820314856eef
@@ -66,4 +66,4 @@ SPEC CHECKSUMS:
   SWRevealViewController: 6d3fd97f70112fd7cef9de14df4260eacce4c63a
   ZLSwipeableView: 668c90a07a0d704b78a4dc8432875caafd6d9efc
 
-COCOAPODS: 0.37.2
+COCOAPODS: 0.37.0
